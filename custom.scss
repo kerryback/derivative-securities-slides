@@ -1,0 +1,278 @@
+/*-- scss:defaults --*/
+
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Slab:wght@400;600&display=swap');
+
+// Color palette
+$navy: #1e3a5f;
+$dark-navy: #162d47;
+$light-navy: #2c4a6f;
+$cream: #faf8f3;
+$light-cream: #ffffff;
+$teal: #20b2aa;
+$dark-teal: #1a8f89;
+$gray: #5a5a5a;
+$light-gray: #e8e6e1;
+
+// Typography
+$font-family-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-family-heading: 'Roboto Slab', serif;
+
+// Base colors
+$body-bg: $cream;
+$body-color: $gray;
+$link-color: $teal;
+$link-color-hover: $dark-teal;
+
+// Headings
+$heading-color: $navy;
+$heading-font: $font-family-heading;
+$heading-font-weight: 600;
+
+// Code blocks
+$code-bg: $light-gray;
+$code-color: $dark-navy;
+
+/*-- scss:rules --*/
+
+.reveal {
+  font-family: $font-family-sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+// Slide backgrounds
+.reveal .slides {
+  background: $cream;
+}
+
+// Title slide with gradient
+.reveal .slide.title-slide {
+  background: linear-gradient(135deg, $navy 0%, $light-navy 100%);
+  color: $light-cream;
+
+  h1.title {
+    color: $light-cream;
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 0.3em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+
+  p.subtitle {
+    color: $light-cream;
+    font-size: 1.3em;
+    font-weight: 300;
+    margin-bottom: 1em;
+    opacity: 0.95;
+  }
+
+  p.author {
+    color: $light-cream;
+    font-size: 1.1em;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+}
+
+// Headings
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: $heading-font;
+  color: $heading-color;
+  font-weight: $heading-font-weight;
+  text-transform: none;
+  line-height: 1.2;
+  margin-bottom: 0.6em;
+}
+
+.reveal h1 {
+  font-size: 2.2em;
+  border-bottom: 3px solid $teal;
+  padding-bottom: 0.2em;
+  margin-bottom: 0.5em;
+}
+
+.reveal h2 {
+  font-size: 1.8em;
+  color: $dark-navy;
+}
+
+.reveal h3 {
+  font-size: 1.4em;
+  color: $light-navy;
+}
+
+// Text styling
+.reveal p {
+  margin: 0.5em 0;
+  line-height: 1.6;
+}
+
+.reveal strong, .reveal b {
+  color: $navy;
+  font-weight: 600;
+}
+
+.reveal em {
+  color: $dark-navy;
+  font-style: italic;
+}
+
+// Links
+.reveal a {
+  color: $link-color;
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: $link-color-hover;
+    text-decoration: underline;
+  }
+}
+
+// Lists
+.reveal ul, .reveal ol {
+  margin: 0.5em 0 0.5em 1em;
+  line-height: 1.6;
+}
+
+.reveal li {
+  margin: 0.4em 0;
+}
+
+.reveal ul ul, .reveal ol ol {
+  font-size: 0.95em;
+}
+
+// Code blocks
+.reveal pre {
+  background: $code-bg;
+  border-radius: 8px;
+  padding: 1em;
+  margin: 1em 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.reveal code {
+  font-family: 'Courier New', monospace;
+  color: $code-color;
+  background: $code-bg;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.reveal pre code {
+  background: transparent;
+  padding: 0;
+}
+
+// Tables
+.reveal table {
+  margin: 1em auto;
+  border-collapse: collapse;
+
+  th {
+    background: $navy;
+    color: $light-cream;
+    font-weight: 600;
+    padding: 0.6em 1em;
+    border: 1px solid $dark-navy;
+  }
+
+  td {
+    padding: 0.5em 1em;
+    border: 1px solid $light-gray;
+  }
+
+  tr:nth-child(even) {
+    background: lighten($cream, 2%);
+  }
+}
+
+// Blockquotes
+.reveal blockquote {
+  background: $light-gray;
+  border-left: 5px solid $teal;
+  padding: 1em 1.5em;
+  margin: 1em 0;
+  font-style: italic;
+  color: $dark-navy;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+// Slide numbers
+.reveal .slide-number {
+  background: rgba($navy, 0.8);
+  color: $light-cream;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.7em;
+}
+
+// Progress bar
+.reveal .progress {
+  background: rgba($navy, 0.2);
+
+  span {
+    background: $teal;
+  }
+}
+
+// Special emphasis classes
+.reveal .emphasis {
+  color: $teal;
+  font-weight: 600;
+}
+
+.reveal .highlight {
+  background: rgba($teal, 0.2);
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
+
+// Columns
+.reveal .columns {
+  display: flex;
+  gap: 2em;
+
+  .column {
+    flex: 1;
+  }
+}
+
+// Iframes
+.reveal iframe {
+  border: 2px solid $light-gray;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+// Figure captions
+.reveal figcaption {
+  font-size: 0.8em;
+  color: $gray;
+  font-style: italic;
+  margin-top: 0.5em;
+}
+
+// Incremental lists styling
+.reveal .fragment {
+  opacity: 0.3;
+
+  &.visible {
+    opacity: 1;
+  }
+}
+
+// Section dividers
+.reveal .section-divider {
+  background: linear-gradient(135deg, $dark-navy 0%, $navy 100%);
+  color: $light-cream;
+  padding: 2em;
+
+  h2 {
+    color: $light-cream;
+    border: none;
+  }
+}
