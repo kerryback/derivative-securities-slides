@@ -1,6 +1,7 @@
 ---
-title: Pricing and Hedging Derivative Securities
-subtitle: Introduction to Options
+title: Introduction to Options
+subtitle: Pricing and Hedging Derivative Securities: Back, Loewenstein, and Liu
+
 format:
   revealjs:
     theme: custom.scss
