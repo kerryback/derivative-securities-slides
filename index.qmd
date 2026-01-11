@@ -1,13 +1,15 @@
 ---
-title: "Lecture Slides"
-subtitle: "Pricing and Hedging Derivative Securities"
-author:
-  - "Kerry Back"
-  - "Hong Liu"
-  - "Mark Loewenstein"
 format:
   html:
     toc: false
+---
+
+# Lecture Slides: [Pricing and Hedging Derivative Securities](https://derivative-securities.org)
+
+Kerry Back<br>
+Hong Liu<br>
+Mark Loewenstein
+
 ---
 
 :::: {.columns}
