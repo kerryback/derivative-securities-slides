@@ -1,1 +1,8 @@
 /.quarto/
+/_site/
+*.quarto_ipynb
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints
+.DS_Store
+/lecture_intro_derivatives_options_files/
