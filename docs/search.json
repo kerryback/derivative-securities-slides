@@ -1,26 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Lecture Slides",
-    "section": "",
-    "text": "These are RevealJS slides based on the book Pricing and Hedging Derivative Securities by Kerry Back, Hong Liu, and Mark Loewenstein."
-  },
-  {
-    "objectID": "index.html#about",
-    "href": "index.html#about",
-    "title": "Lecture Slides",
-    "section": "",
-    "text": "These are RevealJS slides based on the book Pricing and Hedging Derivative Securities by Kerry Back, Hong Liu, and Mark Loewenstein."
-  },
-  {
-    "objectID": "index.html#available-slide-decks",
-    "href": "index.html#available-slide-decks",
-    "title": "Lecture Slides",
-    "section": "Available Slide Decks",
-    "text": "Available Slide Decks\n\n\n\nPart 1: Introduction\n\nIntroduction to Options\nFutures Contracts (Coming soon)\nBinomial Trees (Coming soon)\n\n\n\nPart 2: Mathematical Foundations\n\nBrownian Motion (Coming soon)\nIto’s Lemma (Coming soon)\nGeometric Brownian Motion (Coming soon)\n\n\n\n\nPart 3: Option Pricing\n\nBlack-Scholes Model (Coming soon)\nThe Greeks (Coming soon)\nExotic Options (Coming soon)\n\n\n\nPart 4: Numerical Methods\n\nMonte Carlo Methods (Coming soon)\nBinomial Model (Coming soon)"
-  },
-  {
     "objectID": "01_intro_options.html#what-are-derivatives",
     "href": "01_intro_options.html#what-are-derivatives",
     "title": "Introduction to Derivatives and Options",
@@ -229,5 +208,12 @@
     "title": "Introduction to Derivatives and Options",
     "section": "Next Steps in Options",
     "text": "Next Steps in Options\nBuilding on today’s foundation, we’ll explore:\n\n\nOption portfolios: Protective puts, covered calls, spreads, straddles\nOption pricing models: Black-Scholes formula, binomial trees\nGreeks and sensitivity analysis: How option values change with inputs\nVolatility: Historical vs. implied, volatility surfaces\nHedging strategies: Delta hedging, portfolio insurance"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Lecture Slides",
+    "section": "",
+    "text": "Part 1: Introduction\n\nIntroduction to Options\nFutures Contracts (Coming soon)\nBinomial Trees (Coming soon)\n\n\n\nPart 2: Mathematical Foundations\n\nBrownian Motion (Coming soon)\nIto’s Lemma (Coming soon)\nGeometric Brownian Motion (Coming soon)\n\n\n\n\nPart 3: Option Pricing\n\nBlack-Scholes Model (Coming soon)\nThe Greeks (Coming soon)\nExotic Options (Coming soon)\n\n\n\nPart 4: Numerical Methods\n\nMonte Carlo Methods (Coming soon)\nBinomial Model (Coming soon)"
   }
 ]

@@ -4,6 +4,9 @@ project:
   resources:
     - CNAME
     - .nojekyll
+  render:
+    - index.qmd
+    - 01_intro_options.qmd
 
 execute:
   jupyter: python3

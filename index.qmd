@@ -10,14 +10,6 @@ format:
     toc: false
 ---
 
-## About
-
-These are RevealJS slides based on the book [*Pricing and Hedging Derivative Securities*](https://derivative-securities.org) by Kerry Back, Hong Liu, and Mark Loewenstein.
-
----
-
-## Available Slide Decks
-
 :::: {.columns}
 
 ::: {.column width="50%"}
