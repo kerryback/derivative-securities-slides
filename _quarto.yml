@@ -1,0 +1,10 @@
+project:
+  type: website
+
+execute:
+  jupyter: python3
+
+jupyter:
+  kernel: python3
+
+engine: jupyter

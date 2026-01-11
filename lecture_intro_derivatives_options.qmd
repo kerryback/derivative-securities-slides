@@ -1,0 +1,628 @@
+---
+title: "Introduction to Derivatives and Options"
+subtitle: "A First Look at Financial Derivatives"
+author: "BUSI 721: Data-Driven Finance I"
+format:
+  revealjs:
+    theme: simple
+    transition: slide
+    slide-number: true
+    chalkboard: true
+    incremental: false
+    fig-width: 10
+    fig-height: 5
+execute:
+  echo: false
+jupyter: python3
+engine: jupyter
+---
+
+```{python}
+#| echo: false
+
+import numpy as np
+import plotly.graph_objects as go
+import plotly.express as px
+from IPython.display import display, HTML
+import plotly
+plotly.offline.init_notebook_mode(connected=True)
+```
+
+
+## What Are Derivatives?
+
+**Derivative securities** are financial instruments whose values are *derived* from an underlying asset, index, or rate.
+
+::: {.incremental}
+- **Underlying assets** can be:
+  - Stocks, bonds, commodities
+  - Currencies, interest rates
+  - Market indices
+- Value fluctuates based on changes in the underlying
+- Used for hedging risks and speculation
+:::
+
+## Trading Venues
+
+::::  {.columns}
+::: {.column width="50%"}
+**Exchange-Traded**
+
+- Traded on regulated exchanges (CME, NYSE, ICE)
+- Standardized contracts
+- Centralized clearing
+- Price transparency
+- High liquidity
+:::
+
+::: {.column width="50%"}
+**Over-the-Counter (OTC)**
+
+- Private bilateral contracts
+- Customizable terms
+- Higher counterparty risk
+- Less transparency
+- Tailored solutions
+:::
+::::
+
+
+## Options
+
+For the remainder of this lecture, we'll focus on **options** - the most versatile derivatives.
+
+::: {.incremental}
+
+
+- **Call option**: Right to **buy** an asset at a fixed price (the strike)
+- **Put option**: Right to **sell** an asset at a fixed price (the strike)
+
+The buyer pays the seller a **premium** upfront for this right.
+:::
+
+
+Options are particularly important for several reasons:
+
+::: {.incremental}
+- **Widely traded**: Billions of contracts annually across global exchanges
+- **Versatile**: Can be used for speculation, hedging, or income generation
+- **Building blocks**: Understanding options helps with other derivatives
+
+:::
+
+## Option Basics: Key Terminology
+
+::: {.callout-note}
+#### Essential Terms
+
+- **Premium**: Price paid to buy the option
+- **Strike Price (K)**: Fixed price at which option can be exercised
+- **Expiration Date**: When the contract ends
+- **Exercise**: Using the right granted by the option
+- **Underlying Asset**: The financial instrument the option is based on
+:::
+
+## American vs. European Options
+
+Despite the names, both trade worldwide!
+
+::::  {.columns}
+::: {.column width="50%"}
+**American Options**
+
+- Can be exercised **any time** before expiration
+- More flexibility
+- More common on exchanges
+- Slightly more expensive
+:::
+
+::: {.column width="50%"}
+**European Options**
+
+- Can only be exercised **at expiration**
+- Less flexibility
+- Simpler to price
+- Common in indices and OTC contracts
+:::
+::::
+
+## Rights, Obligations, and Motivations
+
+::::  {.columns}
+::: {.column width="50%"}
+**Option Buyers (Long)**
+
+- Pay premium upfront
+- Have **rights**, no obligations
+- Choose whether to exercise
+- Max loss = premium paid
+- Motivations:
+  - Speculation with leverage
+  - Hedging/insurance
+:::
+
+::: {.column width="50%"}
+**Option Sellers (Short)**
+
+- Receive premium upfront
+- Have **obligations**
+- Must fulfill if exercised
+- Potentially unlimited losses
+- Motivation:
+  - Collect premium income
+:::
+::::
+
+## Interactive Market Data
+
+Let's explore real option prices:
+
+::: {#fig-options-market-data}
+<iframe height="800" width="100%" src="https://options-market-data.koyeb.app/"></iframe>
+
+Real market data from CBOE via Yahoo Finance
+:::
+
+## Patterns in Option Prices: Strike Effects
+
+Experimenting with the market data reveals consistent patterns:
+
+::: {.incremental}
+**Call Options:**
+
+- Prices **decrease** as strike prices increase
+- Call with strike $50 > Call with strike $100
+- *Why?* Lower strike = more valuable right to buy
+
+**Put Options:**
+
+- Prices **increase** as strike prices increase
+- Put with strike $100 > Put with strike $50
+- *Why?* Higher strike = more valuable right to sell
+:::
+
+## Patterns in Option Prices: Time Effects
+
+**Time to expiration matters:**
+
+::: {.incremental}
+- Longer-dated options cost **more** than shorter-dated options
+- Why?
+  - More time for favorable price movements
+  - Greater flexibility (American options)
+  - Higher uncertainty
+
+This pattern holds for both calls and puts,
+:::
+
+
+
+## Intrinsic Value
+
+**Intrinsic value** = What the option is worth if exercised immediately (or at expiration)
+
+::::  {.columns}
+::: {.column width="50%"}
+**Call Option:**
+
+$$\text{Intrinsic Value} = \max(S - K, 0)$$
+
+- If $S = \$50$, $K = \$40$
+- Intrinsic value = $\$10$
+- Can buy at $\$40$, sell at $\$50$
+:::
+
+::: {.column width="50%"}
+**Put Option:**
+
+$$\text{Intrinsic Value} = \max(K - S, 0)$$
+
+- If $S = \$50$, $K = \$60$
+- Intrinsic value = $\$10$
+- Can buy at $\$50$, sell at $\$60$
+:::
+::::
+
+## Moneyness: ITM, ATM, OTM
+
+Options are classified by their relationship to the current price:
+
+| Moneyness | Call Option | Put Option |
+|-----------|-------------|------------|
+| **In the Money (ITM)** | $S > K$ | $S < K$ |
+| **At the Money (ATM)** | $S \approx K$ | $S \approx K$ |
+| **Out of the Money (OTM)** | $S < K$ | $S > K$ |
+
+- **ITM**: Positive intrinsic value
+- **ATM/OTM**: Zero intrinsic value
+
+## Time Value and Time Decay
+
+**Time value** = Option price - Intrinsic value
+
+::: {.incremental}
+- Options are usually worth **more** than intrinsic value before expiration
+- Why? Potential for favorable price movements
+- **Time decay**: Time value decreases as expiration approaches
+- At expiration: Time value = 0, Option value = Intrinsic value
+
+American options are always worth **at least** their intrinsic value (otherwise arbitrage!)
+:::
+
+## Key Insights About Options
+
+Options differ fundamentally from other financial instruments:
+
+::: {.incremental}
+1. **Non-linear payoffs**: Not just multiples of the underlying
+2. **Asymmetric risk/reward**: Different for buyers vs. sellers
+3. **Time decay**: Value erodes as expiration approaches
+4. **Volatility sensitivity**: Option prices increase with uncertainty
+5. **Multiple dimensions**: Price, time, volatility all matter
+
+These properties make options powerful but complex!
+:::
+
+
+## Trading Options on Exchanges
+
+Most options are traded on organized exchanges:
+
+::: {.incremental}
+- **Standardized contracts**: Fixed strikes and expirations
+- **Transparent pricing**: Public order books
+- **Clearinghouse guarantee**: Eliminates counterparty risk
+- **Most positions closed before expiration**: Through offsetting trades rather than exercise
+:::
+
+## Strikes and Maturities
+
+Exchanges determine which options are available:
+
+::: {.incremental}
+- **Strike prices**: Added to bracket the current market price
+  - New strikes introduced as underlying price moves
+  - Typically spaced at regular intervals
+
+- **Expiration dates**:
+  - Weekly, monthly, and quarterly options
+  - New expirations added as older ones expire
+  - Availability depends on trading interest
+:::
+
+
+
+## Open Interest and Contract Creation
+
+Unlike stocks, options have **no pre-existing supply**:
+
+::: {.incremental}
+- **Long position**: Option buyer
+- **Short position**: Option seller
+- **Open Interest**: Total number of long (= short) positions
+
+**How open interest changes:**
+
+- New buyer + New seller → Open interest **increases**
+- Existing buyer sells to new buyer → Open interest **unchanged**
+- Existing buyer and seller both close → Open interest **decreases**
+:::
+
+
+## Volume and Open Interest Patterns
+
+Understanding trading patterns:
+
+::: {.incremental}
+**Concentration Near Current Price:**
+
+- Volume/open interest highest within 10-20% of current price
+- Far OTM options trade infrequently
+- Wider bid-ask spreads for less popular strikes
+
+**Popularity of OTM Options:**
+
+- Lower cost → higher leverage
+- Attractive for speculation (large % returns possible)
+- Used for tail risk hedging (portfolio insurance)
+:::
+
+## The Life Cycle of Open Interest
+
+Open interest evolves over an option's life:
+
+::::  {.columns}
+::: {.column width="50%"}
+**Initial Growth:**
+
+- Starts at zero for new series
+- Grows as traders discover it
+- Peaks when several weeks/months remain
+
+**Example:**
+
+- Day 1: Trader A buys 10 calls from Trader B → OI = 10
+- Day 2: Trader C buys 5 from Trader D → OI = 15
+- Day 3: Trader E buys 3 from Trader A → OI = 15 (unchanged)
+:::
+
+::: {.column width="50%"}
+**Decline Phase:**
+
+- Decreases as expiration approaches
+- Traders close positions
+- Risk managers avoid near-expiry options
+
+**Final Settlement:**
+
+- ITM options: auto-exercised
+- OTM options: expire worthless
+:::
+::::
+
+
+## Payoff vs. Profit Diagrams
+
+Two important ways to visualize options:
+
+::::  {.columns}
+::: {.column width="50%"}
+**Payoff Diagram**
+
+- Shows intrinsic value at expiration
+- Function of underlying price $S$
+- Ignores premium paid/received
+:::
+
+::: {.column width="50%"}
+**Profit Diagram**
+
+- Shows actual profit/loss if held to expiration
+- Payoff minus premium paid
+- Or payoff plus premium received
+:::
+::::
+
+## Long Call: Payoff and Profit
+
+Buying a call option (bullish strategy):
+
+```{python}
+#| label: fig-long-call-slides
+#| fig-height: 450
+#| fig-cap: Long call position with K=$100, premium=$5
+#| echo: false
+
+K = 100
+premium = 5
+S = np.concatenate([np.linspace(0, K, 50), np.linspace(K, 140, 50)])[:-1]
+
+call_payoff = np.maximum(S - K, 0)
+call_profit = call_payoff - premium
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=S, y=call_payoff, mode='lines',
+                        name='Payoff at Expiration', line=dict(color='blue', width=2)))
+fig.add_trace(go.Scatter(x=S, y=call_profit, mode='lines',
+                        name='Profit or Loss', line=dict(color='red', width=2, dash='dash')))
+fig.add_vline(x=K, line_dash="dot", line_color="gray", annotation_text=f"Strike = ${K}")
+fig.update_layout(xaxis_title="Underlying Price at Expiration ($)",
+                 yaxis_title="Payoff or Profit ($)", template="plotly_white",
+                 height=450, legend=dict(x=0.02, y=0.98),
+                 yaxis_zeroline=False, xaxis_zeroline=True, xaxis_zerolinecolor='black')
+fig.show()
+```
+
+## Long Call: Key Characteristics
+
+::: {.incremental}
+**Market View:** Bullish (expect price to rise)
+
+**Maximum Profit:** Unlimited (as $S$ increases)
+
+**Maximum Loss:** Premium paid ($5 in example)
+
+**Breakeven:** Strike + Premium = $105
+
+**Best for:** Speculating on upside with limited downside risk
+:::
+
+## Long Put: Payoff and Profit
+
+Buying a put option (bearish strategy):
+
+```{python}
+#| label: fig-long-put-slides
+#| fig-height: 450
+#| fig-cap: Long put position with K=$100, premium=$5
+#| echo: false
+
+put_payoff = np.maximum(K - S, 0)
+put_profit = put_payoff - premium
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=S, y=put_payoff, mode='lines',
+                        name='Payoff at Expiration', line=dict(color='blue', width=2)))
+fig.add_trace(go.Scatter(x=S, y=put_profit, mode='lines',
+                        name='Profit or Loss', line=dict(color='red', width=2, dash='dash')))
+fig.add_vline(x=K, line_dash="dot", line_color="gray", annotation_text=f"Strike = ${K}")
+fig.update_layout(xaxis_title="Underlying Price at Expiration ($)",
+                 yaxis_title="Payoff or Profit ($)", template="plotly_white",
+                 height=450, legend=dict(x=0.2, y=0.98),
+                 yaxis_zeroline=False, xaxis_zeroline=True, xaxis_zerolinecolor='black')
+fig.show()
+```
+
+## Long Put: Key Characteristics
+
+::: {.incremental}
+**Market View:** Bearish (expect price to fall)
+
+**Maximum Profit:** Strike - Premium = $95 (limited by $S \geq 0$)
+
+**Maximum Loss:** Premium paid ($5)
+
+**Breakeven:** Strike - Premium = $95
+
+**Best for:** Portfolio insurance, speculating on downside with limited risk
+:::
+
+## Short Call: Payoff and Profit
+
+Writing (selling) a call option:
+
+```{python}
+#| label: fig-short-call-slides
+#| fig-height: 450
+#| fig-cap: Short call position with K=$100, premium=$5
+#| echo: false
+
+short_call_payoff = -call_payoff
+short_call_profit = premium - call_payoff
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=S, y=short_call_payoff, mode='lines',
+                        name='Payoff at Expiration', line=dict(color='blue', width=2)))
+fig.add_trace(go.Scatter(x=S, y=short_call_profit, mode='lines',
+                        name='Profit or Loss', line=dict(color='red', width=2, dash='dash')))
+fig.add_vline(x=K, line_dash="dot", line_color="gray", annotation_text=f"Strike = ${K}")
+fig.update_layout(xaxis_title="Underlying Price at Expiration ($)",
+                 yaxis_title="Payoff or Profit ($)", template="plotly_white",
+                 height=450, legend=dict(x=0.02, y=0.8),
+                 yaxis_zeroline=False, xaxis_zeroline=True, xaxis_zerolinecolor='black')
+fig.show()
+```
+
+## Short Call: Key Characteristics
+
+::: {.incremental}
+**Market View:** Neutral to bearish (expect price to stay flat or fall)
+
+**Maximum Profit:** Premium received ($5)
+
+**Maximum Loss:** Unlimited (as $S$ increases)
+
+**Breakeven:** Strike + Premium = $105
+
+**Risk:** Very high! Limited upside, unlimited downside
+:::
+
+## Short Put: Payoff and Profit
+
+Writing (selling) a put option:
+
+```{python}
+#| label: fig-short-put-slides
+#| fig-height: 450
+#| fig-cap: Short put position with K=$100, premium=$5
+#| echo: false
+
+short_put_payoff = -put_payoff
+short_put_profit = premium - put_payoff
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=S, y=short_put_payoff, mode='lines',
+                        name='Payoff at Expiration', line=dict(color='blue', width=2)))
+fig.add_trace(go.Scatter(x=S, y=short_put_profit, mode='lines',
+                        name='Profit or Loss', line=dict(color='red', width=2, dash='dash')))
+fig.add_vline(x=K, line_dash="dot", line_color="gray", annotation_text=f"Strike = ${K}")
+fig.update_layout(xaxis_title="Underlying Price at Expiration ($)",
+                 yaxis_title="Payoff or Profit ($)", template="plotly_white",
+                 height=450, legend=dict(x=0.02, y=0.98),
+                 yaxis_zeroline=False, xaxis_zeroline=True, xaxis_zerolinecolor='black')
+fig.show()
+```
+
+## Short Put: Key Characteristics
+
+::: {.incremental}
+**Market View:** Neutral to bullish (expect price to stay flat or rise)
+
+**Maximum Profit:** Premium received ($5)
+
+**Maximum Loss:** Strike - Premium = $95 (if $S \to 0$)
+
+**Breakeven:** Strike - Premium = $95
+
+**Use case:** Collect premium while willing to buy stock at strike price
+:::
+
+## Summary of Basic Option Positions
+
+| Position | Market View | Max Profit | Max Loss | Breakeven |
+|----------|-------------|------------|----------|-----------|
+| **Long Call** | Bullish | Unlimited | Premium | $K +$ Premium |
+| **Long Put** | Bearish | $K -$ Premium | Premium | $K -$ Premium |
+| **Short Call** | Bearish | Premium | Unlimited | $K +$ Premium |
+| **Short Put** | Bullish | Premium | $K -$ Premium | $K -$ Premium |
+
+These four positions are the building blocks for all option strategies!
+
+## Comparing Long vs. Short Positions
+
+::::  {.columns}
+::: {.column width="50%"}
+**Long Positions (Buyers)**
+
+- Pay premium upfront
+- Limited downside (premium)
+- Potentially large upside
+- Time decay works against you
+- Benefit from volatility
+:::
+
+::: {.column width="50%"}
+**Short Positions (Sellers)**
+
+- Receive premium upfront
+- Limited upside (premium)
+- Potentially large downside
+- Time decay works for you
+- Hurt by volatility
+:::
+::::
+
+
+## Next Steps in Options
+
+Building on today's foundation, we'll explore:
+
+::: {.incremental}
+- **Option portfolios**: Protective puts, covered calls, spreads, straddles
+- **Option pricing models**: Black-Scholes formula, binomial trees
+- **Greeks and sensitivity analysis**: How option values change with inputs
+- **Volatility**: Historical vs. implied, volatility surfaces
+- **Hedging strategies**: Delta hedging, portfolio insurance
+
+Today's concepts are essential for all of these topics!
+:::
+
+## Summary
+
+::: {.incremental}
+**Derivatives:**
+
+- Four main types: forwards, futures, options, swaps
+- Massive global market ($667T notional)
+- Used for hedging and speculation
+
+**Options:**
+
+- Calls give the right to buy, puts the right to sell
+- Buyers have rights, sellers have obligations
+- Four basic positions: long/short calls/puts
+- Intrinsic value + time value = option price
+- Non-linear, time-dependent payoffs
+:::
+
+## Questions?
+
+Thank you for your attention!
+
+**Key resources:**
+
+- Interactive market data: [options-market-data.koyeb.app](https://options-market-data.koyeb.app/)
+- Review the payoff diagrams and practice drawing them yourself
+- Think about how you might use options in your own trading or risk management
+
+*Next lecture: Option Portfolios and Strategies*
