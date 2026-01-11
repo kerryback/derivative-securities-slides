@@ -1,5 +1,6 @@
 ---
-title: "Introduction to Options"
+title: Pricing and Hedging Derivative Securities
+subtitle: Introduction to Options
 format:
   revealjs:
     theme: custom.scss
