@@ -6,7 +6,7 @@ Quarto RevealJS slides for BUSI 721: Data-Driven Finance I.
 
 ## Contents
 
-- `lecture_intro_derivatives_options.qmd` - Introduction to Derivatives and Options (90 min lecture)
+- `01_intro_options.qmd` - Introduction to Derivatives and Options (90 min lecture)
 
 ## Rendering Slides
 
@@ -14,15 +14,21 @@ To render the slides locally:
 
 ```bash
 cd Slides
-quarto render lecture_intro_derivatives_options.qmd
+quarto render 01_intro_options.qmd
 ```
 
 Output will be in `docs/` folder.
 
+To render all slides and the index:
+
+```bash
+quarto render
+```
+
 To preview during development:
 
 ```bash
-quarto preview lecture_intro_derivatives_options.qmd
+quarto preview 01_intro_options.qmd
 ```
 
 ## GitHub Pages Deployment
@@ -31,7 +37,7 @@ This repository is configured for GitHub Pages deployment from the `docs/` folde
 
 After making changes:
 
-1. Render the slides: `quarto render lecture_intro_derivatives_options.qmd`
+1. Render the slides: `quarto render`
 2. Commit changes: `git add -A && git commit -m "Update slides"`
 3. Push to GitHub: `git push origin main`
 
