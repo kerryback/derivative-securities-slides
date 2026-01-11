@@ -3,8 +3,8 @@ title: "Lecture Slides"
 subtitle: "Pricing and Hedging Derivative Securities"
 author:
   - "Kerry Back"
-  - "Maclean Gaulin"
-  - "Sholom Schechtman"
+  - "Hong Liu"
+  - "Mark Loewenstein"
 format:
   html:
     toc: false
@@ -12,7 +12,7 @@ format:
 
 ## About
 
-These are RevealJS slides for **BUSI 721: Data-Driven Finance I**, based on the book [*Pricing and Hedging Derivative Securities*](https://derivative-securities.org) by Kerry Back, Maclean Gaulin, and Sholom Schechtman.
+These are RevealJS slides for **BUSI 721: Data-Driven Finance I**, based on the book [*Pricing and Hedging Derivative Securities*](https://derivative-securities.org) by Kerry Back, Hong Liu, and Mark Loewenstein.
 
 ---
 
