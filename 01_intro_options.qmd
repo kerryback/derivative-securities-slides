@@ -9,9 +9,6 @@ format:
     incremental: false
     fig-width: 10
     fig-height: 5
-crossref:
-  fig-title: ""
-  fig-prefix: ""
 execute:
   echo: false
 jupyter: python3
@@ -391,7 +388,6 @@ Buying a call option (bullish strategy):
 ```{python}
 #| label: fig-long-call-slides
 #| fig-height: 450
-#| fig-cap: Long call position with K=$100, premium=$5
 #| echo: false
 
 K = 100
@@ -435,7 +431,6 @@ Buying a put option (bearish strategy):
 ```{python}
 #| label: fig-long-put-slides
 #| fig-height: 450
-#| fig-cap: Long put position with K=$100, premium=$5
 #| echo: false
 
 put_payoff = np.maximum(K - S, 0)
@@ -475,7 +470,6 @@ Writing (selling) a call option:
 ```{python}
 #| label: fig-short-call-slides
 #| fig-height: 450
-#| fig-cap: Short call position with K=$100, premium=$5
 #| echo: false
 
 short_call_payoff = -call_payoff
@@ -515,7 +509,6 @@ Writing (selling) a put option:
 ```{python}
 #| label: fig-short-put-slides
 #| fig-height: 450
-#| fig-cap: Short put position with K=$100, premium=$5
 #| echo: false
 
 short_put_payoff = -put_payoff

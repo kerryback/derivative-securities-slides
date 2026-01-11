@@ -46,7 +46,7 @@
     "href": "01_intro_options.html#interactive-market-data",
     "title": "Introduction to Options",
     "section": "Interactive Market Data",
-    "text": "Interactive Market Data\nLet’s explore real option prices:\n\n\n\n\n\n\n\n 1: Real market data from CBOE via Yahoo Finance"
+    "text": "Interactive Market Data\nLet’s explore real option prices:\n\n\n\n\n\n\n\nFigure 1: Real market data from CBOE via Yahoo Finance"
   },
   {
     "objectID": "01_intro_options.html#patterns-in-option-prices-strike-effects",
@@ -137,7 +137,7 @@
     "href": "01_intro_options.html#long-call-payoff-and-profit",
     "title": "Introduction to Options",
     "section": "Long Call: Payoff and Profit",
-    "text": "Long Call: Payoff and Profit\nBuying a call option (bullish strategy):\n\n\n\n\n                                                \n\n\n 2: Long call position with K=$100, premium=$5"
+    "text": "Long Call: Payoff and Profit\nBuying a call option (bullish strategy):\n\n\n\n\n                                                \n\n\nFigure 2"
   },
   {
     "objectID": "01_intro_options.html#long-call-key-characteristics",
@@ -151,7 +151,7 @@
     "href": "01_intro_options.html#long-put-payoff-and-profit",
     "title": "Introduction to Options",
     "section": "Long Put: Payoff and Profit",
-    "text": "Long Put: Payoff and Profit\nBuying a put option (bearish strategy):\n\n\n\n\n                                                \n\n\n 3: Long put position with K=$100, premium=$5"
+    "text": "Long Put: Payoff and Profit\nBuying a put option (bearish strategy):\n\n\n\n\n                                                \n\n\nFigure 3"
   },
   {
     "objectID": "01_intro_options.html#long-put-key-characteristics",
@@ -165,7 +165,7 @@
     "href": "01_intro_options.html#short-call-payoff-and-profit",
     "title": "Introduction to Options",
     "section": "Short Call: Payoff and Profit",
-    "text": "Short Call: Payoff and Profit\nWriting (selling) a call option:\n\n\n\n\n                                                \n\n\n 4: Short call position with K=$100, premium=$5"
+    "text": "Short Call: Payoff and Profit\nWriting (selling) a call option:\n\n\n\n\n                                                \n\n\nFigure 4"
   },
   {
     "objectID": "01_intro_options.html#short-call-key-characteristics",
@@ -179,7 +179,7 @@
     "href": "01_intro_options.html#short-put-payoff-and-profit",
     "title": "Introduction to Options",
     "section": "Short Put: Payoff and Profit",
-    "text": "Short Put: Payoff and Profit\nWriting (selling) a put option:\n\n\n\n\n                                                \n\n\n 5: Short put position with K=$100, premium=$5"
+    "text": "Short Put: Payoff and Profit\nWriting (selling) a put option:\n\n\n\n\n                                                \n\n\nFigure 5"
   },
   {
     "objectID": "01_intro_options.html#short-put-key-characteristics",
