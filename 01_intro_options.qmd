@@ -594,35 +594,5 @@ Building on today's foundation, we'll explore:
 - **Volatility**: Historical vs. implied, volatility surfaces
 - **Hedging strategies**: Delta hedging, portfolio insurance
 
-Today's concepts are essential for all of these topics!
 :::
 
-## Summary
-
-::: {.incremental}
-**Derivatives:**
-
-- Four main types: forwards, futures, options, swaps
-- Massive global market ($667T notional)
-- Used for hedging and speculation
-
-**Options:**
-
-- Calls give the right to buy, puts the right to sell
-- Buyers have rights, sellers have obligations
-- Four basic positions: long/short calls/puts
-- Intrinsic value + time value = option price
-- Non-linear, time-dependent payoffs
-:::
-
-## Questions?
-
-Thank you for your attention!
-
-**Key resources:**
-
-- Interactive market data: [options-market-data.koyeb.app](https://options-market-data.koyeb.app/)
-- Review the payoff diagrams and practice drawing them yourself
-- Think about how you might use options in your own trading or risk management
-
-*Next lecture: Option Portfolios and Strategies*

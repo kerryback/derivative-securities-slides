@@ -235,20 +235,6 @@
     "href": "01_intro_options.html#next-steps-in-options",
     "title": "Introduction to Derivatives and Options",
     "section": "Next Steps in Options",
-    "text": "Next Steps in Options\nBuilding on today’s foundation, we’ll explore:\n\n\nOption portfolios: Protective puts, covered calls, spreads, straddles\nOption pricing models: Black-Scholes formula, binomial trees\nGreeks and sensitivity analysis: How option values change with inputs\nVolatility: Historical vs. implied, volatility surfaces\nHedging strategies: Delta hedging, portfolio insurance\n\nToday’s concepts are essential for all of these topics!"
-  },
-  {
-    "objectID": "01_intro_options.html#summary",
-    "href": "01_intro_options.html#summary",
-    "title": "Introduction to Derivatives and Options",
-    "section": "Summary",
-    "text": "Summary\n\nDerivatives:\n\nFour main types: forwards, futures, options, swaps\nMassive global market ($667T notional)\nUsed for hedging and speculation\n\nOptions:\n\nCalls give the right to buy, puts the right to sell\nBuyers have rights, sellers have obligations\nFour basic positions: long/short calls/puts\nIntrinsic value + time value = option price\nNon-linear, time-dependent payoffs"
-  },
-  {
-    "objectID": "01_intro_options.html#questions",
-    "href": "01_intro_options.html#questions",
-    "title": "Introduction to Derivatives and Options",
-    "section": "Questions?",
-    "text": "Questions?\nThank you for your attention!\nKey resources:\n\nInteractive market data: options-market-data.koyeb.app\nReview the payoff diagrams and practice drawing them yourself\nThink about how you might use options in your own trading or risk management\n\nNext lecture: Option Portfolios and Strategies"
+    "text": "Next Steps in Options\nBuilding on today’s foundation, we’ll explore:\n\n\nOption portfolios: Protective puts, covered calls, spreads, straddles\nOption pricing models: Black-Scholes formula, binomial trees\nGreeks and sensitivity analysis: How option values change with inputs\nVolatility: Historical vs. implied, volatility surfaces\nHedging strategies: Delta hedging, portfolio insurance"
   }
 ]
