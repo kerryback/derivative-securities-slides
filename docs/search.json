@@ -2,210 +2,210 @@
   {
     "objectID": "01_intro_options.html#what-are-derivatives",
     "href": "01_intro_options.html#what-are-derivatives",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "What Are Derivatives?",
     "text": "What Are Derivatives?\nDerivative securities are financial instruments whose values are derived from an underlying asset, index, or rate.\n\n\nUnderlying assets can be:\n\nStocks, bonds, commodities\nCurrencies, interest rates\nMarket indices\n\nValue fluctuates based on changes in the underlying\nUsed for hedging risks and speculation"
   },
   {
     "objectID": "01_intro_options.html#trading-venues",
     "href": "01_intro_options.html#trading-venues",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Trading Venues",
     "text": "Trading Venues\n\n\nExchange-Traded\n\nTraded on regulated exchanges (CME, NYSE, ICE)\nStandardized contracts\nCentralized clearing\nPrice transparency\nHigh liquidity\n\n\nOver-the-Counter (OTC)\n\nPrivate bilateral contracts\nCustomizable terms\nHigher counterparty risk\nLess transparency\nTailored solutions"
   },
   {
     "objectID": "01_intro_options.html#options",
     "href": "01_intro_options.html#options",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Options",
     "text": "Options\nFor the remainder of this lecture, we’ll focus on options - the most versatile derivatives.\n\n\nCall option: Right to buy an asset at a fixed price (the strike)\nPut option: Right to sell an asset at a fixed price (the strike)\n\nThe buyer pays the seller a premium upfront for this right.\n\nOptions are particularly important for several reasons:\n\n\nWidely traded: Billions of contracts annually across global exchanges\nVersatile: Can be used for speculation, hedging, or income generation\nBuilding blocks: Understanding options helps with other derivatives"
   },
   {
     "objectID": "01_intro_options.html#option-basics-key-terminology",
     "href": "01_intro_options.html#option-basics-key-terminology",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Option Basics: Key Terminology",
     "text": "Option Basics: Key Terminology\n\n\n\n\n\n\nEssential Terms\n\n\n\nPremium: Price paid to buy the option\nStrike Price (K): Fixed price at which option can be exercised\nExpiration Date: When the contract ends\nExercise: Using the right granted by the option\nUnderlying Asset: The financial instrument the option is based on"
   },
   {
     "objectID": "01_intro_options.html#american-vs.-european-options",
     "href": "01_intro_options.html#american-vs.-european-options",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "American vs. European Options",
     "text": "American vs. European Options\nDespite the names, both trade worldwide!\n\n\nAmerican Options\n\nCan be exercised any time before expiration\nMore flexibility\nMore common on exchanges\nSlightly more expensive\n\n\nEuropean Options\n\nCan only be exercised at expiration\nLess flexibility\nSimpler to price\nCommon in indices and OTC contracts"
   },
   {
     "objectID": "01_intro_options.html#rights-obligations-and-motivations",
     "href": "01_intro_options.html#rights-obligations-and-motivations",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Rights, Obligations, and Motivations",
     "text": "Rights, Obligations, and Motivations\n\n\nOption Buyers (Long)\n\nPay premium upfront\nHave rights, no obligations\nChoose whether to exercise\nMax loss = premium paid\nMotivations:\n\nSpeculation with leverage\nHedging/insurance\n\n\n\nOption Sellers (Short)\n\nReceive premium upfront\nHave obligations\nMust fulfill if exercised\nPotentially unlimited losses\nMotivation:\n\nCollect premium income"
   },
   {
     "objectID": "01_intro_options.html#interactive-market-data",
     "href": "01_intro_options.html#interactive-market-data",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Interactive Market Data",
     "text": "Interactive Market Data\nLet’s explore real option prices:\n\n\n\n\n\n\n\nFigure 1: Real market data from CBOE via Yahoo Finance"
   },
   {
     "objectID": "01_intro_options.html#patterns-in-option-prices-strike-effects",
     "href": "01_intro_options.html#patterns-in-option-prices-strike-effects",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Patterns in Option Prices: Strike Effects",
     "text": "Patterns in Option Prices: Strike Effects\nExperimenting with the market data reveals consistent patterns:\n\nCall Options:\n\nPrices decrease as strike prices increase\nCall with strike $50 &gt; Call with strike $100\nWhy? Lower strike = more valuable right to buy\n\nPut Options:\n\nPrices increase as strike prices increase\nPut with strike $100 &gt; Put with strike $50\nWhy? Higher strike = more valuable right to sell"
   },
   {
     "objectID": "01_intro_options.html#patterns-in-option-prices-time-effects",
     "href": "01_intro_options.html#patterns-in-option-prices-time-effects",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Patterns in Option Prices: Time Effects",
     "text": "Patterns in Option Prices: Time Effects\nTime to expiration matters:\n\n\nLonger-dated options cost more than shorter-dated options\nWhy?\n\nMore time for favorable price movements\nGreater flexibility (American options)\nHigher uncertainty\n\n\nThis pattern holds for both calls and puts,"
   },
   {
     "objectID": "01_intro_options.html#intrinsic-value",
     "href": "01_intro_options.html#intrinsic-value",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Intrinsic Value",
     "text": "Intrinsic Value\nIntrinsic value = What the option is worth if exercised immediately (or at expiration)\n\n\nCall Option:\n\\[\\text{Intrinsic Value} = \\max(S - K, 0)\\]\n\nIf \\(S = \\$50\\), \\(K = \\$40\\)\nIntrinsic value = \\(\\$10\\)\nCan buy at \\(\\$40\\), sell at \\(\\$50\\)\n\n\nPut Option:\n\\[\\text{Intrinsic Value} = \\max(K - S, 0)\\]\n\nIf \\(S = \\$50\\), \\(K = \\$60\\)\nIntrinsic value = \\(\\$10\\)\nCan buy at \\(\\$50\\), sell at \\(\\$60\\)"
   },
   {
     "objectID": "01_intro_options.html#moneyness-itm-atm-otm",
     "href": "01_intro_options.html#moneyness-itm-atm-otm",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Moneyness: ITM, ATM, OTM",
     "text": "Moneyness: ITM, ATM, OTM\nOptions are classified by their relationship to the current price:\n\n\n\nMoneyness\nCall Option\nPut Option\n\n\n\n\nIn the Money (ITM)\n\\(S &gt; K\\)\n\\(S &lt; K\\)\n\n\nAt the Money (ATM)\n\\(S \\approx K\\)\n\\(S \\approx K\\)\n\n\nOut of the Money (OTM)\n\\(S &lt; K\\)\n\\(S &gt; K\\)\n\n\n\n\nITM: Positive intrinsic value\nATM/OTM: Zero intrinsic value"
   },
   {
     "objectID": "01_intro_options.html#time-value-and-time-decay",
     "href": "01_intro_options.html#time-value-and-time-decay",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Time Value and Time Decay",
     "text": "Time Value and Time Decay\nTime value = Option price - Intrinsic value\n\n\nOptions are usually worth more than intrinsic value before expiration\nWhy? Potential for favorable price movements\nTime decay: Time value decreases as expiration approaches\nAt expiration: Time value = 0, Option value = Intrinsic value\n\nAmerican options are always worth at least their intrinsic value (otherwise arbitrage!)"
   },
   {
     "objectID": "01_intro_options.html#key-insights-about-options",
     "href": "01_intro_options.html#key-insights-about-options",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Key Insights About Options",
     "text": "Key Insights About Options\nOptions differ fundamentally from other financial instruments:\n\n\nNon-linear payoffs: Not just multiples of the underlying\nAsymmetric risk/reward: Different for buyers vs. sellers\nTime decay: Value erodes as expiration approaches\nVolatility sensitivity: Option prices increase with uncertainty\nMultiple dimensions: Price, time, volatility all matter\n\nThese properties make options powerful but complex!"
   },
   {
     "objectID": "01_intro_options.html#trading-options-on-exchanges",
     "href": "01_intro_options.html#trading-options-on-exchanges",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Trading Options on Exchanges",
     "text": "Trading Options on Exchanges\nMost options are traded on organized exchanges:\n\n\nStandardized contracts: Fixed strikes and expirations\nTransparent pricing: Public order books\nClearinghouse guarantee: Eliminates counterparty risk\nMost positions closed before expiration: Through offsetting trades rather than exercise"
   },
   {
     "objectID": "01_intro_options.html#strikes-and-maturities",
     "href": "01_intro_options.html#strikes-and-maturities",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Strikes and Maturities",
     "text": "Strikes and Maturities\nExchanges determine which options are available:\n\n\nStrike prices: Added to bracket the current market price\n\nNew strikes introduced as underlying price moves\nTypically spaced at regular intervals\n\nExpiration dates:\n\nWeekly, monthly, and quarterly options\nNew expirations added as older ones expire\nAvailability depends on trading interest"
   },
   {
     "objectID": "01_intro_options.html#open-interest-and-contract-creation",
     "href": "01_intro_options.html#open-interest-and-contract-creation",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Open Interest and Contract Creation",
     "text": "Open Interest and Contract Creation\nUnlike stocks, options have no pre-existing supply:\n\n\nLong position: Option buyer\nShort position: Option seller\nOpen Interest: Total number of long (= short) positions\n\nHow open interest changes:\n\nNew buyer + New seller → Open interest increases\nExisting buyer sells to new buyer → Open interest unchanged\nExisting buyer and seller both close → Open interest decreases"
   },
   {
     "objectID": "01_intro_options.html#volume-and-open-interest-patterns",
     "href": "01_intro_options.html#volume-and-open-interest-patterns",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Volume and Open Interest Patterns",
     "text": "Volume and Open Interest Patterns\nUnderstanding trading patterns:\n\nConcentration Near Current Price:\n\nVolume/open interest highest within 10-20% of current price\nFar OTM options trade infrequently\nWider bid-ask spreads for less popular strikes\n\nPopularity of OTM Options:\n\nLower cost → higher leverage\nAttractive for speculation (large % returns possible)\nUsed for tail risk hedging (portfolio insurance)"
   },
   {
     "objectID": "01_intro_options.html#the-life-cycle-of-open-interest",
     "href": "01_intro_options.html#the-life-cycle-of-open-interest",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "The Life Cycle of Open Interest",
     "text": "The Life Cycle of Open Interest\nOpen interest evolves over an option’s life:\n\n\nInitial Growth:\n\nStarts at zero for new series\nGrows as traders discover it\nPeaks when several weeks/months remain\n\nExample:\n\nDay 1: Trader A buys 10 calls from Trader B → OI = 10\nDay 2: Trader C buys 5 from Trader D → OI = 15\nDay 3: Trader E buys 3 from Trader A → OI = 15 (unchanged)\n\n\nDecline Phase:\n\nDecreases as expiration approaches\nTraders close positions\nRisk managers avoid near-expiry options\n\nFinal Settlement:\n\nITM options: auto-exercised\nOTM options: expire worthless"
   },
   {
     "objectID": "01_intro_options.html#payoff-vs.-profit-diagrams",
     "href": "01_intro_options.html#payoff-vs.-profit-diagrams",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Payoff vs. Profit Diagrams",
     "text": "Payoff vs. Profit Diagrams\nTwo important ways to visualize options:\n\n\nPayoff Diagram\n\nShows intrinsic value at expiration\nFunction of underlying price \\(S\\)\nIgnores premium paid/received\n\n\nProfit Diagram\n\nShows actual profit/loss if held to expiration\nPayoff minus premium paid\nOr payoff plus premium received"
   },
   {
     "objectID": "01_intro_options.html#long-call-payoff-and-profit",
     "href": "01_intro_options.html#long-call-payoff-and-profit",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Long Call: Payoff and Profit",
     "text": "Long Call: Payoff and Profit\nBuying a call option (bullish strategy):\n\n\n\n\n                                                \n\n\nFigure 2"
   },
   {
     "objectID": "01_intro_options.html#long-call-key-characteristics",
     "href": "01_intro_options.html#long-call-key-characteristics",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Long Call: Key Characteristics",
     "text": "Long Call: Key Characteristics\n\nMarket View: Bullish (expect price to rise)\nMaximum Profit: Unlimited (as \\(S\\) increases)\nMaximum Loss: Premium paid ($5 in example)\nBreakeven: Strike + Premium = $105\nBest for: Speculating on upside with limited downside risk"
   },
   {
     "objectID": "01_intro_options.html#long-put-payoff-and-profit",
     "href": "01_intro_options.html#long-put-payoff-and-profit",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Long Put: Payoff and Profit",
     "text": "Long Put: Payoff and Profit\nBuying a put option (bearish strategy):\n\n\n\n\n                                                \n\n\nFigure 3"
   },
   {
     "objectID": "01_intro_options.html#long-put-key-characteristics",
     "href": "01_intro_options.html#long-put-key-characteristics",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Long Put: Key Characteristics",
     "text": "Long Put: Key Characteristics\n\nMarket View: Bearish (expect price to fall)\nMaximum Profit: Strike - Premium = $95 (limited by \\(S \\geq 0\\))\nMaximum Loss: Premium paid ($5)\nBreakeven: Strike - Premium = $95\nBest for: Portfolio insurance, speculating on downside with limited risk"
   },
   {
     "objectID": "01_intro_options.html#short-call-payoff-and-profit",
     "href": "01_intro_options.html#short-call-payoff-and-profit",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Short Call: Payoff and Profit",
     "text": "Short Call: Payoff and Profit\nWriting (selling) a call option:\n\n\n\n\n                                                \n\n\nFigure 4"
   },
   {
     "objectID": "01_intro_options.html#short-call-key-characteristics",
     "href": "01_intro_options.html#short-call-key-characteristics",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Short Call: Key Characteristics",
     "text": "Short Call: Key Characteristics\n\nMarket View: Neutral to bearish (expect price to stay flat or fall)\nMaximum Profit: Premium received ($5)\nMaximum Loss: Unlimited (as \\(S\\) increases)\nBreakeven: Strike + Premium = $105\nRisk: Very high! Limited upside, unlimited downside"
   },
   {
     "objectID": "01_intro_options.html#short-put-payoff-and-profit",
     "href": "01_intro_options.html#short-put-payoff-and-profit",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Short Put: Payoff and Profit",
     "text": "Short Put: Payoff and Profit\nWriting (selling) a put option:\n\n\n\n\n                                                \n\n\nFigure 5"
   },
   {
     "objectID": "01_intro_options.html#short-put-key-characteristics",
     "href": "01_intro_options.html#short-put-key-characteristics",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Short Put: Key Characteristics",
     "text": "Short Put: Key Characteristics\n\nMarket View: Neutral to bullish (expect price to stay flat or rise)\nMaximum Profit: Premium received ($5)\nMaximum Loss: Strike - Premium = $95 (if \\(S \\to 0\\))\nBreakeven: Strike - Premium = $95\nUse case: Collect premium while willing to buy stock at strike price"
   },
   {
     "objectID": "01_intro_options.html#summary-of-basic-option-positions",
     "href": "01_intro_options.html#summary-of-basic-option-positions",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Summary of Basic Option Positions",
     "text": "Summary of Basic Option Positions\n\n\n\nPosition\nMarket View\nMax Profit\nMax Loss\nBreakeven\n\n\n\n\nLong Call\nBullish\nUnlimited\nPremium\n\\(K +\\) Premium\n\n\nLong Put\nBearish\n\\(K -\\) Premium\nPremium\n\\(K -\\) Premium\n\n\nShort Call\nBearish\nPremium\nUnlimited\n\\(K +\\) Premium\n\n\nShort Put\nBullish\nPremium\n\\(K -\\) Premium\n\\(K -\\) Premium\n\n\n\nThese four positions are the building blocks for all option strategies!"
   },
   {
     "objectID": "01_intro_options.html#comparing-long-vs.-short-positions",
     "href": "01_intro_options.html#comparing-long-vs.-short-positions",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Comparing Long vs. Short Positions",
     "text": "Comparing Long vs. Short Positions\n\n\nLong Positions (Buyers)\n\nPay premium upfront\nLimited downside (premium)\nPotentially large upside\nTime decay works against you\nBenefit from volatility\n\n\nShort Positions (Sellers)\n\nReceive premium upfront\nLimited upside (premium)\nPotentially large downside\nTime decay works for you\nHurt by volatility"
   },
   {
     "objectID": "01_intro_options.html#next-steps-in-options",
     "href": "01_intro_options.html#next-steps-in-options",
-    "title": "Pricing and Hedging Derivative Securities",
+    "title": "Introduction to Options",
     "section": "Next Steps in Options",
     "text": "Next Steps in Options\nBuilding on today’s foundation, we’ll explore:\n\n\nOption portfolios: Protective puts, covered calls, spreads, straddles\nOption pricing models: Black-Scholes formula, binomial trees\nGreeks and sensitivity analysis: How option values change with inputs\nVolatility: Historical vs. implied, volatility surfaces\nHedging strategies: Delta hedging, portfolio insurance"
   },
