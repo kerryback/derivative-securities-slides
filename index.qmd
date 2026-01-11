@@ -12,7 +12,7 @@ format:
 
 ## About
 
-These are RevealJS slides for **BUSI 721: Data-Driven Finance I**, based on the book [*Pricing and Hedging Derivative Securities*](https://derivative-securities.org) by Kerry Back, Hong Liu, and Mark Loewenstein.
+These are RevealJS slides based on the book [*Pricing and Hedging Derivative Securities*](https://derivative-securities.org) by Kerry Back, Hong Liu, and Mark Loewenstein.
 
 ---
 
@@ -23,7 +23,7 @@ These are RevealJS slides for **BUSI 721: Data-Driven Finance I**, based on the 
 ::: {.column width="50%"}
 ### Part 1: Introduction
 
-- [Introduction to Derivatives and Options](01_intro_options.html){target="_blank"}
+- [Introduction to Options](01_intro_options.html){target="_blank"}
 - [Futures Contracts](02_futures.html){target="_blank"} *(Coming soon)*
 - [Binomial Trees](03_binomial_trees.html){target="_blank"} *(Coming soon)*
 
@@ -52,7 +52,3 @@ These are RevealJS slides for **BUSI 721: Data-Driven Finance I**, based on the 
 
 ---
 
-## Course Information
-
-**Course:** BUSI 721: Data-Driven Finance I
-**Book Website:** [derivative-securities.org](https://derivative-securities.org)
