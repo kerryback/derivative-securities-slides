@@ -1,7 +1,5 @@
 ---
-title: "Introduction to Derivatives and Options"
-subtitle: "A First Look at Financial Derivatives"
-author: "BUSI 721: Data-Driven Finance I"
+title: "Introduction to Options"
 format:
   revealjs:
     theme: custom.scss
@@ -11,6 +9,9 @@ format:
     incremental: false
     fig-width: 10
     fig-height: 5
+crossref:
+  fig-title: ""
+  fig-prefix: ""
 execute:
   echo: false
 jupyter: python3
