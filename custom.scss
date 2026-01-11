@@ -39,6 +39,7 @@ $code-color: $dark-navy;
   font-family: $font-family-sans-serif;
   font-weight: 400;
   letter-spacing: 0.01em;
+  font-size: 32px; // Reduced from default 40px
 }
 
 // Slide backgrounds
@@ -53,7 +54,7 @@ $code-color: $dark-navy;
 
   h1.title {
     color: $light-cream;
-    font-size: 2.5em;
+    font-size: 2.0em;
     font-weight: 700;
     margin-bottom: 0.3em;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -61,7 +62,7 @@ $code-color: $dark-navy;
 
   p.subtitle {
     color: $light-cream;
-    font-size: 1.3em;
+    font-size: 1.1em;
     font-weight: 300;
     margin-bottom: 1em;
     opacity: 0.95;
@@ -69,7 +70,7 @@ $code-color: $dark-navy;
 
   p.author {
     color: $light-cream;
-    font-size: 1.1em;
+    font-size: 0.95em;
     font-weight: 400;
     opacity: 0.9;
   }
@@ -86,19 +87,19 @@ $code-color: $dark-navy;
 }
 
 .reveal h1 {
-  font-size: 2.2em;
+  font-size: 1.8em;
   border-bottom: 3px solid $teal;
   padding-bottom: 0.2em;
   margin-bottom: 0.5em;
 }
 
 .reveal h2 {
-  font-size: 1.8em;
+  font-size: 1.5em;
   color: $dark-navy;
 }
 
 .reveal h3 {
-  font-size: 1.4em;
+  font-size: 1.2em;
   color: $light-navy;
 }
 
