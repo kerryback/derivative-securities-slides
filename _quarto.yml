@@ -3,7 +3,7 @@ project:
   output-dir: docs
   resources:
     - CNAME
-    - docs/.nojekyll
+    - .nojekyll
 
 execute:
   jupyter: python3
