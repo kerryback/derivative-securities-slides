@@ -345,6 +345,7 @@ Open interest evolves over an option's life:
 - Grows as traders discover it
 - Peaks when several weeks/months remain
 
+:::
 
 ::: {.column width="40%"}
 **Decline Phase:**
@@ -352,13 +353,13 @@ Open interest evolves over an option's life:
 - Decreases as expiration approaches
 - Traders close positions
 - Risk managers avoid near-expiry options
-
+:::
 ::: {.column width="30%"}
 **Final Settlement:**
 
 - ITM options: auto-exercised
 - OTM options: expire worthless
-
+:::
 ::::
 
 ## The Life Cycle of Open Interest
