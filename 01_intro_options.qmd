@@ -92,15 +92,13 @@ Options are particularly important for several reasons:
 
 ## Option Basics: Key Terminology
 
-::: {.callout-note}
-#### Essential Terms
 
 - **Premium**: Price paid to buy the option
 - **Strike Price (K)**: Fixed price at which option can be exercised
 - **Expiration Date**: When the contract ends
 - **Exercise**: Using the right granted by the option
 - **Underlying Asset**: The financial instrument the option is based on
-:::
+
 
 ## American vs. European Options
 
@@ -308,6 +306,14 @@ Unlike stocks, options have **no pre-existing supply**:
 - Existing buyer and seller both close → Open interest **decreases**
 :::
 
+## Example of Open Interest
+
+**Example:**
+
+- Day 1: Trader A buys 10 calls from Trader B → OI = 10
+- Day 2: Trader C buys 5 from Trader D → OI = 15
+- Day 3: Trader E buys 3 from Trader A → OI = 15 (unchanged)
+
 
 ## Volume and Open Interest Patterns
 
@@ -326,6 +332,34 @@ Understanding trading patterns:
 - Attractive for speculation (large % returns possible)
 - Used for tail risk hedging (portfolio insurance)
 :::
+
+## The Life Cycle of Open Interest
+
+Open interest evolves over an option's life:
+
+::::  {.columns}
+::: {.column width="40%"}
+**Initial Growth:**
+
+- Starts at zero for new series
+- Grows as traders discover it
+- Peaks when several weeks/months remain
+
+
+::: {.column width="40%"}
+**Decline Phase:**
+
+- Decreases as expiration approaches
+- Traders close positions
+- Risk managers avoid near-expiry options
+
+::: {.column width="30%"}
+**Final Settlement:**
+
+- ITM options: auto-exercised
+- OTM options: expire worthless
+
+::::
 
 ## The Life Cycle of Open Interest
 
