@@ -277,3 +277,74 @@ $code-color: $dark-navy;
     border: none;
   }
 }
+
+// Grid background patterns for light theme
+// Make reveal layers transparent so body background shows through
+body {
+  background-color: $cream;
+}
+
+.reveal {
+  background: transparent !important;
+}
+
+.reveal .slides {
+  background: transparent !important;
+}
+
+.reveal .slides section {
+  background: transparent !important;
+}
+
+.reveal .slide-background {
+  background: transparent !important;
+}
+
+// Grid patterns applied via data-state attributes on slides
+// Use {data-state="grid-fine"} in Quarto to apply to individual slides
+// Using dark grids for light background
+
+// Very tight grid (30px spacing)
+body.grid-dense {
+  background-image:
+    repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 0px, rgba(0, 0, 0, 0.06) 1px, transparent 1px, transparent 30px),
+    repeating-linear-gradient(to right, rgba(0, 0, 0, 0.06) 0px, rgba(0, 0, 0, 0.06) 1px, transparent 1px, transparent 30px);
+  background-size: 30px 30px;
+}
+
+// Tight grid (40px spacing)
+body.grid-fine {
+  background-image:
+    repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 0px, rgba(0, 0, 0, 0.06) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(to right, rgba(0, 0, 0, 0.06) 0px, rgba(0, 0, 0, 0.06) 1px, transparent 1px, transparent 40px);
+  background-size: 40px 40px;
+}
+
+// Medium grid (60px spacing)
+body.grid-medium {
+  background-image:
+    repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 0px, rgba(0, 0, 0, 0.06) 1px, transparent 1px, transparent 60px),
+    repeating-linear-gradient(to right, rgba(0, 0, 0, 0.06) 0px, rgba(0, 0, 0, 0.06) 1px, transparent 1px, transparent 60px);
+  background-size: 60px 60px;
+}
+
+// Wide grid (80px spacing)
+body.grid-coarse {
+  background-image:
+    repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 0px, rgba(0, 0, 0, 0.06) 1px, transparent 1px, transparent 80px),
+    repeating-linear-gradient(to right, rgba(0, 0, 0, 0.06) 0px, rgba(0, 0, 0, 0.06) 1px, transparent 1px, transparent 80px);
+  background-size: 80px 80px;
+}
+
+// Very wide grid (100px spacing)
+body.grid-sparse {
+  background-image:
+    repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 0px, rgba(0, 0, 0, 0.06) 1px, transparent 1px, transparent 100px),
+    repeating-linear-gradient(to right, rgba(0, 0, 0, 0.06) 0px, rgba(0, 0, 0, 0.06) 1px, transparent 1px, transparent 100px);
+  background-size: 100px 100px;
+}
+
+// No grid (plain background)
+body.grid-none {
+  background-image: none;
+}

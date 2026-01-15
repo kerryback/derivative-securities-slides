@@ -4,7 +4,7 @@ subtitle: Introduction to Options
 
 format:
   revealjs:
-    theme: custom.scss
+    theme: custom-dark.scss
     transition: slide
     slide-number: true
     chalkboard: true
@@ -29,7 +29,7 @@ plotly.offline.init_notebook_mode(connected=True)
 ```
 
 
-## What Are Derivatives?
+## What Are Derivatives? {data-state="grid-medium"}
 
 **Derivative securities** are financial instruments whose values are *derived* from an underlying asset, index, or rate.
 
@@ -42,7 +42,7 @@ plotly.offline.init_notebook_mode(connected=True)
 - Used for hedging risks and speculation
 :::
 
-## Trading Venues
+## Trading Venues {data-state="grid-coarse"}
 
 ::::  {.columns}
 ::: {.column width="50%"}
@@ -67,7 +67,7 @@ plotly.offline.init_notebook_mode(connected=True)
 ::::
 
 
-## Options
+## Options {data-state="grid-medium"}
 
 For the remainder of this lecture, we'll focus on **options** - the most versatile derivatives.
 
@@ -90,7 +90,7 @@ Options are particularly important for several reasons:
 
 :::
 
-## Option Basics: Key Terminology
+## Option Basics: Key Terminology {data-state="grid-sparse"}
 
 
 - **Premium**: Price paid to buy the option
@@ -100,7 +100,7 @@ Options are particularly important for several reasons:
 - **Underlying Asset**: The financial instrument the option is based on
 
 
-## American vs. European Options
+## American vs. European Options {data-state="grid-coarse"}
 
 Despite the names, both trade worldwide!
 
@@ -124,7 +124,7 @@ Despite the names, both trade worldwide!
 :::
 ::::
 
-## Rights, Obligations, and Motivations
+## Rights, Obligations, and Motivations {data-state="grid-fine"}
 
 ::::  {.columns}
 ::: {.column width="50%"}
@@ -151,7 +151,7 @@ Despite the names, both trade worldwide!
 :::
 ::::
 
-## Interactive Market Data
+## Interactive Market Data {data-state="grid-none"}
 
 Let's explore real option prices:
 
@@ -161,7 +161,7 @@ Let's explore real option prices:
 Real market data from CBOE via Yahoo Finance
 :::
 
-## Patterns in Option Prices: Strike Effects
+## Patterns in Option Prices: Strike Effects {data-state="grid-sparse"}
 
 Experimenting with the market data reveals consistent patterns:
 
@@ -179,7 +179,7 @@ Experimenting with the market data reveals consistent patterns:
 - *Why?* Higher strike = more valuable right to sell
 :::
 
-## Patterns in Option Prices: Time Effects
+## Patterns in Option Prices: Time Effects {data-state="grid-dense"}
 
 **Time to expiration matters:**
 
@@ -195,7 +195,7 @@ This pattern holds for both calls and puts,
 
 
 
-## Intrinsic Value
+## Intrinsic Value {data-state="grid-fine"}
 
 **Intrinsic value** = What the option is worth if exercised immediately (or at expiration)
 
@@ -221,7 +221,7 @@ $$\text{Intrinsic Value} = \max(K - S, 0)$$
 :::
 ::::
 
-## Moneyness: ITM, ATM, OTM
+## Moneyness: ITM, ATM, OTM {data-state="grid-coarse"}
 
 Options are classified by their relationship to the current price:
 
@@ -234,7 +234,7 @@ Options are classified by their relationship to the current price:
 - **ITM**: Positive intrinsic value
 - **ATM/OTM**: Zero intrinsic value
 
-## Time Value and Time Decay
+## Time Value and Time Decay {data-state="grid-coarse"}
 
 **Time value** = Option price - Intrinsic value
 
@@ -247,7 +247,7 @@ Options are classified by their relationship to the current price:
 American options are always worth **at least** their intrinsic value (otherwise arbitrage!)
 :::
 
-## Key Insights About Options
+## Key Insights About Options {data-state="grid-coarse"}
 
 Options differ fundamentally from other financial instruments:
 
@@ -262,7 +262,7 @@ These properties make options powerful but complex!
 :::
 
 
-## Trading Options on Exchanges
+## Trading Options on Exchanges {data-state="grid-fine"}
 
 Most options are traded on organized exchanges:
 
@@ -273,7 +273,7 @@ Most options are traded on organized exchanges:
 - **Most positions closed before expiration**: Through offsetting trades rather than exercise
 :::
 
-## Strikes and Maturities
+## Strikes and Maturities {data-state="grid-fine"}
 
 Exchanges determine which options are available:
 
@@ -290,7 +290,7 @@ Exchanges determine which options are available:
 
 
 
-## Open Interest and Contract Creation
+## Open Interest and Contract Creation {data-state="grid-coarse"}
 
 Unlike stocks, options have **no pre-existing supply**:
 
@@ -306,7 +306,7 @@ Unlike stocks, options have **no pre-existing supply**:
 - Existing buyer and seller both close → Open interest **decreases**
 :::
 
-## Example of Open Interest
+## Example of Open Interest {data-state="grid-dense"}
 
 **Example:**
 
@@ -315,7 +315,7 @@ Unlike stocks, options have **no pre-existing supply**:
 - Day 3: Trader E buys 3 from Trader A → OI = 15 (unchanged)
 
 
-## Volume and Open Interest Patterns
+## Volume and Open Interest Patterns {data-state="grid-medium"}
 
 Understanding trading patterns:
 
@@ -333,7 +333,7 @@ Understanding trading patterns:
 - Used for tail risk hedging (portfolio insurance)
 :::
 
-## The Life Cycle of Open Interest
+## The Life Cycle of Open Interest {data-state="grid-fine"}
 
 Open interest evolves over an option's life:
 
@@ -362,7 +362,7 @@ Open interest evolves over an option's life:
 :::
 ::::
 
-## The Life Cycle of Open Interest
+## The Life Cycle of Open Interest {data-state="grid-dense"}
 
 Open interest evolves over an option's life:
 
@@ -396,7 +396,7 @@ Open interest evolves over an option's life:
 ::::
 
 
-## Payoff vs. Profit Diagrams
+## Payoff vs. Profit Diagrams {data-state="grid-coarse"}
 
 Two important ways to visualize options:
 
@@ -418,7 +418,7 @@ Two important ways to visualize options:
 :::
 ::::
 
-## Long Call: Payoff and Profit
+## Long Call: Payoff and Profit {data-state="grid-none"}
 
 Buying a call option (bullish strategy):
 
@@ -447,7 +447,7 @@ fig.update_layout(xaxis_title="Underlying Price at Expiration ($)",
 fig.show()
 ```
 
-## Long Call: Key Characteristics
+## Long Call: Key Characteristics {data-state="grid-sparse"}
 
 ::: {.incremental}
 **Market View:** Bullish (expect price to rise)
@@ -461,7 +461,7 @@ fig.show()
 **Best for:** Speculating on upside with limited downside risk
 :::
 
-## Long Put: Payoff and Profit
+## Long Put: Payoff and Profit {data-state="grid-none"}
 
 Buying a put option (bearish strategy):
 
@@ -486,7 +486,7 @@ fig.update_layout(xaxis_title="Underlying Price at Expiration ($)",
 fig.show()
 ```
 
-## Long Put: Key Characteristics
+## Long Put: Key Characteristics {data-state="grid-medium"}
 
 ::: {.incremental}
 **Market View:** Bearish (expect price to fall)
@@ -500,7 +500,7 @@ fig.show()
 **Best for:** Portfolio insurance, speculating on downside with limited risk
 :::
 
-## Short Call: Payoff and Profit
+## Short Call: Payoff and Profit {data-state="grid-none"}
 
 Writing (selling) a call option:
 
@@ -525,7 +525,7 @@ fig.update_layout(xaxis_title="Underlying Price at Expiration ($)",
 fig.show()
 ```
 
-## Short Call: Key Characteristics
+## Short Call: Key Characteristics {data-state="grid-coarse"}
 
 ::: {.incremental}
 **Market View:** Neutral to bearish (expect price to stay flat or fall)
@@ -539,7 +539,7 @@ fig.show()
 **Risk:** Very high! Limited upside, unlimited downside
 :::
 
-## Short Put: Payoff and Profit
+## Short Put: Payoff and Profit {data-state="grid-none"}
 
 Writing (selling) a put option:
 
@@ -564,7 +564,7 @@ fig.update_layout(xaxis_title="Underlying Price at Expiration ($)",
 fig.show()
 ```
 
-## Short Put: Key Characteristics
+## Short Put: Key Characteristics {data-state="grid-medium"}
 
 ::: {.incremental}
 **Market View:** Neutral to bullish (expect price to stay flat or rise)
@@ -578,7 +578,7 @@ fig.show()
 **Use case:** Collect premium while willing to buy stock at strike price
 :::
 
-## Summary of Basic Option Positions
+## Summary of Basic Option Positions {data-state="grid-fine"}
 
 | Position | Market View | Max Profit | Max Loss | Breakeven |
 |----------|-------------|------------|----------|-----------|
@@ -589,7 +589,7 @@ fig.show()
 
 These four positions are the building blocks for all option strategies!
 
-## Comparing Long vs. Short Positions
+## Comparing Long vs. Short Positions {data-state="grid-fine"}
 
 ::::  {.columns}
 ::: {.column width="50%"}
@@ -614,7 +614,7 @@ These four positions are the building blocks for all option strategies!
 ::::
 
 
-## Next Steps in Options
+## Next Steps in Options {data-state="grid-fine"}
 
 Building on today's foundation, we'll explore:
 
