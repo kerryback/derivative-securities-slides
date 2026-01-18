@@ -16,3 +16,6 @@ jupyter:
   kernel: python3
 
 engine: jupyter
+
+comments:
+  hypothesis: true
