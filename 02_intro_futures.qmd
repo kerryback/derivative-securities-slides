@@ -1,0 +1,783 @@
+---
+title: Pricing and Hedging Derivative Securities
+subtitle: Introduction to Futures
+
+format:
+  revealjs:
+    theme: custom-dark.scss
+    transition: slide
+    slide-number: true
+    chalkboard: true
+    incremental: false
+    fig-width: 10
+    fig-height: 5
+execute:
+  echo: false
+jupyter: python3
+engine: jupyter
+---
+
+```{python}
+#| echo: false
+
+import numpy as np
+import pandas as pd
+import plotly.graph_objects as go
+import plotly.express as px
+from plotly.subplots import make_subplots
+from dateutil.relativedelta import relativedelta
+from IPython.display import display, HTML
+import plotly
+plotly.offline.init_notebook_mode(connected=True)
+```
+
+
+## What Are Futures Contracts? {data-state="grid-medium"}
+
+**Futures contracts** are standardized agreements to deliver an asset at a future date in exchange for payment at that date.
+
+::: {.incremental}
+
+- **Futures price**: Price at which a contract trades.  The price is paid at delivery.
+- **Delivery**: Asset exchanged at expiration
+- **Payment**: Made at delivery, not when contract is traded
+- Both buyer and seller have obligations (unlike options!)
+:::
+
+## Futures vs. Options {data-state="grid-coarse"}
+
+::::  {.columns}
+::: {.column width="50%"}
+**Futures Contracts**
+
+- Both parties have obligations
+- Both must post margin
+- No upfront payment
+- Symmetrical payoff
+- Daily settlement
+:::
+
+::: {.column width="50%"}
+**Options Contracts**
+
+- Only seller has obligation
+- Only seller posts margin
+- Buyer pays premium upfront
+- Asymmetric payoff
+- Settlement at expiration
+:::
+::::
+
+## Historical Context {data-state="grid-medium"}
+
+Futures have a long history in commodity markets:
+
+::: {.incremental}
+
+- **1851**: Modern futures trading begins in the United States
+- **1981**: Cash-settled contracts introduced
+- **Today**: Futures on commodities, financial assets, indices, currencies, and more
+
+**Cash-settled contracts**: No physical delivery - settled based on underlying value at expiration
+:::
+
+## Long and Short Positions {data-state="grid-sparse"}
+
+::: {.incremental}
+
+**Long Position (Buyer):**
+
+- Obligation to accept delivery
+- Pay futures price at expiration
+- Profits when futures price rises
+
+**Short Position (Seller):**
+
+- Obligation to deliver asset
+- Receive futures price at expiration
+- Profits when futures price falls
+:::
+
+## Example: Trading Corn Futures {data-state="grid-medium"}
+
+A corn farmer sells a futures contract at $5.00/bushel:
+
+::: {.incremental}
+
+**Option 1: Physical Delivery**
+
+- Deliver corn at expiration, receive $5.00/bushel
+
+**Option 2: Offset Position**
+
+- Spot price near expiration: $4.00/bushel
+- Futures price (near expiration): ~$4.00 (spot-futures convergence)
+- Buy futures at $4.00, canceling delivery obligation
+- Profit on futures: $5.00 - $4.00 = $1.00/bushel
+- Sell corn in spot market at $4.00
+- **Net proceeds: $5.00/bushel** (same as delivery!)
+:::
+
+## Contract Specifications {data-state="grid-fine"}
+
+Exchanges standardize all contract terms:
+
+::: {.incremental}
+
+- **Delivery location**: Where asset must be delivered
+- **Delivery date**: When delivery occurs
+- **Quantity**: Amount per contract
+- **Quality**: Grade specifications (with price adjustments)
+
+**Example**: [CME Corn Futures](https://www.cmegroup.com/markets/agriculture/grains/corn.contractSpecs.html)
+
+- 5,000 bushels per contract
+- Specific delivery locations in Illinois and surrounding states
+- Quality adjustments for different grades
+:::
+
+## Cash-Settled Futures {data-state="grid-medium"}
+
+No physical delivery - settled based on index value:
+
+::: {.incremental}
+
+**E-mini S&P 500 Example:**
+
+- Multiplier: $50 per index point
+- Buy contract at futures price = 6000
+- Index at expiration = 6500
+- Profit = $50 × (6500 - 6000) = **$25,000**
+
+**Why cash settlement?**
+
+- Eliminates logistics of physical delivery
+- Enables futures on indices
+- Lower transaction costs
+:::
+
+## Trading vs. Gambling {data-state="grid-coarse"}
+
+What distinguishes futures from gambling?
+
+::: {.incremental}
+
+**Key distinction**: Futures must serve **legitimate risk-management needs**
+
+**Examples:**
+
+- Equity fund manager selling S&P 500 futures to hedge portfolio
+- Airline buying crude oil futures to hedge fuel costs
+- Utility company using weather futures to hedge temperature risk
+
+Without this economic purpose, cash-settled contracts could be considered gambling
+:::
+
+## Market Structure {data-state="grid-fine"}
+
+Like options, futures markets have specific features:
+
+::: {.incremental}
+
+- **Exchange-traded**: Standardized contracts, transparent pricing
+- **Clearinghouse**: Central counterparty to all trades
+- **No pre-existing supply**: Contracts created through trading
+- **Open interest**: Total number of long = short positions
+- **Order types**: Market orders and limit orders
+- **Most positions closed early**: Via offsetting trades
+:::
+
+## Margin and Marking to Market {data-state="grid-medium"}
+
+The most distinctive feature of futures trading:
+
+::: {.incremental}
+
+**Daily Settlement Process:**
+
+- Exchange establishes settlement price each day
+- All positions marked to this price
+- Profits/losses immediately transferred between accounts
+- Virtually eliminates counterparty risk
+:::
+
+## Daily Settlement Example {data-state="grid-sparse"}
+
+Buy 1 e-mini S&P 500 contract at 6000:
+
+| Day | Settlement Price | Daily P/L | Cumulative P/L |
+|-----|-----------------|-----------|----------------|
+| 0 (Entry) | 6000 | - | - |
+| 1 | 6010 | +$500 | +$500 |
+| 2 | 5990 | -$1,000 | -$500 |
+| 3 | 6020 | +$1,500 | +$1,000 |
+
+Day 3: Close position, walk away with $1,000 gain
+
+Calculation: (6020 - 6000) × $50 = $1,000
+
+## Margin Requirements {data-state="grid-coarse"}
+
+Two types of margin:
+
+::::  {.columns}
+::: {.column width="50%"}
+**Initial Margin**
+
+- Required to open position
+- Typically 3-12% of contract value
+- Set by exchange
+:::
+
+::: {.column width="50%"}
+**Maintenance Margin**
+
+- Minimum to keep position open
+- Lower than initial margin
+- If breached → margin call
+:::
+::::
+
+::: {.fragment}
+**Margin Call**: Demand for additional margin to restore account to initial margin level. Failure to meet = forced liquidation.
+:::
+
+## Leverage in Futures {data-state="grid-medium"}
+
+Margin creates high leverage:
+
+::: {.incremental}
+
+**Example: 10% margin requirement**
+
+- 10:1 leverage
+- 1% futures price move against you = 10% loss on margin
+- 1% futures price move for you = 10% gain on margin
+
+**Why is this safe?**
+
+- Daily marking to market
+- Margin calls prevent defaults
+- Clearinghouse guarantee
+:::
+
+## The Expectations Hypothesis {data-state="grid-medium"}
+
+Simple theory: **Futures prices = Expected future spot prices**
+
+::: {.incremental}
+
+**Logic:**
+
+- If $F < E[S_T]$: Buy futures, plan to sell spot at maturity → Expected profit
+- If $F > E[S_T]$: Sell futures, plan to buy spot at maturity → Expected profit
+- Trading should drive $F$ to $E[S_T]$
+
+**Problem:** Assumes risk-neutral investors!
+:::
+
+## Reality: Risk Premia {data-state="grid-sparse"}
+
+::: {.incremental}
+
+**Risk-averse investors:**
+
+- Won't trade unlimited amounts for small expected profit
+- Consider risk alongside expected return
+- Require compensation for bearing risk
+
+**Result:**
+
+- Futures prices can deviate from expected spot prices
+- Deviation depends on covariance with market risk factors
+- From CAPM: depends on covariance with market return
+
+**Despite this:** Expectations are a prime determinant of futures prices
+:::
+
+## Spot-Futures Parity {data-state="grid-medium"}
+
+Unlike expectations hypothesis, parity is an **arbitrage relationship**:
+
+$$F = \mathrm{e}^{(c-y)T}S$$
+
+where:
+
+- $F$ = futures price
+- $S$ = current spot price
+- $c$ = cost of carry (continuously compounded)
+- $y$ = convenience yield (continuously compounded)
+- $T$ = time to expiration
+
+## Cost of Carry and Convenience Yield {data-state="grid-coarse"}
+
+::::  {.columns}
+::: {.column width="50%"}
+**Cost of Carry ($c$)**
+
+- Foregone interest on capital
+- Storage costs (commodities)
+- No costs for holding futures
+
+**For financial assets:** $c = r$
+:::
+
+::: {.column width="50%"}
+**Convenience Yield ($y$)**
+
+- Dividends/cash flows
+- Benefits of physical possession
+- Never negative
+
+**For financial assets:** $y$ = dividend yield
+:::
+::::
+
+## Arbitrage: Buy Spot, Sell Futures {data-state="grid-medium"}
+
+If $F > \mathrm{e}^{rT}S$ (assuming $c=r$, $y=0$):
+
+::: {.incremental}
+**Arbitrage Strategy:**
+
+1. Borrow $S$ dollars at rate $r$
+2. Buy spot asset for $S$
+3. Sell futures contract at price $F$
+4. At expiration:
+   - Deliver asset to fulfill futures
+   - Receive $F$
+   - Owe $\mathrm{e}^{rT}S$ on loan
+5. **Profit**: $F - \mathrm{e}^{rT}S$ (risk-free!)
+:::
+
+## Arbitrage: Sell Spot, Buy Futures {data-state="grid-medium"}
+
+If $F < \mathrm{e}^{rT}S$ (assuming $c=r$, $y=0$):
+
+::: {.incremental}
+**Arbitrage Strategy:**
+
+1. Borrow and sell (short) spot asset, receive $S$
+2. Invest proceeds at rate $r$
+3. Buy futures contract at price $F$
+4. At expiration:
+   - Pay $F$ and accept delivery
+   - Return asset to lender
+   - Collect $\mathrm{e}^{rT}S$ from investment
+5. **Profit**: $\mathrm{e}^{rT}S - F$ (risk-free!)
+:::
+
+## Why Parity Holds {data-state="grid-sparse"}
+
+::: {.incremental}
+
+**Institutional arbitrageurs actively trade these strategies**
+
+- Violations are quickly exploited
+- Market prices adjust until parity holds
+- Safe assumption: parity holds to high degree of approximation
+
+**Extensions:**
+
+- Storage costs: Add to cost of carry
+- Dividends: Subtract from cost of carry
+- Result: General formula $F = \mathrm{e}^{(c-y)T}S$
+:::
+
+## Forward Curves {data-state="grid-medium"}
+
+**Forward curve**: Relationship between futures price and contract maturity
+
+From spot-futures parity:
+
+$$F = \mathrm{e}^{(c-y)T}S$$
+
+::: {.incremental}
+
+**Shape depends on $c - y$:**
+
+- If $c > y$: Upward sloping (contango)
+- If $c < y$: Downward sloping (backwardation)
+- If $c = y$: Flat
+:::
+
+## Gold Forward Curve {data-state="grid-none"}
+
+Gold: negligible storage, no dividends, no convenience yield → $c - y = r$
+
+```{python}
+#| label: fig-gold-forward
+#| fig-height: 500
+#| echo: false
+
+df = pd.read_csv('https://www.dropbox.com/s/832hth1es40f4g7/newfutures.csv?dl=1', index_col=0)
+df = df[df.date>='2010-01-01']
+df.date = pd.to_datetime(df.date)
+
+def add_months_and_set_day(date, months_to_add):
+    new_date = date + relativedelta(months=int(months_to_add))
+    new_date = new_date.replace(day=15)
+    return new_date
+
+df['new_to_date'] = df.apply(
+    lambda row: add_months_and_set_day(row['date'], row['months past front month']),
+    axis=1
+)
+df = df.reset_index(drop=True).set_index(['code', 'date', 'new_to_date']).settle
+
+gold = df.loc[('CME_GC', '2022-06-29')]
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=gold.index, y=gold.values,
+                        mode='lines+markers',
+                        name='Gold Futures',
+                        line=dict(color='gold', width=3),
+                        hovertemplate='%{x|%b %Y}<br>Price: $%{y:.2f}<extra></extra>'))
+fig.update_layout(
+    title="Gold Forward Curve (2022-06-29)",
+    xaxis_title="Maturity Date",
+    yaxis_title="Futures Price ($)",
+    template="plotly_white",
+    height=500,
+    showlegend=False
+)
+fig.show()
+```
+
+## Currency Forward Curves {data-state="grid-none"}
+
+For currencies: $c - y = r - r_f$ (domestic vs. foreign interest rates)
+
+```{python}
+#| label: fig-currency-forwards
+#| fig-height: 500
+#| echo: false
+
+yen = df.loc[('CME_JY', '2022-06-29')]
+peso = df.loc[('CME_MP', '2022-06-29')]
+
+fig = make_subplots(
+    rows=1, cols=2,
+    subplot_titles=('Japanese Yen: r > r_f', 'Mexican Peso: r < r_f'),
+    horizontal_spacing=0.15
+)
+
+fig.add_trace(
+    go.Scatter(x=yen.index, y=yen.values,
+               mode='lines+markers',
+               name='Japanese Yen',
+               line=dict(width=3),
+               hovertemplate='%{x|%b %Y}<br>Price: %{y:.6f}<extra></extra>'),
+    row=1, col=1
+)
+
+fig.add_trace(
+    go.Scatter(x=peso.index, y=peso.values,
+               mode='lines+markers',
+               name='Mexican Peso',
+               line=dict(width=3),
+               hovertemplate='%{x|%b %Y}<br>Price: %{y:.6f}<extra></extra>'),
+    row=1, col=2
+)
+
+fig.update_xaxes(title_text="Maturity Date", row=1, col=1)
+fig.update_xaxes(title_text="Maturity Date", row=1, col=2)
+fig.update_yaxes(title_text="Futures Price", row=1, col=1)
+fig.update_layout(
+    height=500,
+    showlegend=False,
+    template='plotly_white'
+)
+fig.show()
+```
+
+## S&P 500 Forward Curve {data-state="grid-none"}
+
+For stock indices: $c - y = r - \text{dividend yield}$
+
+```{python}
+#| label: fig-sp500-forward
+#| fig-height: 500
+#| echo: false
+
+sp500 = df.loc[('CME_ES', '2020-06-01')]
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=sp500.index, y=sp500.values,
+                        mode='lines+markers',
+                        name='S&P 500 Futures',
+                        line=dict(width=3),
+                        hovertemplate='%{x|%b %Y}<br>Price: %{y:.2f}<extra></extra>'))
+fig.update_layout(
+    title="S&P 500 Forward Curve (2020-06-01): Dividend Yield > Interest Rate",
+    xaxis_title="Maturity Date",
+    yaxis_title="Futures Price",
+    template="plotly_white",
+    height=500,
+    showlegend=False
+)
+fig.show()
+```
+
+## Commodity Forward Curves {data-state="grid-medium"}
+
+More complex due to storage costs and convenience yields:
+
+::: {.incremental}
+
+**Key insights:**
+
+- Storage costs can be very high (electricity, natural gas)
+- Convenience yield varies with supply/demand
+- Forward curves can be upward or downward sloping
+- Seasonal patterns common (natural gas, corn)
+
+**General bound:** $F \leq \mathrm{e}^{cT}S$ (where $c$ includes storage)
+
+But this may have little predictive power!
+:::
+
+## Crude Oil: Extreme Scenarios {data-state="grid-none"}
+
+```{python}
+#| label: fig-crude-forwards
+#| fig-height: 500
+#| echo: false
+
+crude1 = df.loc[('CME_CL', '2020-04-20')]
+crude2 = df.loc[('CME_CL', '2022-03-08')]
+
+fig = make_subplots(
+    rows=1, cols=2,
+    subplot_titles=('April 20, 2020: "Negative Oil"', 'March 8, 2022: Ukraine Invasion'),
+    horizontal_spacing=0.15
+)
+
+fig.add_trace(
+    go.Scatter(x=crude1.index, y=crude1.values,
+               mode='lines+markers',
+               line=dict(width=3),
+               hovertemplate='%{x|%b %Y}<br>Price: $%{y:.2f}<extra></extra>'),
+    row=1, col=1
+)
+
+fig.add_trace(
+    go.Scatter(x=crude2.index, y=crude2.values,
+               mode='lines+markers',
+               line=dict(width=3),
+               hovertemplate='%{x|%b %Y}<br>Price: $%{y:.2f}<extra></extra>'),
+    row=1, col=2
+)
+
+fig.update_xaxes(title_text="Maturity Date", row=1, col=1)
+fig.update_xaxes(title_text="Maturity Date", row=1, col=2)
+fig.update_yaxes(title_text="Futures Price ($)", row=1, col=1)
+fig.update_layout(
+    height=500,
+    showlegend=False,
+    template='plotly_white'
+)
+fig.show()
+```
+
+## Crude Oil Insights {data-state="grid-coarse"}
+
+::::  {.columns}
+::: {.column width="50%"}
+**April 2020:**
+
+- Coronavirus demand collapse
+- Storage at Cushing full
+- Extremely high storage costs
+- Zero convenience yield
+- Result: Steep upward slope
+- Front month went negative!
+:::
+
+::: {.column width="50%"}
+**March 2022:**
+
+- Russian invasion of Ukraine
+- Future supplies uncertain
+- High convenience yield
+- Result: Steep downward slope
+- Premium for oil now vs. later
+:::
+::::
+
+## Cyclical Commodities {data-state="grid-none"}
+
+Natural gas and corn show seasonal patterns:
+
+```{python}
+#| label: fig-cyclical-forwards
+#| fig-height: 500
+#| echo: false
+
+gas = df.loc[('CME_NG', '2018-06-08')]
+corn = df.loc[('CME_C', '2018-06-08')]
+
+fig = make_subplots(
+    rows=1, cols=2,
+    subplot_titles=('Natural Gas (2018-06-08)', 'Corn (2018-06-08)'),
+    horizontal_spacing=0.15
+)
+
+fig.add_trace(
+    go.Scatter(x=gas.index, y=gas.values,
+               mode='lines+markers',
+               line=dict(width=3),
+               hovertemplate='%{x|%b %Y}<br>Price: %{y:.3f}<extra></extra>'),
+    row=1, col=1
+)
+
+fig.add_trace(
+    go.Scatter(x=corn.index, y=corn.values,
+               mode='lines+markers',
+               line=dict(width=3),
+               hovertemplate='%{x|%b %Y}<br>Price: %{y:.2f}<extra></extra>'),
+    row=1, col=2
+)
+
+fig.update_xaxes(title_text="Contract Date", row=1, col=1)
+fig.update_xaxes(title_text="Contract Date", row=1, col=2)
+fig.update_yaxes(title_text="Futures Price", row=1, col=1)
+fig.update_layout(
+    height=500,
+    showlegend=False,
+    template='plotly_white'
+)
+fig.show()
+```
+
+## Natural Gas Seasonality {data-state="grid-sparse"}
+
+::: {.incremental}
+
+**Summer to Winter (upward):**
+
+- High storage cost of natural gas
+- "Buy spot, sell futures" not an arbitrage
+- Storage too expensive
+
+**Winter to Summer (downward):**
+
+- High convenience yield in winter
+- High demand → high spot prices
+- Premium for winter delivery
+
+**Overall slope:** Depends on current supply/demand conditions
+:::
+
+## Corn Seasonality {data-state="grid-medium"}
+
+::: {.incremental}
+
+**Cyclical pattern driven by:**
+
+- **Pre-harvest (summer)**: High convenience yield (corn scarce)
+- **Post-harvest (fall)**: High storage costs (silos full)
+
+**Overall slope:** Varies with spot market conditions
+
+**Similar patterns:** Many agricultural commodities show harvest-related cycles
+:::
+
+## Options on Futures {data-state="grid-medium"}
+
+A derivative on a derivative!
+
+::: {.incremental}
+
+**Call option on futures:**
+
+- Right to buy futures contract at strike
+
+**Put option on futures:**
+
+- Right to sell futures contract at strike
+
+**Benefits vs. options on underlying:**
+
+- Leverage of futures market
+- High liquidity
+- Avoid physical delivery/storage issues
+:::
+
+## Exercise of Futures Options {data-state="grid-coarse"}
+
+When exercised, creates futures position + cash transfer:
+
+::::  {.columns}
+::: {.column width="50%"}
+**Option Holder:**
+
+- Call → Long futures position
+- Put → Short futures position
+- Marked to market at current futures price
+- Receives cash = (Futures price - Strike)
+:::
+
+::: {.column width="50%"}
+**Option Writer:**
+
+- Call → Short futures position
+- Put → Long futures position
+- Marked to market at current futures price
+- Pays cash = (Futures price - Strike)
+:::
+::::
+
+## Futures Options Example {data-state="grid-medium"}
+
+Buy call option on corn futures, strike = $5.00/bushel
+
+Exercise when futures price = $5.50:
+
+::: {.incremental}
+
+**You (exerciser):**
+
+- Assigned long futures contract at $5.50
+- Receive $0.50/bushel cash (marked to market)
+- Can trade out of futures immediately if desired
+
+**Option writer (assigned):**
+
+- Assigned short futures contract at $5.50
+- Pay $0.50/bushel cash
+- Can trade out of futures immediately if desired
+
+**Result:** Both can walk away with +/- $0.50 and no further obligations
+:::
+
+## Summary: Key Takeaways {data-state="grid-medium"}
+
+::: {.incremental}
+1. **Futures = Obligations** for both parties (vs. options)
+
+2. **Daily marking to market** virtually eliminates counterparty risk
+
+3. **Leverage** through margin enables high returns/losses
+
+4. **Spot-futures parity** is an arbitrage relationship: $F = \mathrm{e}^{(c-y)T}S$
+
+5. **Forward curves** reveal cost of carry minus convenience yield
+
+6. **Commodity curves** complex due to storage and seasonality
+
+7. **Futures options** combine benefits of both derivatives
+:::
+
+## Next Steps {data-state="grid-coarse"}
+
+Building on this foundation:
+
+::: {.incremental}
+
+- **Hedging with futures**: Optimal hedge ratios, basis risk
+- **Futures pricing models**: Storage models, asset pricing theory
+- **Spread trading**: Calendar spreads, inter-commodity spreads
+- **Arbitrage strategies**: Cash-and-carry, reverse cash-and-carry
+- **Real-world considerations**: Transaction costs, margin management, delivery options
+:::

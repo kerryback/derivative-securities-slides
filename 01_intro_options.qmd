@@ -614,16 +614,625 @@ These four positions are the building blocks for all option strategies!
 ::::
 
 
-## Next Steps in Options {data-state="grid-fine"}
+## Option Portfolios {data-state="grid-medium"}
 
-Building on today's foundation, we'll explore:
+Options can be combined with each other and with the underlying asset to create sophisticated strategies:
 
 ::: {.incremental}
-- **Option portfolios**: Protective puts, covered calls, spreads, straddles
-- **Option pricing models**: Black-Scholes formula, binomial trees
-- **Greeks and sensitivity analysis**: How option values change with inputs
-- **Volatility**: Historical vs. implied, volatility surfaces
-- **Hedging strategies**: Delta hedging, portfolio insurance
+- Combine multiple options with different strikes and types
+- Create specific risk-reward profiles
+- Implement views on market direction and volatility
+- Use for hedging and income generation
 
+**Key technique**: Portfolio payoff = sum of individual payoffs
+:::
+
+## Protective Put {data-state="grid-none"}
+
+Long asset + Long put = Portfolio insurance
+
+```{python}
+#| label: fig-protective-put-slides
+#| fig-height: 450
+#| echo: false
+
+S0 = 100
+K_put = 95
+S = np.arange(161)
+
+asset_payoff = S
+put_payoff = np.maximum(K_put - S, 0)
+protective_put_payoff = asset_payoff + put_payoff
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=S, y=asset_payoff, mode='lines',
+                        name='Long Underlying Asset', line=dict(color='blue', dash='dot')))
+fig.add_trace(go.Scatter(x=S, y=put_payoff, mode='lines',
+                        name='Long Put', line=dict(color='green', dash='dot')))
+fig.add_trace(go.Scatter(x=S, y=protective_put_payoff, mode='lines',
+                        name='Protective Put', line=dict(color='red', width=3)))
+fig.add_vline(x=K_put, line_dash="dot", line_color="gray",
+              annotation_text=f"Put Strike = ${K_put}")
+fig.update_layout(
+    xaxis_title="Underlying Asset Price at Expiration ($)",
+    yaxis_title="Portfolio Value ($)",
+    template="plotly_white",
+    height=450,
+    legend=dict(x=0.02, y=0.98),
+    yaxis_zeroline=False,
+    xaxis_zeroline=True,
+    xaxis_zerolinecolor='black'
+)
+fig.show()
+```
+
+## Protective Put: Key Insights {data-state="grid-medium"}
+
+::: {.incremental}
+**Function:** Portfolio insurance - downside protection while keeping upside
+
+**Minimum Value:** Put strike ($95) - portfolio can never fall below this
+
+**Maximum Value:** Unlimited (follows underlying asset upward)
+
+**Cost:** Put premium reduces overall returns
+
+**Use case:** Protecting existing stock holdings from market crashes
+:::
+
+## Covered Call {data-state="grid-none"}
+
+Long asset + Short call = Income generation with capped upside
+
+```{python}
+#| label: fig-covered-call-slides
+#| fig-height: 450
+#| echo: false
+
+K_call = 105
+call_payoff = np.maximum(S - K_call, 0)
+covered_call_payoff = asset_payoff - call_payoff
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=S, y=asset_payoff, mode='lines',
+                        name='Long Underlying Asset', line=dict(color='blue', dash='dot')))
+fig.add_trace(go.Scatter(x=S, y=-call_payoff, mode='lines',
+                        name='Short Call', line=dict(color='orange', dash='dot')))
+fig.add_trace(go.Scatter(x=S, y=covered_call_payoff, mode='lines',
+                        name='Covered Call', line=dict(color='red', width=3)))
+fig.add_vline(x=K_call, line_dash="dot", line_color="gray",
+              annotation_text=f"Call Strike = ${K_call}")
+fig.update_layout(
+    xaxis_title="Underlying Asset Price at Expiration ($)",
+    yaxis_title="Portfolio Value ($)",
+    template="plotly_white",
+    height=450,
+    legend=dict(x=0.02, y=0.98),
+    yaxis_zeroline=False,
+    xaxis_zeroline=True,
+    xaxis_zerolinecolor='black'
+)
+fig.show()
+```
+
+## Covered Call: Key Insights {data-state="grid-sparse"}
+
+::: {.incremental}
+**Function:** Generate premium income from existing stock holdings
+
+**Benefit:** Receive call premium upfront
+
+**Cost:** Cap upside potential at strike price
+
+**Trade-off:** Profitable if underlying stays flat or rises moderately; regret if underlying rises substantially
+:::
+
+## Collar {data-state="grid-none"}
+
+Long asset + Long put + Short call = Protected range
+
+```{python}
+#| label: fig-collar-slides
+#| fig-height: 450
+#| echo: false
+
+collar_payoff = asset_payoff + put_payoff - call_payoff
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=S, y=asset_payoff, mode='lines',
+                        name='Long Underlying Asset', line=dict(color='blue', dash='dot')))
+fig.add_trace(go.Scatter(x=S, y=put_payoff, mode='lines',
+                        name='Long Put', line=dict(color='green', dash='dot')))
+fig.add_trace(go.Scatter(x=S, y=-call_payoff, mode='lines',
+                        name='Short Call', line=dict(color='orange', dash='dot')))
+fig.add_trace(go.Scatter(x=S, y=collar_payoff, mode='lines',
+                        name='Collar', line=dict(color='red', width=3)))
+fig.add_vline(x=K_put, line_dash="dot", line_color="gray",
+              annotation_text=f"Put Strike = ${K_put}")
+fig.add_vline(x=K_call, line_dash="dot", line_color="gray",
+              annotation_text=f"Call Strike = ${K_call}")
+fig.update_layout(
+    xaxis_title="Underlying Asset Price at Expiration ($)",
+    yaxis_title="Portfolio Value ($)",
+    template="plotly_white",
+    height=450,
+    legend=dict(x=0.02, y=0.98),
+    yaxis_zeroline=False,
+    xaxis_zeroline=True,
+    xaxis_zerolinecolor='black'
+)
+fig.show()
+```
+
+## Collar: Key Insights {data-state="grid-coarse"}
+
+::: {.incremental}
+**Function:** Downside protection funded by capping upside
+
+**Range:** Portfolio value locked between put and call strikes
+
+**Zero-cost collar:** Call premium ≈ Put premium
+
+**Use case:** Risk management when you want to stay invested but limit both gains and losses
+:::
+
+## Bull Call Spread {data-state="grid-none"}
+
+Long call (low strike) + Short call (high strike) = Bullish bet with limited risk
+
+```{python}
+#| label: fig-bull-spread-slides
+#| fig-height: 450
+#| echo: false
+
+K_low = 95
+K_high = 105
+
+long_call_payoff = np.maximum(S - K_low, 0)
+short_call_payoff = -np.maximum(S - K_high, 0)
+bull_spread_payoff = long_call_payoff + short_call_payoff
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=S, y=long_call_payoff, mode='lines',
+                        name=f'Long {K_low} Call', line=dict(color='blue', dash='dot')))
+fig.add_trace(go.Scatter(x=S, y=short_call_payoff, mode='lines',
+                        name=f'Short {K_high} Call', line=dict(color='green', dash='dot')))
+fig.add_trace(go.Scatter(x=S, y=bull_spread_payoff, mode='lines',
+                        name='Bull Call Spread', line=dict(color='red', width=3)))
+fig.add_vline(x=K_low, line_dash="dot", line_color="gray",
+              annotation_text=f"Low Strike = ${K_low}")
+fig.add_vline(x=K_high, line_dash="dot", line_color="gray",
+              annotation_text=f"High Strike = ${K_high}")
+fig.update_layout(
+    xaxis_title="Underlying Asset Price at Expiration ($)",
+    yaxis_title="Payoff ($)",
+    template="plotly_white",
+    height=450,
+    legend=dict(x=0.02, y=0.98),
+    yaxis_zeroline=False,
+    xaxis_zeroline=True,
+    xaxis_zerolinecolor='black'
+)
+fig.show()
+```
+
+## Bull Call Spread: Key Insights {data-state="grid-sparse"}
+
+::: {.incremental}
+**Function:** Low-cost bullish bet with limited upside
+
+**Cost:** Net premium paid (lower than buying call alone)
+
+**Profit potential:** Limited to strike difference minus net premium
+
+**Use case:** Moderate bullish view, want to reduce cost vs. buying call outright
+:::
+
+## Bear Put Spread {data-state="grid-none"}
+
+Long put (high strike) + Short put (low strike) = Bearish bet with limited risk
+
+```{python}
+#| label: fig-bear-spread-slides
+#| fig-height: 450
+#| echo: false
+
+long_put_payoff = np.maximum(K_high - S, 0)
+short_put_payoff = -np.maximum(K_low - S, 0)
+bear_spread_payoff = long_put_payoff + short_put_payoff
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=S, y=long_put_payoff, mode='lines',
+                        name=f'Long {K_high} Put', line=dict(color='blue', dash='dot')))
+fig.add_trace(go.Scatter(x=S, y=short_put_payoff, mode='lines',
+                        name=f'Short {K_low} Put', line=dict(color='green', dash='dot')))
+fig.add_trace(go.Scatter(x=S, y=bear_spread_payoff, mode='lines',
+                        name='Bear Put Spread', line=dict(color='red', width=3)))
+fig.add_vline(x=K_low, line_dash="dot", line_color="gray",
+              annotation_text=f"Low Strike = ${K_low}")
+fig.add_vline(x=K_high, line_dash="dot", line_color="gray",
+              annotation_text=f"High Strike = ${K_high}")
+fig.update_layout(
+    xaxis_title="Underlying Asset Price at Expiration ($)",
+    yaxis_title="Payoff ($)",
+    template="plotly_white",
+    height=450,
+    legend=dict(x=0.02, y=0.77),
+    yaxis_zeroline=False,
+    xaxis_zeroline=True,
+    xaxis_zerolinecolor='black'
+)
+fig.show()
+```
+
+## Bear Put Spread: Key Insights {data-state="grid-medium"}
+
+::: {.incremental}
+**Function:** Low-cost bearish bet or downside hedge
+
+**Cost:** Net premium paid (lower than buying put alone)
+
+**Profit potential:** Limited to strike difference minus net premium
+
+**Use case:** Moderate bearish view or portfolio insurance at reduced cost
+:::
+
+## Straddle {data-state="grid-none"}
+
+Long call + Long put (same strike) = Bet on volatility
+
+```{python}
+#| label: fig-straddle-slides
+#| fig-height: 450
+#| echo: false
+
+K_straddle = 100
+straddle_call_payoff = np.maximum(S - K_straddle, 0)
+straddle_put_payoff = np.maximum(K_straddle - S, 0)
+straddle_payoff = straddle_call_payoff + straddle_put_payoff
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=S, y=straddle_call_payoff, mode='lines',
+                        name=f'Long {K_straddle} Call', line=dict(color='blue', dash='dot')))
+fig.add_trace(go.Scatter(x=S, y=straddle_put_payoff, mode='lines',
+                        name=f'Long {K_straddle} Put', line=dict(color='green', dash='dot')))
+fig.add_trace(go.Scatter(x=S, y=straddle_payoff, mode='lines',
+                        name='Long Straddle', line=dict(color='red', width=3)))
+fig.add_vline(x=K_straddle, line_dash="dot", line_color="gray",
+              annotation_text=f"Strike = ${K_straddle}")
+fig.update_layout(
+    xaxis_title="Underlying Asset Price at Expiration ($)",
+    yaxis_title="Payoff ($)",
+    template="plotly_white",
+    height=450,
+    legend=dict(x=0.02, y=0.6),
+    yaxis_zeroline=False,
+    xaxis_zeroline=True,
+    xaxis_zerolinecolor='black'
+)
+fig.show()
+```
+
+## Straddle: Key Insights {data-state="grid-sparse"}
+
+::: {.incremental}
+**Function:** Profit from large price movements in either direction
+
+**Market view:** High volatility expected, but direction uncertain
+
+**Cost:** Both call and put premiums (can be expensive)
+
+**Breakeven:** Two points - one above and one below strike
+
+**Use case:** Before major announcements or events with uncertain outcomes
+:::
+
+## Butterfly Spread {data-state="grid-none"}
+
+Long 2 calls (low & high strike) + Short 2 calls (middle strike) = Bet on low volatility
+
+```{python}
+#| label: fig-butterfly-slides
+#| fig-height: 450
+#| echo: false
+
+K_low_bf = 90
+K_mid_bf = 100
+K_high_bf = 110
+
+bf_low_call = np.maximum(S - K_low_bf, 0)
+bf_mid_call = -2 * np.maximum(S - K_mid_bf, 0)
+bf_high_call = np.maximum(S - K_high_bf, 0)
+butterfly_payoff = bf_low_call + bf_mid_call + bf_high_call
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=S, y=bf_low_call, mode='lines',
+                        name=f'Long {K_low_bf} Call', line=dict(color='blue', dash='dot')))
+fig.add_trace(go.Scatter(x=S, y=bf_mid_call, mode='lines',
+                        name=f'Short 2x {K_mid_bf} Calls', line=dict(color='green', dash='dot')))
+fig.add_trace(go.Scatter(x=S, y=bf_high_call, mode='lines',
+                        name=f'Long {K_high_bf} Call', line=dict(color='orange', dash='dot')))
+fig.add_trace(go.Scatter(x=S, y=butterfly_payoff, mode='lines',
+                        name='Butterfly Spread', line=dict(color='red', width=3)))
+fig.add_vline(x=K_low_bf, line_dash="dot", line_color="gray",
+              annotation_text=f"Low = ${K_low_bf}")
+fig.add_vline(x=K_mid_bf, line_dash="dot", line_color="gray",
+              annotation_text=f"Mid = ${K_mid_bf}")
+fig.add_vline(x=K_high_bf, line_dash="dot", line_color="gray",
+              annotation_text=f"High = ${K_high_bf}")
+fig.update_layout(
+    xaxis_title="Underlying Asset Price at Expiration ($)",
+    yaxis_title="Payoff ($)",
+    template="plotly_white",
+    height=450,
+    legend=dict(x=0.02, y=0.98),
+    yaxis_zeroline=False,
+    xaxis_zeroline=True,
+    xaxis_zerolinecolor='black'
+)
+fig.show()
+```
+
+## Butterfly Spread: Key Insights {data-state="grid-medium"}
+
+::: {.incremental}
+**Function:** Profit if price stays near middle strike
+
+**Market view:** Low volatility - price won't move much
+
+**Cost:** Net premium paid (relatively low)
+
+**Maximum profit:** At middle strike
+
+**Use case:** When you expect prices to remain stable
+:::
+
+## Interactive Portfolio Builder {data-state="grid-none"}
+
+Experiment with your own option combinations:
+
+::: {#fig-option-portfolios-slides}
+<iframe width="100%" height="700" src="https://option-portfolios.koyeb.app"></iframe>
+:::
+
+## Life Cycle of Open Interest: Details {data-state="grid-medium"}
+
+::: {.incremental}
+**Growth Phase:**
+
+- New option series starts at OI = 0
+- Each new buyer + new seller → OI increases
+- Peaks several weeks/months before expiration
+
+**Decline Phase:**
+
+- Traders close positions via offsetting trades
+- Some early exercise (American options)
+- Risk managers avoid near-expiration options
+
+**Final Settlement:**
+
+- ITM options: automatically exercised
+- OTM options: expire worthless
+:::
+
+## Why OTM Options Are Popular {data-state="grid-coarse"}
+
+Despite lower probability of profit, OTM options attract significant trading:
+
+::::  {.columns}
+::: {.column width="50%"}
+**Leverage & Cost**
+
+- Much cheaper than ITM options
+- Control more shares per dollar
+- Example: $1,000 buys 2 ITM calls or 20 OTM calls
+:::
+
+::: {.column width="50%"}
+**Other Motivations**
+
+- **Speculation**: Large % returns possible
+- **Hedging**: Tail risk protection
+- **Pure time value**: Volatility bets
+:::
+::::
+
+## Observable Market Patterns {data-state="grid-sparse"}
+
+::: {.incremental}
+**Strike Distribution:**
+
+- Volume/OI concentrated within 10-20% of current price
+- Calls: higher activity above current price
+- Puts: higher activity below current price
+
+**Maturity Effects:**
+
+- Near-term (1-8 weeks): highest volume
+- Longer-term (3+ months): high OI, lower daily volume
+- Final week: volume spikes as positions close
+
+**Liquidity:**
+
+- Deep OTM: infrequent trading, wide bid-ask spreads
+- Last trade dates may be days/weeks old
+:::
+
+## Put-Call Parity {data-state="grid-medium"}
+
+For European options, a fundamental no-arbitrage relationship:
+
+$$\text{Cash} + \text{Call} = \text{Put} + \text{Underlying}$$
+
+More precisely:
+
+$$\mathrm{e}^{-rT}K + C = P + S$$
+
+where $\mathrm{e}^{-rT}K$ = present value of strike price
+
+::: {.fragment}
+**Key insight:** Two portfolios with identical payoffs must have identical prices
+:::
+
+## Put-Call Parity: The Logic {data-state="grid-coarse"}
+
+Compare payoffs at expiration:
+
+::::  {.columns}
+::: {.column width="50%"}
+**Portfolio A: Cash + Call**
+
+If $S_T > K$:
+- Cash → $K$
+- Call → $S_T - K$
+- Total = $S_T$
+
+If $S_T \leq K$:
+- Cash → $K$
+- Call → $0$
+- Total = $K$
+:::
+
+::: {.column width="50%"}
+**Portfolio B: Put + Underlying**
+
+If $S_T > K$:
+- Put → $0$
+- Asset → $S_T$
+- Total = $S_T$
+
+If $S_T \leq K$:
+- Put → $K - S_T$
+- Asset → $S_T$
+- Total = $K$
+:::
+::::
+
+Identical payoffs → Identical prices!
+
+## Put-Call Parity: Applications {data-state="grid-sparse"}
+
+::: {.incremental}
+**1. Option Pricing:**
+- Know call, underlying, risk-free rate → compute put price
+- Know put, underlying, risk-free rate → compute call price
+
+**2. Synthetic Instruments:**
+- Synthetic call: $C = P + S - K\mathrm{e}^{-rT}$
+- Synthetic put: $P = C - S + K\mathrm{e}^{-rT}$
+- Synthetic underlying: $S = C - P + K\mathrm{e}^{-rT}$
+
+**3. Arbitrage Detection:**
+- Professional traders identify mispriced options
+- Construct conversion and reversal strategies
+:::
+
+## Put-Call Parity: Limitations {data-state="grid-coarse"}
+
+Important restrictions:
+
+::: {.incremental}
+- **European options only** (not American)
+- **Non-dividend-paying assets** (dividends complicate the relationship)
+- **Same strike and expiration** for both call and put
+- **Perfect markets** (no transaction costs, borrowing restrictions)
+
+For American options: relationship becomes an inequality
+
+For dividend-paying assets: subtract PV of dividends from $S$
+:::
+
+## Early Exercise: General Principles {data-state="grid-medium"}
+
+Should you exercise an American option early?
+
+::: {.incremental}
+**Option value = Intrinsic value + Time value**
+
+- **Intrinsic value**: What you get from exercising now
+- **Time value**: Value of future flexibility
+
+**Early exercise destroys time value!**
+
+Only exercise early when time value = 0
+:::
+
+## American Calls: Never Exercise Early* {data-state="grid-coarse"}
+
+For calls on **non-dividend-paying** assets:
+
+::: {.incremental}
+**Reason #1:** Flexibility is valuable
+- "Options are better alive than dead"
+- Keeping your options open has value
+
+**Reason #2:** Time value of money
+- Early exercise means paying strike now
+- Foregone interest on that cash
+
+**Mathematical proof:** From put-call parity, $C > S - K$ always
+
+*Exception: May be optimal just before large dividends
+:::
+
+## American Puts: Sometimes Exercise Early {data-state="grid-medium"}
+
+For puts, time value of money works in reverse:
+
+::: {.incremental}
+**Why early exercise can be optimal:**
+
+- Receive strike early → invest and earn interest
+- When deep in the money, flexibility has little value
+- Higher interest rates → more incentive to exercise
+
+**Optimal when:** Put is deep ITM + interest rates high + low volatility
+
+**Mathematical insight:** $P = K - S$ is possible (time value = 0)
+:::
+
+## Put-Call Parity and Early Exercise {data-state="grid-sparse"}
+
+From European put-call parity: $C + \mathrm{e}^{-rT}K = P + S$
+
+::: {.incremental}
+**For calls:** Since $P \geq 0$,
+$$C \geq S - \mathrm{e}^{-rT}K > S - K$$
+Call value strictly exceeds intrinsic value → don't exercise early
+
+**For puts:** Since $C \geq 0$,
+$$P \geq \mathrm{e}^{-rT}K - S$$
+But intrinsic value is $K - S$, which could be larger!
+$$K - S > \mathrm{e}^{-rT}K - S$$
+Put time value can shrink to zero → early exercise possible
+:::
+
+## Summary: Key Takeaways {data-state="grid-medium"}
+
+::: {.incremental}
+1. **Options are versatile** - building blocks for complex strategies
+
+2. **Payoff diagrams** - visualize by summing individual positions
+
+3. **Market patterns** - OTM options popular, OI follows predictable life cycle
+
+4. **Put-call parity** - fundamental no-arbitrage relationship
+
+5. **Early exercise** - rarely optimal for calls, sometimes optimal for puts
+
+6. **Portfolio construction** - combine options for specific risk/reward profiles
+:::
+
+## Next Steps {data-state="grid-coarse"}
+
+Building on this foundation:
+
+::: {.incremental}
+- **Option pricing models**: Black-Scholes formula, binomial trees
+- **Greeks and sensitivity analysis**: Delta, gamma, theta, vega
+- **Volatility**: Historical vs. implied, volatility surfaces
+- **Advanced hedging**: Delta hedging, portfolio insurance
+- **Real-world considerations**: Transaction costs, liquidity, market microstructure
 :::
 

@@ -19,7 +19,7 @@ Mark Loewenstein
 ### Part 1: Introduction
 
 - [Introduction to Options](01_intro_options.html){target="_blank"}
-- [Futures Contracts](02_futures.html){target="_blank"} *(Coming soon)*
+- [Introduction to Futures](02_intro_futures.html){target="_blank"} 
 - [Binomial Trees](03_binomial_trees.html){target="_blank"} *(Coming soon)*
 
 ### Part 2: Mathematical Foundations
