@@ -263,7 +263,7 @@
     "href": "01_intro_options.html#what-are-derivatives",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "What Are Derivatives?",
-    "text": "What Are Derivatives?\nDerivative securities are financial instruments whose values are derived from an underlying asset, index, or rate.\n\n\nUnderlying assets can be:\n\nStocks, bonds, commodities\nCurrencies, interest rates\nMarket indices\n\nValue fluctuates based on changes in the underlying\nUsed for hedging risks and speculation"
+    "text": "What Are Derivatives?\nA derivative security is a financial instruments whose value is derived from an underlying asset, index, or rate.\n\n\nUnderlying assets can be:\n\nStocks, bonds, commodities\nCurrencies, interest rates\nMarket indices\n\nValue fluctuates based on changes in the underlying\nUsed for hedging risks and speculation"
   },
   {
     "objectID": "01_intro_options.html#trading-venues",
@@ -642,12 +642,5 @@
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Summary: Key Takeaways",
     "text": "Summary: Key Takeaways\n\n\nOptions are versatile - building blocks for complex strategies\nPayoff diagrams - visualize by summing individual positions\nMarket patterns - OTM options popular, OI follows predictable life cycle\nPut-call parity - fundamental no-arbitrage relationship\nEarly exercise - rarely optimal for calls, sometimes optimal for puts\nPortfolio construction - combine options for specific risk/reward profiles"
-  },
-  {
-    "objectID": "01_intro_options.html#next-steps",
-    "href": "01_intro_options.html#next-steps",
-    "title": "Pricing and Hedging Derivative Securities",
-    "section": "Next Steps",
-    "text": "Next Steps\nBuilding on this foundation:\n\n\nOption pricing models: Black-Scholes formula, binomial trees\nGreeks and sensitivity analysis: Delta, gamma, theta, vega\nVolatility: Historical vs. implied, volatility surfaces\nAdvanced hedging: Delta hedging, portfolio insurance\nReal-world considerations: Transaction costs, liquidity, market microstructure"
   }
 ]

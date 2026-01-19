@@ -31,7 +31,7 @@ plotly.offline.init_notebook_mode(connected=True)
 
 ## What Are Derivatives? {data-state="grid-medium"}
 
-**Derivative securities** are financial instruments whose values are *derived* from an underlying asset, index, or rate.
+A **derivative security** is a financial instruments whose value is *derived* from an underlying asset, index, or rate.
 
 ::: {.incremental}
 - **Underlying assets** can be:
@@ -1133,16 +1133,3 @@ Put time value can shrink to zero → early exercise possible
 
 6. **Portfolio construction** - combine options for specific risk/reward profiles
 :::
-
-## Next Steps {data-state="grid-coarse"}
-
-Building on this foundation:
-
-::: {.incremental}
-- **Option pricing models**: Black-Scholes formula, binomial trees
-- **Greeks and sensitivity analysis**: Delta, gamma, theta, vega
-- **Volatility**: Historical vs. implied, volatility surfaces
-- **Advanced hedging**: Delta hedging, portfolio insurance
-- **Real-world considerations**: Transaction costs, liquidity, market microstructure
-:::
-
