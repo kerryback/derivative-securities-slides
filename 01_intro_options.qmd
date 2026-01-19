@@ -333,7 +333,7 @@ Understanding trading patterns:
 - Used for tail risk hedging (portfolio insurance)
 :::
 
-## The Life Cycle of Open Interest {data-state="grid-fine"}
+## Life Cycle of Open Interest {data-state="grid-fine"}
 
 Open interest evolves over an option's life:
 
@@ -361,40 +361,6 @@ Open interest evolves over an option's life:
 - OTM options: expire worthless
 :::
 ::::
-
-## The Life Cycle of Open Interest {data-state="grid-dense"}
-
-Open interest evolves over an option's life:
-
-::::  {.columns}
-::: {.column width="50%"}
-**Initial Growth:**
-
-- Starts at zero for new series
-- Grows as traders discover it
-- Peaks when several weeks/months remain
-
-**Example:**
-
-- Day 1: Trader A buys 10 calls from Trader B → OI = 10
-- Day 2: Trader C buys 5 from Trader D → OI = 15
-- Day 3: Trader E buys 3 from Trader A → OI = 15 (unchanged)
-:::
-
-::: {.column width="50%"}
-**Decline Phase:**
-
-- Decreases as expiration approaches
-- Traders close positions
-- Risk managers avoid near-expiry options
-
-**Final Settlement:**
-
-- ITM options: auto-exercised
-- OTM options: expire worthless
-:::
-::::
-
 
 ## Payoff vs. Profit Diagrams {data-state="grid-coarse"}
 
@@ -993,70 +959,6 @@ Experiment with your own option combinations:
 
 ::: {#fig-option-portfolios-slides}
 <iframe width="100%" height="700" src="https://option-portfolios.koyeb.app"></iframe>
-:::
-
-## Life Cycle of Open Interest: Details {data-state="grid-medium"}
-
-::: {.incremental}
-**Growth Phase:**
-
-- New option series starts at OI = 0
-- Each new buyer + new seller → OI increases
-- Peaks several weeks/months before expiration
-
-**Decline Phase:**
-
-- Traders close positions via offsetting trades
-- Some early exercise (American options)
-- Risk managers avoid near-expiration options
-
-**Final Settlement:**
-
-- ITM options: automatically exercised
-- OTM options: expire worthless
-:::
-
-## Why OTM Options Are Popular {data-state="grid-coarse"}
-
-Despite lower probability of profit, OTM options attract significant trading:
-
-::::  {.columns}
-::: {.column width="50%"}
-**Leverage & Cost**
-
-- Much cheaper than ITM options
-- Control more shares per dollar
-- Example: $1,000 buys 2 ITM calls or 20 OTM calls
-:::
-
-::: {.column width="50%"}
-**Other Motivations**
-
-- **Speculation**: Large % returns possible
-- **Hedging**: Tail risk protection
-- **Pure time value**: Volatility bets
-:::
-::::
-
-## Observable Market Patterns {data-state="grid-sparse"}
-
-::: {.incremental}
-**Strike Distribution:**
-
-- Volume/OI concentrated within 10-20% of current price
-- Calls: higher activity above current price
-- Puts: higher activity below current price
-
-**Maturity Effects:**
-
-- Near-term (1-8 weeks): highest volume
-- Longer-term (3+ months): high OI, lower daily volume
-- Final week: volume spikes as positions close
-
-**Liquidity:**
-
-- Deep OTM: infrequent trading, wide bid-ask spreads
-- Last trade dates may be days/weeks old
 :::
 
 ## Put-Call Parity {data-state="grid-medium"}

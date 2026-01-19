@@ -25,49 +25,49 @@
     "href": "02_intro_futures.html#long-and-short-positions",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Long and Short Positions",
-    "text": "Long and Short Positions\n\nLong Position (Buyer):\n\nObligation to accept delivery\nPay futures price at expiration\nProfits when futures price rises\n\nShort Position (Seller):\n\nObligation to deliver asset\nReceive futures price at expiration\nProfits when futures price falls"
+    "text": "Long and Short Positions\n\nLong (Buyer): Obligation to accept delivery, profits when price rises\nShort (Seller): Obligation to deliver, profits when price falls"
   },
   {
     "objectID": "02_intro_futures.html#example-trading-corn-futures",
     "href": "02_intro_futures.html#example-trading-corn-futures",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Example: Trading Corn Futures",
-    "text": "Example: Trading Corn Futures\nA corn farmer sells a futures contract at $5.00/bushel:\n\nOption 1: Physical Delivery\n\nDeliver corn at expiration, receive $5.00/bushel\n\nOption 2: Offset Position\n\nSpot price near expiration: $4.00/bushel\nFutures price (near expiration): ~$4.00 (spot-futures convergence)\nBuy futures at $4.00, canceling delivery obligation\nProfit on futures: $5.00 - $4.00 = $1.00/bushel\nSell corn in spot market at $4.00\nNet proceeds: $5.00/bushel (same as delivery!)"
+    "text": "Example: Trading Corn Futures\nFarmer sells futures at $5.00/bushel, spot later drops to $4.00:\n\nPhysical Delivery: Deliver corn, receive $5.00/bushel\nOffset Position:\n\nBuy futures at $4.00 → Profit = $1.00/bushel\nSell corn in spot market at $4.00\nTotal: $5.00/bushel (same result!)\n\nKey insight: Spot-futures convergence at expiration"
   },
   {
     "objectID": "02_intro_futures.html#contract-specifications",
     "href": "02_intro_futures.html#contract-specifications",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Contract Specifications",
-    "text": "Contract Specifications\nExchanges standardize all contract terms:\n\n\nDelivery location: Where asset must be delivered\nDelivery date: When delivery occurs\nQuantity: Amount per contract\nQuality: Grade specifications (with price adjustments)\n\nExample: CME Corn Futures\n\n5,000 bushels per contract\nSpecific delivery locations in Illinois and surrounding states\nQuality adjustments for different grades"
+    "text": "Contract Specifications\nExchanges standardize all contract terms:\n\n\nDelivery location and date\nQuantity and quality (with price adjustments)\n\nExample: CME Corn Futures - 5,000 bushels per contract, Illinois delivery locations"
   },
   {
     "objectID": "02_intro_futures.html#cash-settled-futures",
     "href": "02_intro_futures.html#cash-settled-futures",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Cash-Settled Futures",
-    "text": "Cash-Settled Futures\nNo physical delivery - settled based on index value:\n\nE-mini S&P 500 Example:\n\nMultiplier: $50 per index point\nBuy contract at futures price = 6000\nIndex at expiration = 6500\nProfit = $50 × (6500 - 6000) = $25,000\n\nWhy cash settlement?\n\nEliminates logistics of physical delivery\nEnables futures on indices\nLower transaction costs"
+    "text": "Cash-Settled Futures\nNo physical delivery - settled based on index value:\n\nE-mini S&P 500: $50 multiplier per index point\n\nBuy at 6000, index expires at 6500\nProfit = $50 × 500 = $25,000\n\nBenefits: Eliminates delivery logistics, enables index futures"
   },
   {
     "objectID": "02_intro_futures.html#trading-vs.-gambling",
     "href": "02_intro_futures.html#trading-vs.-gambling",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Trading vs. Gambling",
-    "text": "Trading vs. Gambling\nWhat distinguishes futures from gambling?\n\nKey distinction: Futures must serve legitimate risk-management needs\nExamples:\n\nEquity fund manager selling S&P 500 futures to hedge portfolio\nAirline buying crude oil futures to hedge fuel costs\nUtility company using weather futures to hedge temperature risk\n\nWithout this economic purpose, cash-settled contracts could be considered gambling"
+    "text": "Trading vs. Gambling\nKey distinction: Futures must serve legitimate risk-management needs\n\nExamples:\n\nFund manager hedging equity portfolio\nAirline hedging fuel costs\nUtility hedging temperature risk"
   },
   {
     "objectID": "02_intro_futures.html#market-structure",
     "href": "02_intro_futures.html#market-structure",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Market Structure",
-    "text": "Market Structure\nLike options, futures markets have specific features:\n\n\nExchange-traded: Standardized contracts, transparent pricing\nClearinghouse: Central counterparty to all trades\nNo pre-existing supply: Contracts created through trading\nOpen interest: Total number of long = short positions\nOrder types: Market orders and limit orders\nMost positions closed early: Via offsetting trades"
+    "text": "Market Structure\nLike options, futures have:\n\n\nExchange-traded: Standardized, transparent\nClearinghouse: Central counterparty\nOpen interest: Long = short positions\nMost positions closed early via offsetting trades"
   },
   {
     "objectID": "02_intro_futures.html#margin-and-marking-to-market",
     "href": "02_intro_futures.html#margin-and-marking-to-market",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Margin and Marking to Market",
-    "text": "Margin and Marking to Market\nThe most distinctive feature of futures trading:\n\nDaily Settlement Process:\n\nExchange establishes settlement price each day\nAll positions marked to this price\nProfits/losses immediately transferred between accounts\nVirtually eliminates counterparty risk"
+    "text": "Margin and Marking to Market\nDaily Settlement Process:\n\n\nExchange sets settlement price each day\nAll positions marked to this price\nProfits/losses immediately transferred\nVirtually eliminates counterparty risk"
   },
   {
     "objectID": "02_intro_futures.html#daily-settlement-example",
@@ -88,21 +88,21 @@
     "href": "02_intro_futures.html#leverage-in-futures",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Leverage in Futures",
-    "text": "Leverage in Futures\nMargin creates high leverage:\n\nExample: 10% margin requirement\n\n10:1 leverage\n1% futures price move against you = 10% loss on margin\n1% futures price move for you = 10% gain on margin\n\nWhy is this safe?\n\nDaily marking to market\nMargin calls prevent defaults\nClearinghouse guarantee"
+    "text": "Leverage in Futures\n10% margin = 10:1 leverage\n\n\n1% price move = 10% gain/loss on margin\n10% price move = 100% gain/loss on margin\n\nSafety mechanisms: Daily marking to market + margin calls + clearinghouse"
   },
   {
     "objectID": "02_intro_futures.html#the-expectations-hypothesis",
     "href": "02_intro_futures.html#the-expectations-hypothesis",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "The Expectations Hypothesis",
-    "text": "The Expectations Hypothesis\nSimple theory: Futures prices = Expected future spot prices\n\nLogic:\n\nIf \\(F &lt; E[S_T]\\): Buy futures, plan to sell spot at maturity → Expected profit\nIf \\(F &gt; E[S_T]\\): Sell futures, plan to buy spot at maturity → Expected profit\nTrading should drive \\(F\\) to \\(E[S_T]\\)\n\nProblem: Assumes risk-neutral investors!"
+    "text": "The Expectations Hypothesis\nFutures prices = Expected future spot prices\n\nLogic: If \\(F \\neq E[S_T]\\), trading for expected profit drives \\(F \\to E[S_T]\\)\nProblem: Assumes risk-neutral investors!"
   },
   {
     "objectID": "02_intro_futures.html#reality-risk-premia",
     "href": "02_intro_futures.html#reality-risk-premia",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Reality: Risk Premia",
-    "text": "Reality: Risk Premia\n\nRisk-averse investors:\n\nWon’t trade unlimited amounts for small expected profit\nConsider risk alongside expected return\nRequire compensation for bearing risk\n\nResult:\n\nFutures prices can deviate from expected spot prices\nDeviation depends on covariance with market risk factors\nFrom CAPM: depends on covariance with market return\n\nDespite this: Expectations are a prime determinant of futures prices"
+    "text": "Reality: Risk Premia\n\nRisk-averse investors won’t trade unlimited amounts\nResult: Futures prices can deviate from expected spot prices\n\nDeviation depends on covariance with market risk\nFrom CAPM: covariance with market return\n\nDespite this: Expectations still prime determinant of prices"
   },
   {
     "objectID": "02_intro_futures.html#spot-futures-parity",
@@ -123,21 +123,21 @@
     "href": "02_intro_futures.html#arbitrage-buy-spot-sell-futures",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Arbitrage: Buy Spot, Sell Futures",
-    "text": "Arbitrage: Buy Spot, Sell Futures\nIf \\(F &gt; \\mathrm{e}^{rT}S\\) (assuming \\(c=r\\), \\(y=0\\)):\n\nArbitrage Strategy:\n\nBorrow \\(S\\) dollars at rate \\(r\\)\nBuy spot asset for \\(S\\)\nSell futures contract at price \\(F\\)\nAt expiration:\n\nDeliver asset to fulfill futures\nReceive \\(F\\)\nOwe \\(\\mathrm{e}^{rT}S\\) on loan\n\nProfit: \\(F - \\mathrm{e}^{rT}S\\) (risk-free!)"
+    "text": "Arbitrage: Buy Spot, Sell Futures\nIf \\(F &gt; \\mathrm{e}^{rT}S\\) (assuming \\(c=r\\), \\(y=0\\)):\n\n\nBorrow \\(S\\), buy spot asset\nSell futures at \\(F\\)\nAt expiration: deliver asset, receive \\(F\\), repay \\(\\mathrm{e}^{rT}S\\)\n\nProfit: \\(F - \\mathrm{e}^{rT}S\\) (risk-free!)"
   },
   {
     "objectID": "02_intro_futures.html#arbitrage-sell-spot-buy-futures",
     "href": "02_intro_futures.html#arbitrage-sell-spot-buy-futures",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Arbitrage: Sell Spot, Buy Futures",
-    "text": "Arbitrage: Sell Spot, Buy Futures\nIf \\(F &lt; \\mathrm{e}^{rT}S\\) (assuming \\(c=r\\), \\(y=0\\)):\n\nArbitrage Strategy:\n\nBorrow and sell (short) spot asset, receive \\(S\\)\nInvest proceeds at rate \\(r\\)\nBuy futures contract at price \\(F\\)\nAt expiration:\n\nPay \\(F\\) and accept delivery\nReturn asset to lender\nCollect \\(\\mathrm{e}^{rT}S\\) from investment\n\nProfit: \\(\\mathrm{e}^{rT}S - F\\) (risk-free!)"
+    "text": "Arbitrage: Sell Spot, Buy Futures\nIf \\(F &lt; \\mathrm{e}^{rT}S\\) (assuming \\(c=r\\), \\(y=0\\)):\n\n\nShort sell spot asset for \\(S\\), invest proceeds\nBuy futures at \\(F\\)\nAt expiration: pay \\(F\\), accept delivery, return to lender\n\nProfit: \\(\\mathrm{e}^{rT}S - F\\) (risk-free!)"
   },
   {
     "objectID": "02_intro_futures.html#why-parity-holds",
     "href": "02_intro_futures.html#why-parity-holds",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Why Parity Holds",
-    "text": "Why Parity Holds\n\nInstitutional arbitrageurs actively trade these strategies\n\nViolations are quickly exploited\nMarket prices adjust until parity holds\nSafe assumption: parity holds to high degree of approximation\n\nExtensions:\n\nStorage costs: Add to cost of carry\nDividends: Subtract from cost of carry\nResult: General formula \\(F = \\mathrm{e}^{(c-y)T}S\\)"
+    "text": "Why Parity Holds\n\nInstitutional arbitrageurs exploit violations quickly\nExtensions:\n\nStorage costs → add to \\(c\\)\nDividends → subtract from \\(c\\) (or add to \\(y\\))\nGeneral formula: \\(F = \\mathrm{e}^{(c-y)T}S\\)"
   },
   {
     "objectID": "02_intro_futures.html#forward-curves",
@@ -172,7 +172,7 @@
     "href": "02_intro_futures.html#commodity-forward-curves",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Commodity Forward Curves",
-    "text": "Commodity Forward Curves\nMore complex due to storage costs and convenience yields:\n\nKey insights:\n\nStorage costs can be very high (electricity, natural gas)\nConvenience yield varies with supply/demand\nForward curves can be upward or downward sloping\nSeasonal patterns common (natural gas, corn)\n\nGeneral bound: \\(F \\leq \\mathrm{e}^{cT}S\\) (where \\(c\\) includes storage)\nBut this may have little predictive power!"
+    "text": "Commodity Forward Curves\nMore complex due to storage costs and convenience yields:\n\n\nHigh storage costs (electricity, natural gas)\nConvenience yield varies with supply/demand\nUpward or downward sloping\nSeasonal patterns (natural gas, corn)\n\nBound: \\(F \\leq \\mathrm{e}^{cT}S\\) (may have little predictive power)"
   },
   {
     "objectID": "02_intro_futures.html#crude-oil-extreme-scenarios",
@@ -200,21 +200,21 @@
     "href": "02_intro_futures.html#natural-gas-seasonality",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Natural Gas Seasonality",
-    "text": "Natural Gas Seasonality\n\nSummer to Winter (upward):\n\nHigh storage cost of natural gas\n“Buy spot, sell futures” not an arbitrage\nStorage too expensive\n\nWinter to Summer (downward):\n\nHigh convenience yield in winter\nHigh demand → high spot prices\nPremium for winter delivery\n\nOverall slope: Depends on current supply/demand conditions"
+    "text": "Natural Gas Seasonality\n\nSummer to Winter (upward): High storage costs\nWinter to Summer (downward): High convenience yield (demand peak)\nOverall slope: Depends on supply/demand conditions"
   },
   {
     "objectID": "02_intro_futures.html#corn-seasonality",
     "href": "02_intro_futures.html#corn-seasonality",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Corn Seasonality",
-    "text": "Corn Seasonality\n\nCyclical pattern driven by:\n\nPre-harvest (summer): High convenience yield (corn scarce)\nPost-harvest (fall): High storage costs (silos full)\n\nOverall slope: Varies with spot market conditions\nSimilar patterns: Many agricultural commodities show harvest-related cycles"
+    "text": "Corn Seasonality\n\nPre-harvest (summer): High convenience yield (scarcity)\nPost-harvest (fall): High storage costs (silos full)\nOverall slope: Varies with spot market conditions"
   },
   {
     "objectID": "02_intro_futures.html#options-on-futures",
     "href": "02_intro_futures.html#options-on-futures",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Options on Futures",
-    "text": "Options on Futures\nA derivative on a derivative!\n\nCall option on futures:\n\nRight to buy futures contract at strike\n\nPut option on futures:\n\nRight to sell futures contract at strike\n\nBenefits vs. options on underlying:\n\nLeverage of futures market\nHigh liquidity\nAvoid physical delivery/storage issues"
+    "text": "Options on Futures\nA derivative on a derivative!\n\nCall: Right to buy futures at strike\nPut: Right to sell futures at strike\nBenefits: Leverage, liquidity, avoids delivery/storage"
   },
   {
     "objectID": "02_intro_futures.html#exercise-of-futures-options",
@@ -228,7 +228,7 @@
     "href": "02_intro_futures.html#futures-options-example",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Futures Options Example",
-    "text": "Futures Options Example\nBuy call option on corn futures, strike = $5.00/bushel\nExercise when futures price = $5.50:\n\nYou (exerciser):\n\nAssigned long futures contract at $5.50\nReceive $0.50/bushel cash (marked to market)\nCan trade out of futures immediately if desired\n\nOption writer (assigned):\n\nAssigned short futures contract at $5.50\nPay $0.50/bushel cash\nCan trade out of futures immediately if desired\n\nResult: Both can walk away with +/- $0.50 and no further obligations"
+    "text": "Futures Options Example\nBuy call on corn futures, strike = $5.00, exercise at $5.50:\n\nYou (exerciser):\n\nLong futures at $5.50 + receive $0.50 cash\n\nOption writer:\n\nShort futures at $5.50 + pay $0.50 cash\n\nResult: Both can immediately close futures positions"
   },
   {
     "objectID": "02_intro_futures.html#summary-key-takeaways",
@@ -385,18 +385,11 @@
     "text": "Volume and Open Interest Patterns\nUnderstanding trading patterns:\n\nConcentration Near Current Price:\n\nVolume/open interest highest within 10-20% of current price\nFar OTM options trade infrequently\nWider bid-ask spreads for less popular strikes\n\nPopularity of OTM Options:\n\nLower cost → higher leverage\nAttractive for speculation (large % returns possible)\nUsed for tail risk hedging (portfolio insurance)"
   },
   {
-    "objectID": "01_intro_options.html#the-life-cycle-of-open-interest",
-    "href": "01_intro_options.html#the-life-cycle-of-open-interest",
+    "objectID": "01_intro_options.html#life-cycle-of-open-interest",
+    "href": "01_intro_options.html#life-cycle-of-open-interest",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "The Life Cycle of Open Interest",
-    "text": "The Life Cycle of Open Interest\nOpen interest evolves over an option’s life:\n\n\nInitial Growth:\n\nStarts at zero for new series\nGrows as traders discover it\nPeaks when several weeks/months remain\n\n\nDecline Phase:\n\nDecreases as expiration approaches\nTraders close positions\nRisk managers avoid near-expiry options\n\n\nFinal Settlement:\n\nITM options: auto-exercised\nOTM options: expire worthless"
-  },
-  {
-    "objectID": "01_intro_options.html#the-life-cycle-of-open-interest-1",
-    "href": "01_intro_options.html#the-life-cycle-of-open-interest-1",
-    "title": "Pricing and Hedging Derivative Securities",
-    "section": "The Life Cycle of Open Interest",
-    "text": "The Life Cycle of Open Interest\nOpen interest evolves over an option’s life:\n\n\nInitial Growth:\n\nStarts at zero for new series\nGrows as traders discover it\nPeaks when several weeks/months remain\n\nExample:\n\nDay 1: Trader A buys 10 calls from Trader B → OI = 10\nDay 2: Trader C buys 5 from Trader D → OI = 15\nDay 3: Trader E buys 3 from Trader A → OI = 15 (unchanged)\n\n\nDecline Phase:\n\nDecreases as expiration approaches\nTraders close positions\nRisk managers avoid near-expiry options\n\nFinal Settlement:\n\nITM options: auto-exercised\nOTM options: expire worthless"
+    "section": "Life Cycle of Open Interest",
+    "text": "Life Cycle of Open Interest\nOpen interest evolves over an option’s life:\n\n\nInitial Growth:\n\nStarts at zero for new series\nGrows as traders discover it\nPeaks when several weeks/months remain\n\n\nDecline Phase:\n\nDecreases as expiration approaches\nTraders close positions\nRisk managers avoid near-expiry options\n\n\nFinal Settlement:\n\nITM options: auto-exercised\nOTM options: expire worthless"
   },
   {
     "objectID": "01_intro_options.html#payoff-vs.-profit-diagrams",
@@ -588,27 +581,6 @@
     "text": "Interactive Portfolio Builder\nExperiment with your own option combinations:\n\n\n\n\n\n\n\nFigure 13"
   },
   {
-    "objectID": "01_intro_options.html#life-cycle-of-open-interest-details",
-    "href": "01_intro_options.html#life-cycle-of-open-interest-details",
-    "title": "Pricing and Hedging Derivative Securities",
-    "section": "Life Cycle of Open Interest: Details",
-    "text": "Life Cycle of Open Interest: Details\n\nGrowth Phase:\n\nNew option series starts at OI = 0\nEach new buyer + new seller → OI increases\nPeaks several weeks/months before expiration\n\nDecline Phase:\n\nTraders close positions via offsetting trades\nSome early exercise (American options)\nRisk managers avoid near-expiration options\n\nFinal Settlement:\n\nITM options: automatically exercised\nOTM options: expire worthless"
-  },
-  {
-    "objectID": "01_intro_options.html#why-otm-options-are-popular",
-    "href": "01_intro_options.html#why-otm-options-are-popular",
-    "title": "Pricing and Hedging Derivative Securities",
-    "section": "Why OTM Options Are Popular",
-    "text": "Why OTM Options Are Popular\nDespite lower probability of profit, OTM options attract significant trading:\n\n\nLeverage & Cost\n\nMuch cheaper than ITM options\nControl more shares per dollar\nExample: $1,000 buys 2 ITM calls or 20 OTM calls\n\n\nOther Motivations\n\nSpeculation: Large % returns possible\nHedging: Tail risk protection\nPure time value: Volatility bets"
-  },
-  {
-    "objectID": "01_intro_options.html#observable-market-patterns",
-    "href": "01_intro_options.html#observable-market-patterns",
-    "title": "Pricing and Hedging Derivative Securities",
-    "section": "Observable Market Patterns",
-    "text": "Observable Market Patterns\n\nStrike Distribution:\n\nVolume/OI concentrated within 10-20% of current price\nCalls: higher activity above current price\nPuts: higher activity below current price\n\nMaturity Effects:\n\nNear-term (1-8 weeks): highest volume\nLonger-term (3+ months): high OI, lower daily volume\nFinal week: volume spikes as positions close\n\nLiquidity:\n\nDeep OTM: infrequent trading, wide bid-ask spreads\nLast trade dates may be days/weeks old"
-  },
-  {
     "objectID": "01_intro_options.html#put-call-parity",
     "href": "01_intro_options.html#put-call-parity",
     "title": "Pricing and Hedging Derivative Securities",
@@ -620,14 +592,14 @@
     "href": "01_intro_options.html#put-call-parity-the-logic",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Put-Call Parity: The Logic",
-    "text": "Put-Call Parity: The Logic\nCompare payoffs at expiration:\n\n\nPortfolio A: Cash + Call\nIf \\(S_T &gt; K\\): - Cash → \\(K\\) - Call → \\(S_T - K\\) - Total = \\(S_T\\)\nIf \\(S_T \\leq K\\): - Cash → \\(K\\) - Call → \\(0\\) - Total = \\(K\\)\n\nPortfolio B: Put + Underlying\nIf \\(S_T &gt; K\\): - Put → \\(0\\) - Asset → \\(S_T\\) - Total = \\(S_T\\)\nIf \\(S_T \\leq K\\): - Put → \\(K - S_T\\) - Asset → \\(S_T\\) - Total = \\(K\\)\n\nIdentical payoffs → Identical prices!"
+    "text": "Put-Call Parity: The Logic\nCompare payoffs at expiration:\n\n\nPortfolio A: Cash + Call\nIf \\(S_T &gt; K\\):\n\nCash → \\(K\\)\nCall → \\(S_T - K\\)\nTotal = \\(S_T\\)\n\nIf \\(S_T \\leq K\\):\n\nCash → \\(K\\)\nCall → \\(0\\)\nTotal = \\(K\\)\n\n\nPortfolio B: Put + Underlying\nIf \\(S_T &gt; K\\):\n\nPut → \\(0\\)\nAsset → \\(S_T\\)\nTotal = \\(S_T\\)\n\nIf \\(S_T \\leq K\\):\n\nPut → \\(K - S_T\\)\nAsset → \\(S_T\\)\nTotal = \\(K\\)\n\n\nIdentical payoffs → Identical prices!"
   },
   {
     "objectID": "01_intro_options.html#put-call-parity-applications",
     "href": "01_intro_options.html#put-call-parity-applications",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Put-Call Parity: Applications",
-    "text": "Put-Call Parity: Applications\n\n1. Option Pricing: - Know call, underlying, risk-free rate → compute put price - Know put, underlying, risk-free rate → compute call price\n2. Synthetic Instruments: - Synthetic call: \\(C = P + S - K\\mathrm{e}^{-rT}\\) - Synthetic put: \\(P = C - S + K\\mathrm{e}^{-rT}\\) - Synthetic underlying: \\(S = C - P + K\\mathrm{e}^{-rT}\\)\n3. Arbitrage Detection: - Professional traders identify mispriced options - Construct conversion and reversal strategies"
+    "text": "Put-Call Parity: Applications\n\n1. Option Pricing:\n\nKnow call, underlying, risk-free rate → compute put price\nKnow put, underlying, risk-free rate → compute call price\n\n2. Synthetic Instruments:\n\nSynthetic call: \\(C = P + S - K\\mathrm{e}^{-rT}\\)\nSynthetic put: \\(P = C - S + K\\mathrm{e}^{-rT}\\)\nSynthetic underlying: \\(S = C - P + K\\mathrm{e}^{-rT}\\)\n\n3. Arbitrage Detection:\n\nProfessional traders identify mispriced options\nConstruct conversion and reversal strategies"
   },
   {
     "objectID": "01_intro_options.html#put-call-parity-limitations",
