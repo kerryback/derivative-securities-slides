@@ -1084,11 +1084,13 @@ Compare payoffs at expiration:
 **Portfolio A: Cash + Call**
 
 If $S_T > K$:
+
 - Cash → $K$
 - Call → $S_T - K$
 - Total = $S_T$
 
 If $S_T \leq K$:
+
 - Cash → $K$
 - Call → $0$
 - Total = $K$
@@ -1098,11 +1100,13 @@ If $S_T \leq K$:
 **Portfolio B: Put + Underlying**
 
 If $S_T > K$:
+
 - Put → $0$
 - Asset → $S_T$
 - Total = $S_T$
 
 If $S_T \leq K$:
+
 - Put → $K - S_T$
 - Asset → $S_T$
 - Total = $K$
@@ -1114,16 +1118,20 @@ Identical payoffs → Identical prices!
 ## Put-Call Parity: Applications {data-state="grid-sparse"}
 
 ::: {.incremental}
+
 **1. Option Pricing:**
+
 - Know call, underlying, risk-free rate → compute put price
 - Know put, underlying, risk-free rate → compute call price
 
 **2. Synthetic Instruments:**
+
 - Synthetic call: $C = P + S - K\mathrm{e}^{-rT}$
 - Synthetic put: $P = C - S + K\mathrm{e}^{-rT}$
 - Synthetic underlying: $S = C - P + K\mathrm{e}^{-rT}$
 
 **3. Arbitrage Detection:**
+
 - Professional traders identify mispriced options
 - Construct conversion and reversal strategies
 :::

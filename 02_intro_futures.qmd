@@ -85,37 +85,26 @@ Futures have a long history in commodity markets:
 
 ::: {.incremental}
 
-**Long Position (Buyer):**
+**Long (Buyer):** Obligation to accept delivery, profits when price rises
 
-- Obligation to accept delivery
-- Pay futures price at expiration
-- Profits when futures price rises
-
-**Short Position (Seller):**
-
-- Obligation to deliver asset
-- Receive futures price at expiration
-- Profits when futures price falls
+**Short (Seller):** Obligation to deliver, profits when price falls
 :::
 
 ## Example: Trading Corn Futures {data-state="grid-medium"}
 
-A corn farmer sells a futures contract at $5.00/bushel:
+Farmer sells futures at $5.00/bushel, spot later drops to $4.00:
 
 ::: {.incremental}
 
-**Option 1: Physical Delivery**
+**Physical Delivery:** Deliver corn, receive $5.00/bushel
 
-- Deliver corn at expiration, receive $5.00/bushel
+**Offset Position:**
 
-**Option 2: Offset Position**
-
-- Spot price near expiration: $4.00/bushel
-- Futures price (near expiration): ~$4.00 (spot-futures convergence)
-- Buy futures at $4.00, canceling delivery obligation
-- Profit on futures: $5.00 - $4.00 = $1.00/bushel
+- Buy futures at $4.00 → Profit = $1.00/bushel
 - Sell corn in spot market at $4.00
-- **Net proceeds: $5.00/bushel** (same as delivery!)
+- **Total: $5.00/bushel** (same result!)
+
+**Key insight:** Spot-futures convergence at expiration
 :::
 
 ## Contract Specifications {data-state="grid-fine"}
@@ -124,16 +113,11 @@ Exchanges standardize all contract terms:
 
 ::: {.incremental}
 
-- **Delivery location**: Where asset must be delivered
-- **Delivery date**: When delivery occurs
-- **Quantity**: Amount per contract
-- **Quality**: Grade specifications (with price adjustments)
+- **Delivery location** and **date**
+- **Quantity** and **quality** (with price adjustments)
 
 **Example**: [CME Corn Futures](https://www.cmegroup.com/markets/agriculture/grains/corn.contractSpecs.html)
-
-- 5,000 bushels per contract
-- Specific delivery locations in Illinois and surrounding states
-- Quality adjustments for different grades
+- 5,000 bushels per contract, Illinois delivery locations
 :::
 
 ## Cash-Settled Futures {data-state="grid-medium"}
@@ -142,62 +126,48 @@ No physical delivery - settled based on index value:
 
 ::: {.incremental}
 
-**E-mini S&P 500 Example:**
+**E-mini S&P 500:** $50 multiplier per index point
 
-- Multiplier: $50 per index point
-- Buy contract at futures price = 6000
-- Index at expiration = 6500
-- Profit = $50 × (6500 - 6000) = **$25,000**
+- Buy at 6000, index expires at 6500
+- Profit = $50 × 500 = **$25,000**
 
-**Why cash settlement?**
-
-- Eliminates logistics of physical delivery
-- Enables futures on indices
-- Lower transaction costs
+**Benefits:** Eliminates delivery logistics, enables index futures
 :::
 
 ## Trading vs. Gambling {data-state="grid-coarse"}
 
-What distinguishes futures from gambling?
+**Key distinction**: Futures must serve **legitimate risk-management needs**
 
 ::: {.incremental}
 
-**Key distinction**: Futures must serve **legitimate risk-management needs**
-
 **Examples:**
 
-- Equity fund manager selling S&P 500 futures to hedge portfolio
-- Airline buying crude oil futures to hedge fuel costs
-- Utility company using weather futures to hedge temperature risk
-
-Without this economic purpose, cash-settled contracts could be considered gambling
+- Fund manager hedging equity portfolio
+- Airline hedging fuel costs
+- Utility hedging temperature risk
 :::
 
 ## Market Structure {data-state="grid-fine"}
 
-Like options, futures markets have specific features:
+Like options, futures have:
 
 ::: {.incremental}
 
-- **Exchange-traded**: Standardized contracts, transparent pricing
-- **Clearinghouse**: Central counterparty to all trades
-- **No pre-existing supply**: Contracts created through trading
-- **Open interest**: Total number of long = short positions
-- **Order types**: Market orders and limit orders
-- **Most positions closed early**: Via offsetting trades
+- **Exchange-traded**: Standardized, transparent
+- **Clearinghouse**: Central counterparty
+- **Open interest**: Long = short positions
+- **Most positions closed early** via offsetting trades
 :::
 
 ## Margin and Marking to Market {data-state="grid-medium"}
 
-The most distinctive feature of futures trading:
+**Daily Settlement Process:**
 
 ::: {.incremental}
 
-**Daily Settlement Process:**
-
-- Exchange establishes settlement price each day
+- Exchange sets settlement price each day
 - All positions marked to this price
-- Profits/losses immediately transferred between accounts
+- Profits/losses immediately transferred
 - Virtually eliminates counterparty risk
 :::
 
@@ -244,34 +214,23 @@ Two types of margin:
 
 ## Leverage in Futures {data-state="grid-medium"}
 
-Margin creates high leverage:
+**10% margin = 10:1 leverage**
 
 ::: {.incremental}
 
-**Example: 10% margin requirement**
+- 1% price move = 10% gain/loss on margin
+- 10% price move = 100% gain/loss on margin
 
-- 10:1 leverage
-- 1% futures price move against you = 10% loss on margin
-- 1% futures price move for you = 10% gain on margin
-
-**Why is this safe?**
-
-- Daily marking to market
-- Margin calls prevent defaults
-- Clearinghouse guarantee
+**Safety mechanisms:** Daily marking to market + margin calls + clearinghouse
 :::
 
 ## The Expectations Hypothesis {data-state="grid-medium"}
 
-Simple theory: **Futures prices = Expected future spot prices**
+**Futures prices = Expected future spot prices**
 
 ::: {.incremental}
 
-**Logic:**
-
-- If $F < E[S_T]$: Buy futures, plan to sell spot at maturity → Expected profit
-- If $F > E[S_T]$: Sell futures, plan to buy spot at maturity → Expected profit
-- Trading should drive $F$ to $E[S_T]$
+**Logic:** If $F \neq E[S_T]$, trading for expected profit drives $F \to E[S_T]$
 
 **Problem:** Assumes risk-neutral investors!
 :::
@@ -280,19 +239,14 @@ Simple theory: **Futures prices = Expected future spot prices**
 
 ::: {.incremental}
 
-**Risk-averse investors:**
+**Risk-averse investors** won't trade unlimited amounts
 
-- Won't trade unlimited amounts for small expected profit
-- Consider risk alongside expected return
-- Require compensation for bearing risk
+**Result:** Futures prices can deviate from expected spot prices
 
-**Result:**
+- Deviation depends on covariance with market risk
+- From CAPM: covariance with market return
 
-- Futures prices can deviate from expected spot prices
-- Deviation depends on covariance with market risk factors
-- From CAPM: depends on covariance with market return
-
-**Despite this:** Expectations are a prime determinant of futures prices
+**Despite this:** Expectations still prime determinant of prices
 :::
 
 ## Spot-Futures Parity {data-state="grid-medium"}
@@ -338,16 +292,12 @@ where:
 If $F > \mathrm{e}^{rT}S$ (assuming $c=r$, $y=0$):
 
 ::: {.incremental}
-**Arbitrage Strategy:**
 
-1. Borrow $S$ dollars at rate $r$
-2. Buy spot asset for $S$
-3. Sell futures contract at price $F$
-4. At expiration:
-   - Deliver asset to fulfill futures
-   - Receive $F$
-   - Owe $\mathrm{e}^{rT}S$ on loan
-5. **Profit**: $F - \mathrm{e}^{rT}S$ (risk-free!)
+1. Borrow $S$, buy spot asset
+2. Sell futures at $F$
+3. At expiration: deliver asset, receive $F$, repay $\mathrm{e}^{rT}S$
+
+**Profit**: $F - \mathrm{e}^{rT}S$ (risk-free!)
 :::
 
 ## Arbitrage: Sell Spot, Buy Futures {data-state="grid-medium"}
@@ -355,33 +305,25 @@ If $F > \mathrm{e}^{rT}S$ (assuming $c=r$, $y=0$):
 If $F < \mathrm{e}^{rT}S$ (assuming $c=r$, $y=0$):
 
 ::: {.incremental}
-**Arbitrage Strategy:**
 
-1. Borrow and sell (short) spot asset, receive $S$
-2. Invest proceeds at rate $r$
-3. Buy futures contract at price $F$
-4. At expiration:
-   - Pay $F$ and accept delivery
-   - Return asset to lender
-   - Collect $\mathrm{e}^{rT}S$ from investment
-5. **Profit**: $\mathrm{e}^{rT}S - F$ (risk-free!)
+1. Short sell spot asset for $S$, invest proceeds
+2. Buy futures at $F$
+3. At expiration: pay $F$, accept delivery, return to lender
+
+**Profit**: $\mathrm{e}^{rT}S - F$ (risk-free!)
 :::
 
 ## Why Parity Holds {data-state="grid-sparse"}
 
 ::: {.incremental}
 
-**Institutional arbitrageurs actively trade these strategies**
-
-- Violations are quickly exploited
-- Market prices adjust until parity holds
-- Safe assumption: parity holds to high degree of approximation
+**Institutional arbitrageurs** exploit violations quickly
 
 **Extensions:**
 
-- Storage costs: Add to cost of carry
-- Dividends: Subtract from cost of carry
-- Result: General formula $F = \mathrm{e}^{(c-y)T}S$
+- Storage costs → add to $c$
+- Dividends → subtract from $c$ (or add to $y$)
+- General formula: $F = \mathrm{e}^{(c-y)T}S$
 :::
 
 ## Forward Curves {data-state="grid-medium"}
@@ -525,16 +467,12 @@ More complex due to storage costs and convenience yields:
 
 ::: {.incremental}
 
-**Key insights:**
-
-- Storage costs can be very high (electricity, natural gas)
+- High storage costs (electricity, natural gas)
 - Convenience yield varies with supply/demand
-- Forward curves can be upward or downward sloping
-- Seasonal patterns common (natural gas, corn)
+- Upward or downward sloping
+- Seasonal patterns (natural gas, corn)
 
-**General bound:** $F \leq \mathrm{e}^{cT}S$ (where $c$ includes storage)
-
-But this may have little predictive power!
+**Bound:** $F \leq \mathrm{e}^{cT}S$ (may have little predictive power)
 :::
 
 ## Crude Oil: Extreme Scenarios {data-state="grid-none"}
@@ -654,33 +592,22 @@ fig.show()
 
 ::: {.incremental}
 
-**Summer to Winter (upward):**
+**Summer to Winter (upward):** High storage costs
 
-- High storage cost of natural gas
-- "Buy spot, sell futures" not an arbitrage
-- Storage too expensive
+**Winter to Summer (downward):** High convenience yield (demand peak)
 
-**Winter to Summer (downward):**
-
-- High convenience yield in winter
-- High demand → high spot prices
-- Premium for winter delivery
-
-**Overall slope:** Depends on current supply/demand conditions
+**Overall slope:** Depends on supply/demand conditions
 :::
 
 ## Corn Seasonality {data-state="grid-medium"}
 
 ::: {.incremental}
 
-**Cyclical pattern driven by:**
+**Pre-harvest (summer):** High convenience yield (scarcity)
 
-- **Pre-harvest (summer)**: High convenience yield (corn scarce)
-- **Post-harvest (fall)**: High storage costs (silos full)
+**Post-harvest (fall):** High storage costs (silos full)
 
 **Overall slope:** Varies with spot market conditions
-
-**Similar patterns:** Many agricultural commodities show harvest-related cycles
 :::
 
 ## Options on Futures {data-state="grid-medium"}
@@ -689,19 +616,11 @@ A derivative on a derivative!
 
 ::: {.incremental}
 
-**Call option on futures:**
+**Call:** Right to buy futures at strike
 
-- Right to buy futures contract at strike
+**Put:** Right to sell futures at strike
 
-**Put option on futures:**
-
-- Right to sell futures contract at strike
-
-**Benefits vs. options on underlying:**
-
-- Leverage of futures market
-- High liquidity
-- Avoid physical delivery/storage issues
+**Benefits:** Leverage, liquidity, avoids delivery/storage
 :::
 
 ## Exercise of Futures Options {data-state="grid-coarse"}
@@ -730,25 +649,19 @@ When exercised, creates futures position + cash transfer:
 
 ## Futures Options Example {data-state="grid-medium"}
 
-Buy call option on corn futures, strike = $5.00/bushel
-
-Exercise when futures price = $5.50:
+Buy call on corn futures, strike = $5.00, exercise at $5.50:
 
 ::: {.incremental}
 
 **You (exerciser):**
 
-- Assigned long futures contract at $5.50
-- Receive $0.50/bushel cash (marked to market)
-- Can trade out of futures immediately if desired
+- Long futures at $5.50 + receive $0.50 cash
 
-**Option writer (assigned):**
+**Option writer:**
 
-- Assigned short futures contract at $5.50
-- Pay $0.50/bushel cash
-- Can trade out of futures immediately if desired
+- Short futures at $5.50 + pay $0.50 cash
 
-**Result:** Both can walk away with +/- $0.50 and no further obligations
+**Result:** Both can immediately close futures positions
 :::
 
 ## Summary: Key Takeaways {data-state="grid-medium"}
