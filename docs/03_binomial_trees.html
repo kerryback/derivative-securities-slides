@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
+
+  <title>Pricing and Hedging Derivative Securities</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-3398d5de3459515d757708f7dc5387cd.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <script async="" src="https://hypothes.is/embed.js"></script>
+  <script>
+    window.document.addEventListener("DOMContentLoaded", function (_event) {
+      document.body.classList.add('hypothesis-enabled');
+    });
+  </script>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+  <script type="text/javascript">
+  window.PlotlyConfig = {MathJaxConfig: 'local'};
+  if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+  if (typeof require !== 'undefined') {
+  require.undef("plotly");
+  requirejs.config({
+      paths: {
+          'plotly': ['https://cdn.plot.ly/plotly-2.35.2.min']
+      }
+  });
+  require(['plotly'], function(Plotly) {
+      window._Plotly = Plotly;
+  });
+  }
+  </script>
+
+</head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Pricing and Hedging Derivative Securities</h1>
+  <p class="subtitle">Binomial Trees</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="binomial-trees-overview" class="slide level2" data-state="grid-medium">
+<h2>Binomial Trees: Overview</h2>
+<p>A powerful framework for pricing derivatives using <strong>no-arbitrage</strong> arguments.</p>
+<div>
+<ul>
+<li class="fragment">Model stock prices as moving <strong>up</strong> or <strong>down</strong> over discrete time steps</li>
+<li class="fragment"><strong>Replicate</strong> option payoffs using the stock and risk-free asset</li>
+<li class="fragment">Price options by <strong>backward induction</strong> through the tree</li>
+<li class="fragment">Converges to continuous-time models (Black-Scholes) as steps increase</li>
+</ul>
+</div>
+</section>
+<section>
+<section id="one-period-model" class="title-slide slide level1 center">
+<h1>One-Period Model</h1>
+
+</section>
+<section id="one-period-model-setup" class="slide level2" data-state="grid-coarse">
+<h2>One-Period Model: Setup</h2>
+<p>Stock price <span class="math inline">\(S\)</span> today can take two values at date <span class="math inline">\(t\)</span>:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Up state:</strong> <span class="math inline">\(S_u\)</span></p>
+<p><strong>Down state:</strong> <span class="math inline">\(S_d\)</span></p>
+<p><strong>Risk-free return:</strong> <span class="math inline">\(\mathrm{e}^{rt}\)</span></p>
+</div><div class="column" style="width:50%;">
+<p><strong>No-arbitrage condition:</strong></p>
+<p><span class="math display">\[S_u/S &gt; \mathrm{e}^{rt} &gt; S_d/S\]</span></p>
+<p>Neither asset dominates the other — no riskless profit possible.</p>
+</div></div>
+</section>
+<section id="replicating-a-call-option" class="slide level2" data-state="grid-medium">
+<h2>Replicating a Call Option</h2>
+<p>A European call with strike <span class="math inline">\(K\)</span> pays <span class="math inline">\(C_u = \max(0, S_u - K)\)</span> or <span class="math inline">\(C_d = \max(0, S_d - K)\)</span>.</p>
+<div>
+<p><strong>Key insight:</strong> We can replicate the option payoff with a portfolio of stock and borrowing.</p>
+<p>Define the <strong>delta</strong> (hedge ratio):</p>
+<p><span class="math display">\[\delta = \frac{C_u - C_d}{S_u - S_d}\]</span></p>
+<p>Buy <span class="math inline">\(\delta\)</span> shares, borrow <span class="math inline">\(B = \mathrm{e}^{-rt}(\delta S_u - C_u)\)</span></p>
+</div>
+</section>
+<section id="replication-and-no-arbitrage-pricing" class="slide level2" data-state="grid-sparse">
+<h2>Replication and No-Arbitrage Pricing</h2>
+<p>The replicating portfolio matches the option in both states:</p>
+<div>
+<ul>
+<li class="fragment"><strong>Up state:</strong> <span class="math inline">\(\delta S_u - B\mathrm{e}^{rt} = C_u\)</span></li>
+<li class="fragment"><strong>Down state:</strong> <span class="math inline">\(\delta S_d - B\mathrm{e}^{rt} = C_d\)</span></li>
+</ul>
+<p><strong>No-arbitrage argument:</strong> The option must cost the same as its replicating portfolio:</p>
+<p><span class="math display">\[C = \delta S - \mathrm{e}^{-rt}(\delta S_u - C_u)\]</span></p>
+<p>Otherwise, buy the cheap one and sell the expensive one for riskless profit.</p>
+</div>
+</section>
+<section id="example-stock-price-tree" class="slide level2" data-state="grid-sparse">
+<h2>Example: Stock Price Tree</h2>
+<p>Suppose a stock priced at $100 will either go up by 10% or down by 10%.</p>
+
+<img data-src="images/binomial_stock_oneperiod.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:4in"><p>The simple interest rate is 5% (meaning <span class="math inline">\(\mathrm{e}^{rt}=1.05\)</span>). Note <span class="math inline">\(1.10 &gt; 1.05 &gt; 0.90\)</span>, so the no-arbitrage condition holds.</p>
+</section>
+<section id="call-option-payoffs" class="slide level2" data-state="grid-sparse">
+<h2>Call Option Payoffs</h2>
+<p>Consider a call option with a strike of $105. It ends with a value of $5 if the stock goes to $110 and $0 if the stock goes to $90.</p>
+
+<img data-src="images/binomial_call_oneperiod.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:4in"><p>We want to find its value at the beginning.</p>
+</section>
+<section id="step-1-compute-delta-and-value-of-delta-shares" class="slide level2" data-state="grid-sparse">
+<h2>Step 1: Compute Delta and Value of <span class="math inline">\(\delta\)</span> Shares</h2>
+<p><span class="math inline">\(\delta = (5 - 0)/(110 - 90) = 1/4\)</span>. Here is the value of 1/4 share of the stock:</p>
+
+<img data-src="images/binomial_deltashares_oneperiod.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:4in"><ul>
+<li>Up state: <span class="math inline">\(0.25 \times 110 = 27.50\)</span></li>
+<li>Down state: <span class="math inline">\(0.25 \times 90 = 22.50\)</span></li>
+</ul>
+</section>
+<section id="step-2-borrowing" class="slide level2" data-state="grid-sparse">
+<h2>Step 2: Borrowing</h2>
+<p>Borrow the PV of the down-state portfolio value. At 5% interest, the PV of $22.50 is $21.43.</p>
+
+<img data-src="images/binomial_liability_oneperiod.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:4in"><p>The debt is the same in both states — it’s risk-free borrowing.</p>
+</section>
+<section id="step-3-equity-call-option" class="slide level2" data-state="grid-sparse">
+<h2>Step 3: Equity = Call Option</h2>
+<p>The equity in the levered portfolio (shares minus debt) replicates the call:</p>
+
+<img data-src="images/binomial_call_complete_oneperiod.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:4in"><div>
+<ul>
+<li class="fragment"><strong>Up state:</strong> <span class="math inline">\(27.50 - 22.50 = 5.00\)</span> = <span class="math inline">\(C_u\)</span></li>
+<li class="fragment"><strong>Down state:</strong> <span class="math inline">\(22.50 - 22.50 = 0.00\)</span> = <span class="math inline">\(C_d\)</span></li>
+<li class="fragment"><strong>Call value</strong> = cost of <span class="math inline">\(\delta\)</span> shares <span class="math inline">\(-\)</span> amount borrowed <span class="math inline">\(= 25.00 - 21.43 = 3.57\)</span></li>
+</ul>
+</div>
+</section>
+<section id="state-prices" class="slide level2" data-state="grid-medium">
+<h2>State Prices</h2>
+<p>Define <strong>state prices</strong> — the cost today of $1 in a single state:</p>
+<p><span class="math display">\[\pi_u = \frac{S - \mathrm{e}^{-rt}S_d}{S_u - S_d}, \quad \pi_d = \frac{\mathrm{e}^{-rt}S_u - S}{S_u - S_d}\]</span></p>
+<div>
+<p>Every asset can be valued as a portfolio of state payoffs:</p>
+<ul>
+<li class="fragment"><strong>Call:</strong> <span class="math inline">\(C = \pi_u C_u + \pi_d C_d\)</span></li>
+<li class="fragment"><strong>Stock:</strong> <span class="math inline">\(S = \pi_u S_u + \pi_d S_d\)</span></li>
+<li class="fragment"><strong>Risk-free:</strong> <span class="math inline">\(1 = \pi_u \mathrm{e}^{rt} + \pi_d \mathrm{e}^{rt}\)</span></li>
+</ul>
+<p>No-arbitrage implies <span class="math inline">\(\pi_u &gt; 0\)</span> and <span class="math inline">\(\pi_d &gt; 0\)</span>.</p>
+</div>
+</section>
+<section id="risk-neutral-pricing" class="slide level2" data-state="grid-coarse">
+<h2>Risk-Neutral Pricing</h2>
+<p>Transform state prices into <strong>risk-neutral probabilities</strong>: <span class="math inline">\(p_u = \mathrm{e}^{rt}\pi_u\)</span>, <span class="math inline">\(p_d = \mathrm{e}^{rt}\pi_d\)</span></p>
+<div>
+<ul>
+<li class="fragment"><span class="math inline">\(p_u + p_d = 1\)</span> and both positive — mathematical probabilities</li>
+<li class="fragment"><strong>Not</strong> anyone’s actual beliefs — artificial probabilities</li>
+</ul>
+<p><strong>Pricing formulas:</strong></p>
+<p><span class="math display">\[C = \mathrm{e}^{-rt}\big[p_u C_u + p_d C_d\big]\]</span> <span class="math display">\[S = \mathrm{e}^{-rt}\big[p_u S_u + p_d S_d\big]\]</span></p>
+<p>Value = discounted expected payoff using risk-neutral probabilities.</p>
+</div>
+</section>
+<section id="risk-neutral-probabilities-example" class="slide level2" data-state="grid-medium">
+<h2>Risk-Neutral Probabilities: Example</h2>
+<p>Return to our example. If there were no risk premium, the stock price would be the discounted expected value:</p>
+<p><span class="math display">\[\$100 = \frac{p \times \$110 + (1-p) \times \$90}{1.05}\]</span></p>
+<div>
+<p>Solving for <span class="math inline">\(p\)</span>:</p>
+<p><span class="math display">\[p = \frac{r_f - r_d}{r_u - r_d} = \frac{0.05 - (-0.10)}{0.10 - (-0.10)} = \frac{0.15}{0.20} = 0.75\]</span></p>
+<p>Call value:</p>
+<p><span class="math display">\[C = \frac{0.75 \times \$5 + 0.25 \times \$0}{1.05} = \$3.57\]</span></p>
+<p>Same answer as the delta hedge — because it’s just algebra!</p>
+</div>
+</section>
+<section id="computing-risk-neutral-probabilities" class="slide level2" data-state="grid-sparse">
+<h2>Computing Risk-Neutral Probabilities</h2>
+<p>Directly from asset returns:</p>
+<p><span class="math display">\[p_u = \frac{\mathrm{e}^{rt} - S_d/S}{S_u/S - S_d/S}, \quad p_d = 1 - p_u\]</span></p>
+<div>
+<ul>
+<li class="fragment"><strong>Numerator:</strong> risk-free return minus down return</li>
+<li class="fragment"><strong>Denominator:</strong> up return minus down return</li>
+<li class="fragment">Same formula extends to multiperiod trees (replacing <span class="math inline">\(t\)</span> with <span class="math inline">\(\Delta t\)</span>)</li>
+</ul>
+</div>
+</section>
+<section id="why-does-risk-neutral-pricing-work" class="slide level2" data-state="grid-medium">
+<h2>Why Does Risk-Neutral Pricing Work?</h2>
+<div>
+<ul>
+<li class="fragment">The delta hedge argument didn’t depend on risk preferences</li>
+<li class="fragment">So we can act <strong>as if</strong> investors don’t require risk premia</li>
+<li class="fragment">The risk-neutral probabilities are not anyone’s actual beliefs</li>
+<li class="fragment">They are simply a convenient computational tool derived from no-arbitrage</li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="two-period-model" class="title-slide slide level1 center">
+<h1>Two-Period Model</h1>
+
+</section>
+<section id="backward-induction" class="slide level2" data-state="grid-coarse">
+<h2>Backward Induction</h2>
+<p>Work backwards from maturity to find today’s value:</p>
+<div>
+<p><strong>Step 1 — Terminal payoffs:</strong></p>
+<ul>
+<li class="fragment"><span class="math inline">\(C_{uu} = \max(0, u^2S - K)\)</span>, <span class="math inline">\(\;C_{ud} = \max(0, S - K)\)</span>, <span class="math inline">\(\;C_{dd} = \max(0, d^2S - K)\)</span></li>
+</ul>
+<p><strong>Step 2 — Intermediate nodes:</strong></p>
+<ul>
+<li class="fragment"><span class="math inline">\(C_u = \mathrm{e}^{-r\Delta t}[p \cdot C_{uu} + (1-p) \cdot C_{ud}]\)</span></li>
+<li class="fragment"><span class="math inline">\(C_d = \mathrm{e}^{-r\Delta t}[p \cdot C_{ud} + (1-p) \cdot C_{dd}]\)</span></li>
+</ul>
+<p><strong>Step 3 — Today’s value:</strong></p>
+<ul>
+<li class="fragment"><span class="math inline">\(C_0 = \mathrm{e}^{-r\Delta t}[p \cdot C_u + (1-p) \cdot C_d]\)</span></li>
+</ul>
+</div>
+</section>
+<section id="two-period-stock-tree" class="slide level2" data-state="grid-sparse">
+<h2>Two-Period Stock Tree</h2>
+<p>Suppose a $100 stock goes up by 5% or down by <span class="math inline">\((1/1.05 - 1) = -4.76\%\)</span> in each of two periods.</p>
+
+<img data-src="images/binomial_two_period.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:4in"><p>The tree <strong>recombines</strong>: up then down = down then up = $100. The interest rate is 3% per period.</p>
+</section>
+<section id="two-period-call-k-105" class="slide level2" data-state="grid-sparse">
+<h2>Two-Period Call (K = $105)</h2>
+<p>A call with strike $105 expires at the end of the 2nd period. Terminal payoffs:</p>
+
+<img data-src="images/call_two_period_1.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:4in"><p>We need to work backwards to fill in the values at earlier nodes.</p>
+</section>
+<section id="backward-induction-delta-hedging" class="slide level2" data-state="grid-medium">
+<h2>Backward Induction: Delta Hedging</h2>
+<p>At each intermediate node, repeat the one-period analysis:</p>
+<div>
+<p><strong>At the up node</strong> (<span class="math inline">\(S = 105\)</span>): use payoffs <span class="math inline">\(C_{uu} = 5.25\)</span> and <span class="math inline">\(C_{ud} = 0\)</span> to find <span class="math inline">\(C_u\)</span></p>
+<p><strong>At the down node</strong> (<span class="math inline">\(S = 95.24\)</span>): use payoffs <span class="math inline">\(C_{ud} = 0\)</span> and <span class="math inline">\(C_{dd} = 0\)</span> to find <span class="math inline">\(C_d\)</span></p>
+<p><strong>At the initial node</strong> (<span class="math inline">\(S = 100\)</span>): use <span class="math inline">\(C_u\)</span> and <span class="math inline">\(C_d\)</span> to find <span class="math inline">\(C_0\)</span></p>
+<p>This recursive procedure is <strong>backward induction</strong>.</p>
+</div>
+</section>
+<section id="risk-neutral-probability" class="slide level2" data-state="grid-medium">
+<h2>Risk-Neutral Probability</h2>
+<p>The risk-neutral probability of “up” each period is:</p>
+<p><span class="math display">\[p = \frac{r_f - r_d}{r_u - r_d} = \frac{0.03 - (-0.0476)}{0.05 - (-0.0476)} = 0.795\]</span></p>
+<div>
+<p>Discounting the expected call values at the risk-free rate yields:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/call_two_period_2.jpg" class="quarto-figure quarto-figure-center" style="width:3.5in"></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="another-example-call-with-k-95" class="slide level2" data-state="grid-sparse">
+<h2>Another Example: Call with K = $95</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Stock tree:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/binomial_two_period.jpg" class="quarto-figure quarto-figure-center" style="width:3in"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Call with strike $95:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/callb_two_period_1.jpg" class="quarto-figure quarto-figure-center" style="width:3in"></p>
+</figure>
+</div>
+</div></div>
+<div class="fragment">
+<p>Apply the same backward induction to fill in the intermediate and initial values.</p>
+</div>
+</section>
+<section id="two-period-example-in-code" class="slide level2" data-state="grid-none">
+<h2>Two-Period Example in Code</h2>
+<div id="c221f4d4" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>S <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb1-2"><a></a>K <span class="op">=</span> <span class="dv">95</span></span>
+<span id="cb1-3"><a></a>u <span class="op">=</span> <span class="fl">0.05</span>            <span class="co"># up return per period</span></span>
+<span id="cb1-4"><a></a>r <span class="op">=</span> <span class="fl">0.03</span>            <span class="co"># interest rate per period</span></span>
+<span id="cb1-5"><a></a>n <span class="op">=</span> <span class="dv">2</span>               <span class="co"># number of periods</span></span>
+<span id="cb1-6"><a></a>d <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>u) <span class="op">-</span> <span class="dv">1</span>     <span class="co"># down return per period</span></span>
+<span id="cb1-7"><a></a>p <span class="op">=</span> (r<span class="op">-</span>d) <span class="op">/</span> (u<span class="op">-</span>d)   <span class="co"># risk-neutral prob</span></span>
+<span id="cb1-8"><a></a></span>
+<span id="cb1-9"><a></a><span class="co"># Terminal stock prices and call payoffs</span></span>
+<span id="cb1-10"><a></a>x <span class="op">=</span> [S<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>u)<span class="op">**</span>(n<span class="op">-</span><span class="dv">2</span><span class="op">*</span>i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n<span class="op">+</span><span class="dv">1</span>)]</span>
+<span id="cb1-11"><a></a>v <span class="op">=</span> np.maximum(<span class="dv">0</span>, np.array(x)<span class="op">-</span>K)</span>
+<span id="cb1-12"><a></a></span>
+<span id="cb1-13"><a></a><span class="co"># Backward induction</span></span>
+<span id="cb1-14"><a></a><span class="cf">while</span> <span class="bu">len</span>(v) <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb1-15"><a></a>    v <span class="op">=</span> (p<span class="op">*</span>v[:<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>p)<span class="op">*</span>v[<span class="dv">1</span>:]) <span class="op">/</span> (<span class="dv">1</span><span class="op">+</span>r)</span>
+<span id="cb1-16"><a></a></span>
+<span id="cb1-17"><a></a><span class="bu">print</span>(<span class="ss">f"Risk-neutral prob p = </span><span class="sc">{</span>p<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb1-18"><a></a><span class="bu">print</span>(<span class="ss">f"Call value (K=</span><span class="sc">{</span>K<span class="sc">}</span><span class="ss">): $</span><span class="sc">{</span>v[<span class="dv">0</span>]<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Risk-neutral prob p = 0.7951
+Call value (K=95): $10.62</code></pre>
+</div>
+</div>
+</section>
+<section id="american-options-early-exercise" class="slide level2" data-state="grid-medium">
+<h2>American Options: Early Exercise</h2>
+<p>At each intermediate node, compare <strong>continuation</strong> vs.&nbsp;<strong>immediate exercise</strong>:</p>
+<p><span class="math display">\[V = \max\!\big(\text{continuation value},\; \text{exercise value}\big)\]</span></p>
+<div>
+<ul>
+<li class="fragment"><strong>Continuation:</strong> <span class="math inline">\(\mathrm{e}^{-r\Delta t}[p \cdot V_u + (1-p) \cdot V_d]\)</span></li>
+<li class="fragment"><strong>Exercise (call):</strong> <span class="math inline">\(\max(0, S - K)\)</span></li>
+<li class="fragment"><strong>Exercise (put):</strong> <span class="math inline">\(\max(0, K - S)\)</span></li>
+</ul>
+<p>Backward induction automatically finds the <strong>optimal exercise strategy</strong>.</p>
+</div>
+</section></section>
+<section>
+<section id="n-period-model" class="title-slide slide level1 center">
+<h1>N-Period Model</h1>
+
+</section>
+<section id="n-period-extension" class="slide level2" data-state="grid-sparse">
+<h2>N-Period Extension</h2>
+<p>With <span class="math inline">\(N\)</span> periods, after <span class="math inline">\(n\)</span> steps there are <span class="math inline">\(n+1\)</span> nodes:</p>
+<p><span class="math display">\[S_j = u^j d^{n-j} S = u^{2j-n}S, \quad j = 0, 1, \ldots, n\]</span></p>
+<div>
+<ul>
+<li class="fragment">Tree recombines because <span class="math inline">\(ud = 1\)</span></li>
+<li class="fragment">Total nodes = <span class="math inline">\(\frac{(N+1)(N+2)}{2}\)</span> (much less than <span class="math inline">\(2^N\)</span> paths)</li>
+<li class="fragment"><strong>Backward induction</strong> is efficient: work one time step at a time</li>
+</ul>
+</div>
+</section>
+<section id="interactive-n-period-trees" class="slide level2" data-state="grid-none">
+<h2>Interactive N-Period Trees</h2>
+<div id="fig-binomial-trees-slides" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-binomial-trees-slides-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe width="100%" height="800" src="https://binomial-trees.koyeb.app/">
+</iframe>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binomial-trees-slides-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Experiment with N-period binomial trees: adjust interest rates, up/down factors, number of periods, and compare European vs.&nbsp;American option pricing.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="vectorized-implementation" class="slide level2" data-state="grid-none">
+<h2>Vectorized Implementation</h2>
+<div id="5ec7dd37" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a><span class="kw">def</span> binomial_american(S0, K, r, sigma, T, N, option_type<span class="op">=</span><span class="st">'put'</span>):</span>
+<span id="cb3-4"><a></a>    dt <span class="op">=</span> T <span class="op">/</span> N</span>
+<span id="cb3-5"><a></a>    u <span class="op">=</span> np.exp(sigma <span class="op">*</span> np.sqrt(dt))</span>
+<span id="cb3-6"><a></a>    d <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> u</span>
+<span id="cb3-7"><a></a>    p <span class="op">=</span> (np.exp(r <span class="op">*</span> dt) <span class="op">-</span> d) <span class="op">/</span> (u <span class="op">-</span> d)</span>
+<span id="cb3-8"><a></a>    disc <span class="op">=</span> np.exp(<span class="op">-</span>r <span class="op">*</span> dt)</span>
+<span id="cb3-9"><a></a></span>
+<span id="cb3-10"><a></a>    <span class="co"># Terminal payoffs</span></span>
+<span id="cb3-11"><a></a>    j <span class="op">=</span> np.arange(N <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb3-12"><a></a>    S <span class="op">=</span> S0 <span class="op">*</span> u<span class="op">**</span>j <span class="op">*</span> d<span class="op">**</span>(N <span class="op">-</span> j)</span>
+<span id="cb3-13"><a></a>    V <span class="op">=</span> np.maximum(K <span class="op">-</span> S, <span class="dv">0</span>) <span class="cf">if</span> option_type <span class="op">==</span> <span class="st">'put'</span> <span class="cf">else</span> np.maximum(S <span class="op">-</span> K, <span class="dv">0</span>)</span>
+<span id="cb3-14"><a></a></span>
+<span id="cb3-15"><a></a>    <span class="co"># Backward induction</span></span>
+<span id="cb3-16"><a></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N <span class="op">-</span> <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb3-17"><a></a>        j <span class="op">=</span> np.arange(i <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb3-18"><a></a>        S <span class="op">=</span> S0 <span class="op">*</span> u<span class="op">**</span>j <span class="op">*</span> d<span class="op">**</span>(i <span class="op">-</span> j)</span>
+<span id="cb3-19"><a></a>        V <span class="op">=</span> disc <span class="op">*</span> (p <span class="op">*</span> V[<span class="dv">1</span>:i<span class="op">+</span><span class="dv">2</span>] <span class="op">+</span> (<span class="dv">1</span><span class="op">-</span>p) <span class="op">*</span> V[<span class="dv">0</span>:i<span class="op">+</span><span class="dv">1</span>])</span>
+<span id="cb3-20"><a></a>        exercise <span class="op">=</span> np.maximum(K <span class="op">-</span> S, <span class="dv">0</span>) <span class="cf">if</span> option_type <span class="op">==</span> <span class="st">'put'</span> <span class="cf">else</span> np.maximum(S <span class="op">-</span> K, <span class="dv">0</span>)</span>
+<span id="cb3-21"><a></a>        V <span class="op">=</span> np.maximum(V, exercise)</span>
+<span id="cb3-22"><a></a></span>
+<span id="cb3-23"><a></a>    <span class="cf">return</span> V[<span class="dv">0</span>]</span>
+<span id="cb3-24"><a></a></span>
+<span id="cb3-25"><a></a><span class="bu">print</span>(<span class="ss">f"American put:  </span><span class="sc">{</span>binomial_american(<span class="dv">100</span>, <span class="dv">105</span>, <span class="fl">0.05</span>, <span class="fl">0.2</span>, <span class="dv">1</span>, <span class="dv">100</span>, <span class="st">'put'</span>)<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb3-26"><a></a><span class="bu">print</span>(<span class="ss">f"American call: </span><span class="sc">{</span>binomial_american(<span class="dv">100</span>, <span class="dv">105</span>, <span class="fl">0.05</span>, <span class="fl">0.2</span>, <span class="dv">1</span>, <span class="dv">100</span>, <span class="st">'call'</span>)<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>American put:  8.7476
+American call: 8.0262</code></pre>
+</div>
+</div>
+</section>
+<section id="how-the-algorithm-works" class="slide level2" data-state="grid-medium">
+<h2>How the Algorithm Works</h2>
+<div>
+<ol type="1">
+<li class="fragment"><p><strong>Vectorization:</strong> NumPy arrays compute all nodes at each time step simultaneously</p></li>
+<li class="fragment"><p><strong>Memory efficiency:</strong> Only store option values for the current time step</p></li>
+<li class="fragment"><p><strong>Backward induction logic:</strong></p>
+<ul>
+<li class="fragment">Start with payoffs at maturity</li>
+<li class="fragment">At each prior step: discounted expected value of next period</li>
+<li class="fragment">Compare to immediate exercise (American feature)</li>
+<li class="fragment">Take the maximum</li>
+</ul></li>
+</ol>
+</div>
+</section></section>
+<section>
+<section id="parameter-calibration-and-convergence" class="title-slide slide level1 center">
+<h1>Parameter Calibration and Convergence</h1>
+
+</section>
+<section id="parameter-calibration-crr" class="slide level2" data-state="grid-coarse">
+<h2>Parameter Calibration: CRR</h2>
+<p>Cox-Ross-Rubinstein parameters match the continuous-time limit:</p>
+<p><span class="math display">\[u = \mathrm{e}^{\sigma\sqrt{\Delta t}}, \quad d = \frac{1}{u}, \quad p = \frac{\mathrm{e}^{(r-q)\Delta t} - d}{u - d}\]</span></p>
+<div>
+<ul>
+<li class="fragment"><span class="math inline">\(\sigma\)</span> = volatility of the underlying</li>
+<li class="fragment"><span class="math inline">\(q\)</span> = dividend yield</li>
+<li class="fragment"><strong>Tree recombines:</strong> <span class="math inline">\(ud = 1\)</span></li>
+<li class="fragment"><strong>Converges</strong> to geometric Brownian motion as <span class="math inline">\(\Delta t \to 0\)</span></li>
+</ul>
+</div>
+</section>
+<section id="convergence-to-black-scholes" class="slide level2" data-state="grid-none">
+<h2>Convergence to Black-Scholes</h2>
+<div id="fig-binomial-convergence-slides" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-binomial-convergence-slides-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<iframe width="120%" height="800" style="margin-left: -10%; transform-origin: top left;" src="https://eerie-rivalee-kerrybackapps-f393e9af.koyeb.app/">
+</iframe>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binomial-convergence-slides-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Binomial model (blue dots) converges to the Black-Scholes limit (red line) as the number of time steps increases. Deviations are the same for calls and puts, reflecting put-call parity.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="summary-key-takeaways" class="slide level2" data-state="grid-medium">
+<h2>Summary: Key Takeaways</h2>
+<div>
+<ol type="1">
+<li class="fragment"><p><strong>Replication:</strong> Option payoffs can be replicated with stock + borrowing</p></li>
+<li class="fragment"><p><strong>No-arbitrage pricing:</strong> Option value = cost of replicating portfolio</p></li>
+<li class="fragment"><p><strong>Risk-neutral probabilities:</strong> Value = discounted expected payoff under artificial probabilities</p></li>
+<li class="fragment"><p><strong>Backward induction:</strong> Work from maturity to today, comparing continuation vs.&nbsp;exercise at each node</p></li>
+<li class="fragment"><p><strong>CRR calibration:</strong> <span class="math inline">\(u = \mathrm{e}^{\sigma\sqrt{\Delta t}}\)</span>, <span class="math inline">\(d = 1/u\)</span> ensures convergence to Black-Scholes</p></li>
+<li class="fragment"><p><strong>American options:</strong> Backward induction automatically finds optimal exercise strategy</p></li>
+</ol>
+</div>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

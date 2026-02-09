@@ -13,37 +13,11 @@ Mark Loewenstein
 
 ---
 
-:::: {.columns}
 
-::: {.column width="50%"}
-### Part 1: Introduction
 
 - [Introduction to Options](01_intro_options.html){target="_blank"}
 - [Introduction to Futures](02_intro_futures.html){target="_blank"} 
-- [Binomial Trees](03_binomial_trees.html){target="_blank"} *(Coming soon)*
-
-### Part 2: Mathematical Foundations
-
-- [Brownian Motion](04_brownian_motion.html){target="_blank"} *(Coming soon)*
-- [Ito's Lemma](05_ito.html){target="_blank"} *(Coming soon)*
-- [Geometric Brownian Motion](06_gbm.html){target="_blank"} *(Coming soon)*
-:::
-
-::: {.column width="50%"}
-### Part 3: Option Pricing
-
-- [Black-Scholes Model](07_black_scholes.html){target="_blank"} *(Coming soon)*
-- [The Greeks](08_greeks.html){target="_blank"} *(Coming soon)*
-- [Exotic Options](09_exotics.html){target="_blank"} *(Coming soon)*
-
-### Part 4: Numerical Methods
-
-- [Monte Carlo Methods](10_monte_carlo.html){target="_blank"} *(Coming soon)*
-- [Binomial Model](11_binomial_model.html){target="_blank"} *(Coming soon)*
-
-:::
-
-::::
+- [Binomial Trees](03_binomial_trees.html){target="_blank"} 
 
 ---
 

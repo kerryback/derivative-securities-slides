@@ -1,262 +1,206 @@
 [
   {
-    "objectID": "02_intro_futures.html#what-are-futures-contracts",
-    "href": "02_intro_futures.html#what-are-futures-contracts",
+    "objectID": "03_binomial_trees.html#binomial-trees-overview",
+    "href": "03_binomial_trees.html#binomial-trees-overview",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "What Are Futures Contracts?",
-    "text": "What Are Futures Contracts?\nFutures contracts are standardized agreements to deliver an asset at a future date in exchange for payment at that date.\n\n\nFutures price: Price at which a contract trades. The price is paid at delivery.\nDelivery: Asset exchanged at expiration\nPayment: Made at delivery, not when contract is traded\nBoth buyer and seller have obligations (unlike options!)"
+    "section": "Binomial Trees: Overview",
+    "text": "Binomial Trees: Overview\nA powerful framework for pricing derivatives using no-arbitrage arguments.\n\n\nModel stock prices as moving up or down over discrete time steps\nReplicate option payoffs using the stock and risk-free asset\nPrice options by backward induction through the tree\nConverges to continuous-time models (Black-Scholes) as steps increase"
   },
   {
-    "objectID": "02_intro_futures.html#futures-vs.-options",
-    "href": "02_intro_futures.html#futures-vs.-options",
+    "objectID": "03_binomial_trees.html#one-period-model-setup",
+    "href": "03_binomial_trees.html#one-period-model-setup",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Futures vs. Options",
-    "text": "Futures vs. Options\n\n\nFutures Contracts\n\nBoth parties have obligations\nBoth must post margin\nNo upfront payment\nSymmetrical payoff\nDaily settlement\n\n\nOptions Contracts\n\nOnly seller has obligation\nOnly seller posts margin\nBuyer pays premium upfront\nAsymmetric payoff\nSettlement at expiration"
+    "section": "One-Period Model: Setup",
+    "text": "One-Period Model: Setup\nStock price \\(S\\) today can take two values at date \\(t\\):\n\n\nUp state: \\(S_u\\)\nDown state: \\(S_d\\)\nRisk-free return: \\(\\mathrm{e}^{rt}\\)\n\nNo-arbitrage condition:\n\\[S_u/S &gt; \\mathrm{e}^{rt} &gt; S_d/S\\]\nNeither asset dominates the other — no riskless profit possible."
   },
   {
-    "objectID": "02_intro_futures.html#historical-context",
-    "href": "02_intro_futures.html#historical-context",
+    "objectID": "03_binomial_trees.html#replicating-a-call-option",
+    "href": "03_binomial_trees.html#replicating-a-call-option",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Historical Context",
-    "text": "Historical Context\nFutures have a long history in commodity markets:\n\n\n1851: Modern futures trading begins in the United States\n1981: Cash-settled contracts introduced\nToday: Futures on commodities, financial assets, indices, currencies, and more\n\nCash-settled contracts: No physical delivery - settled based on underlying value at expiration"
+    "section": "Replicating a Call Option",
+    "text": "Replicating a Call Option\nA European call with strike \\(K\\) pays \\(C_u = \\max(0, S_u - K)\\) or \\(C_d = \\max(0, S_d - K)\\).\n\nKey insight: We can replicate the option payoff with a portfolio of stock and borrowing.\nDefine the delta (hedge ratio):\n\\[\\delta = \\frac{C_u - C_d}{S_u - S_d}\\]\nBuy \\(\\delta\\) shares, borrow \\(B = \\mathrm{e}^{-rt}(\\delta S_u - C_u)\\)"
   },
   {
-    "objectID": "02_intro_futures.html#long-and-short-positions",
-    "href": "02_intro_futures.html#long-and-short-positions",
+    "objectID": "03_binomial_trees.html#replication-and-no-arbitrage-pricing",
+    "href": "03_binomial_trees.html#replication-and-no-arbitrage-pricing",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Long and Short Positions",
-    "text": "Long and Short Positions\n\nLong (Buyer): Obligation to accept delivery, profits when price rises\nShort (Seller): Obligation to deliver, profits when price falls"
+    "section": "Replication and No-Arbitrage Pricing",
+    "text": "Replication and No-Arbitrage Pricing\nThe replicating portfolio matches the option in both states:\n\n\nUp state: \\(\\delta S_u - B\\mathrm{e}^{rt} = C_u\\)\nDown state: \\(\\delta S_d - B\\mathrm{e}^{rt} = C_d\\)\n\nNo-arbitrage argument: The option must cost the same as its replicating portfolio:\n\\[C = \\delta S - \\mathrm{e}^{-rt}(\\delta S_u - C_u)\\]\nOtherwise, buy the cheap one and sell the expensive one for riskless profit."
   },
   {
-    "objectID": "02_intro_futures.html#example-trading-corn-futures",
-    "href": "02_intro_futures.html#example-trading-corn-futures",
+    "objectID": "03_binomial_trees.html#example-stock-price-tree",
+    "href": "03_binomial_trees.html#example-stock-price-tree",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Example: Trading Corn Futures",
-    "text": "Example: Trading Corn Futures\nFarmer sells futures at $5.00/bushel, spot later drops to $4.00:\n\nPhysical Delivery: Deliver corn, receive $5.00/bushel\nOffset Position:\n\nBuy futures at $4.00 → Profit = $1.00/bushel\nSell corn in spot market at $4.00\nTotal: $5.00/bushel (same result!)\n\nKey insight: Spot-futures convergence at expiration"
+    "section": "Example: Stock Price Tree",
+    "text": "Example: Stock Price Tree\nSuppose a stock priced at $100 will either go up by 10% or down by 10%.\n\nThe simple interest rate is 5% (meaning \\(\\mathrm{e}^{rt}=1.05\\)). Note \\(1.10 &gt; 1.05 &gt; 0.90\\), so the no-arbitrage condition holds."
   },
   {
-    "objectID": "02_intro_futures.html#contract-specifications",
-    "href": "02_intro_futures.html#contract-specifications",
+    "objectID": "03_binomial_trees.html#call-option-payoffs",
+    "href": "03_binomial_trees.html#call-option-payoffs",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Contract Specifications",
-    "text": "Contract Specifications\nExchanges standardize all contract terms:\n\n\nDelivery location and date\nQuantity and quality (with price adjustments)\n\nExample: CME Corn Futures - 5,000 bushels per contract, Illinois delivery locations"
+    "section": "Call Option Payoffs",
+    "text": "Call Option Payoffs\nConsider a call option with a strike of $105. It ends with a value of $5 if the stock goes to $110 and $0 if the stock goes to $90.\n\nWe want to find its value at the beginning."
   },
   {
-    "objectID": "02_intro_futures.html#cash-settled-futures",
-    "href": "02_intro_futures.html#cash-settled-futures",
+    "objectID": "03_binomial_trees.html#step-1-compute-delta-and-value-of-delta-shares",
+    "href": "03_binomial_trees.html#step-1-compute-delta-and-value-of-delta-shares",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Cash-Settled Futures",
-    "text": "Cash-Settled Futures\nNo physical delivery - settled based on index value:\n\nE-mini S&P 500: $50 multiplier per index point\n\nBuy at 6000, index expires at 6500\nProfit = $50 × 500 = $25,000\n\nBenefits: Eliminates delivery logistics, enables index futures"
+    "section": "Step 1: Compute Delta and Value of \\(\\delta\\) Shares",
+    "text": "Step 1: Compute Delta and Value of \\(\\delta\\) Shares\n\\(\\delta = (5 - 0)/(110 - 90) = 1/4\\). Here is the value of 1/4 share of the stock:\n\n\nUp state: \\(0.25 \\times 110 = 27.50\\)\nDown state: \\(0.25 \\times 90 = 22.50\\)"
   },
   {
-    "objectID": "02_intro_futures.html#trading-vs.-gambling",
-    "href": "02_intro_futures.html#trading-vs.-gambling",
+    "objectID": "03_binomial_trees.html#step-2-borrowing",
+    "href": "03_binomial_trees.html#step-2-borrowing",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Trading vs. Gambling",
-    "text": "Trading vs. Gambling\nKey distinction: Futures must serve legitimate risk-management needs\n\nExamples:\n\nFund manager hedging equity portfolio\nAirline hedging fuel costs\nUtility hedging temperature risk"
+    "section": "Step 2: Borrowing",
+    "text": "Step 2: Borrowing\nBorrow the PV of the down-state portfolio value. At 5% interest, the PV of $22.50 is $21.43.\n\nThe debt is the same in both states — it’s risk-free borrowing."
   },
   {
-    "objectID": "02_intro_futures.html#market-structure",
-    "href": "02_intro_futures.html#market-structure",
+    "objectID": "03_binomial_trees.html#step-3-equity-call-option",
+    "href": "03_binomial_trees.html#step-3-equity-call-option",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Market Structure",
-    "text": "Market Structure\nLike options, futures have:\n\n\nExchange-traded: Standardized, transparent\nClearinghouse: Central counterparty\nOpen interest: Long = short positions\nMost positions closed early via offsetting trades"
+    "section": "Step 3: Equity = Call Option",
+    "text": "Step 3: Equity = Call Option\nThe equity in the levered portfolio (shares minus debt) replicates the call:\n\n\n\nUp state: \\(27.50 - 22.50 = 5.00\\) = \\(C_u\\)\nDown state: \\(22.50 - 22.50 = 0.00\\) = \\(C_d\\)\nCall value = cost of \\(\\delta\\) shares \\(-\\) amount borrowed \\(= 25.00 - 21.43 = 3.57\\)"
   },
   {
-    "objectID": "02_intro_futures.html#margin-and-marking-to-market",
-    "href": "02_intro_futures.html#margin-and-marking-to-market",
+    "objectID": "03_binomial_trees.html#state-prices",
+    "href": "03_binomial_trees.html#state-prices",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Margin and Marking to Market",
-    "text": "Margin and Marking to Market\nDaily Settlement Process:\n\n\nExchange sets settlement price each day\nAll positions marked to this price\nProfits/losses immediately transferred\nVirtually eliminates counterparty risk"
+    "section": "State Prices",
+    "text": "State Prices\nDefine state prices — the cost today of $1 in a single state:\n\\[\\pi_u = \\frac{S - \\mathrm{e}^{-rt}S_d}{S_u - S_d}, \\quad \\pi_d = \\frac{\\mathrm{e}^{-rt}S_u - S}{S_u - S_d}\\]\n\nEvery asset can be valued as a portfolio of state payoffs:\n\nCall: \\(C = \\pi_u C_u + \\pi_d C_d\\)\nStock: \\(S = \\pi_u S_u + \\pi_d S_d\\)\nRisk-free: \\(1 = \\pi_u \\mathrm{e}^{rt} + \\pi_d \\mathrm{e}^{rt}\\)\n\nNo-arbitrage implies \\(\\pi_u &gt; 0\\) and \\(\\pi_d &gt; 0\\)."
   },
   {
-    "objectID": "02_intro_futures.html#daily-settlement-example",
-    "href": "02_intro_futures.html#daily-settlement-example",
+    "objectID": "03_binomial_trees.html#risk-neutral-pricing",
+    "href": "03_binomial_trees.html#risk-neutral-pricing",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Daily Settlement Example",
-    "text": "Daily Settlement Example\nBuy 1 e-mini S&P 500 contract at 6000:\n\n\n\nDay\nSettlement Price\nDaily P/L\nCumulative P/L\n\n\n\n\n0 (Entry)\n6000\n-\n-\n\n\n1\n6010\n+$500\n+$500\n\n\n2\n5990\n-$1,000\n-$500\n\n\n3\n6020\n+$1,500\n+$1,000\n\n\n\nDay 3: Close position, walk away with $1,000 gain\nCalculation: (6020 - 6000) × $50 = $1,000"
+    "section": "Risk-Neutral Pricing",
+    "text": "Risk-Neutral Pricing\nTransform state prices into risk-neutral probabilities: \\(p_u = \\mathrm{e}^{rt}\\pi_u\\), \\(p_d = \\mathrm{e}^{rt}\\pi_d\\)\n\n\n\\(p_u + p_d = 1\\) and both positive — mathematical probabilities\nNot anyone’s actual beliefs — artificial probabilities\n\nPricing formulas:\n\\[C = \\mathrm{e}^{-rt}\\big[p_u C_u + p_d C_d\\big]\\] \\[S = \\mathrm{e}^{-rt}\\big[p_u S_u + p_d S_d\\big]\\]\nValue = discounted expected payoff using risk-neutral probabilities."
   },
   {
-    "objectID": "02_intro_futures.html#margin-requirements",
-    "href": "02_intro_futures.html#margin-requirements",
+    "objectID": "03_binomial_trees.html#risk-neutral-probabilities-example",
+    "href": "03_binomial_trees.html#risk-neutral-probabilities-example",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Margin Requirements",
-    "text": "Margin Requirements\nTwo types of margin:\n\n\nInitial Margin\n\nRequired to open position\nTypically 3-12% of contract value\nSet by exchange\n\n\nMaintenance Margin\n\nMinimum to keep position open\nLower than initial margin\nIf breached → margin call\n\n\n\nMargin Call: Demand for additional margin to restore account to initial margin level. Failure to meet = forced liquidation."
+    "section": "Risk-Neutral Probabilities: Example",
+    "text": "Risk-Neutral Probabilities: Example\nReturn to our example. If there were no risk premium, the stock price would be the discounted expected value:\n\\[\\$100 = \\frac{p \\times \\$110 + (1-p) \\times \\$90}{1.05}\\]\n\nSolving for \\(p\\):\n\\[p = \\frac{r_f - r_d}{r_u - r_d} = \\frac{0.05 - (-0.10)}{0.10 - (-0.10)} = \\frac{0.15}{0.20} = 0.75\\]\nCall value:\n\\[C = \\frac{0.75 \\times \\$5 + 0.25 \\times \\$0}{1.05} = \\$3.57\\]\nSame answer as the delta hedge — because it’s just algebra!"
   },
   {
-    "objectID": "02_intro_futures.html#leverage-in-futures",
-    "href": "02_intro_futures.html#leverage-in-futures",
+    "objectID": "03_binomial_trees.html#computing-risk-neutral-probabilities",
+    "href": "03_binomial_trees.html#computing-risk-neutral-probabilities",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Leverage in Futures",
-    "text": "Leverage in Futures\n10% margin = 10:1 leverage\n\n\n1% price move = 10% gain/loss on margin\n10% price move = 100% gain/loss on margin\n\nSafety mechanisms: Daily marking to market + margin calls + clearinghouse"
+    "section": "Computing Risk-Neutral Probabilities",
+    "text": "Computing Risk-Neutral Probabilities\nDirectly from asset returns:\n\\[p_u = \\frac{\\mathrm{e}^{rt} - S_d/S}{S_u/S - S_d/S}, \\quad p_d = 1 - p_u\\]\n\n\nNumerator: risk-free return minus down return\nDenominator: up return minus down return\nSame formula extends to multiperiod trees (replacing \\(t\\) with \\(\\Delta t\\))"
   },
   {
-    "objectID": "02_intro_futures.html#the-expectations-hypothesis",
-    "href": "02_intro_futures.html#the-expectations-hypothesis",
+    "objectID": "03_binomial_trees.html#why-does-risk-neutral-pricing-work",
+    "href": "03_binomial_trees.html#why-does-risk-neutral-pricing-work",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "The Expectations Hypothesis",
-    "text": "The Expectations Hypothesis\nFutures prices = Expected future spot prices\n\nLogic: If \\(F \\neq E[S_T]\\), trading for expected profit drives \\(F \\to E[S_T]\\)\nProblem: Assumes risk-neutral investors!"
+    "section": "Why Does Risk-Neutral Pricing Work?",
+    "text": "Why Does Risk-Neutral Pricing Work?\n\n\nThe delta hedge argument didn’t depend on risk preferences\nSo we can act as if investors don’t require risk premia\nThe risk-neutral probabilities are not anyone’s actual beliefs\nThey are simply a convenient computational tool derived from no-arbitrage"
   },
   {
-    "objectID": "02_intro_futures.html#reality-risk-premia",
-    "href": "02_intro_futures.html#reality-risk-premia",
+    "objectID": "03_binomial_trees.html#backward-induction",
+    "href": "03_binomial_trees.html#backward-induction",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Reality: Risk Premia",
-    "text": "Reality: Risk Premia\n\nRisk-averse investors won’t trade unlimited amounts\nResult: Futures prices can deviate from expected spot prices\n\nDeviation depends on covariance with market risk\nFrom CAPM: covariance with market return\n\nDespite this: Expectations still prime determinant of prices"
+    "section": "Backward Induction",
+    "text": "Backward Induction\nWork backwards from maturity to find today’s value:\n\nStep 1 — Terminal payoffs:\n\n\\(C_{uu} = \\max(0, u^2S - K)\\), \\(\\;C_{ud} = \\max(0, S - K)\\), \\(\\;C_{dd} = \\max(0, d^2S - K)\\)\n\nStep 2 — Intermediate nodes:\n\n\\(C_u = \\mathrm{e}^{-r\\Delta t}[p \\cdot C_{uu} + (1-p) \\cdot C_{ud}]\\)\n\\(C_d = \\mathrm{e}^{-r\\Delta t}[p \\cdot C_{ud} + (1-p) \\cdot C_{dd}]\\)\n\nStep 3 — Today’s value:\n\n\\(C_0 = \\mathrm{e}^{-r\\Delta t}[p \\cdot C_u + (1-p) \\cdot C_d]\\)"
   },
   {
-    "objectID": "02_intro_futures.html#spot-futures-parity",
-    "href": "02_intro_futures.html#spot-futures-parity",
+    "objectID": "03_binomial_trees.html#two-period-stock-tree",
+    "href": "03_binomial_trees.html#two-period-stock-tree",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Spot-Futures Parity",
-    "text": "Spot-Futures Parity\nUnlike expectations hypothesis, parity is an arbitrage relationship:\n\\[F = \\mathrm{e}^{(c-y)T}S\\]\nwhere:\n\n\\(F\\) = futures price\n\\(S\\) = current spot price\n\\(c\\) = cost of carry (continuously compounded)\n\\(y\\) = convenience yield (continuously compounded)\n\\(T\\) = time to expiration"
+    "section": "Two-Period Stock Tree",
+    "text": "Two-Period Stock Tree\nSuppose a $100 stock goes up by 5% or down by \\((1/1.05 - 1) = -4.76\\%\\) in each of two periods.\n\nThe tree recombines: up then down = down then up = $100. The interest rate is 3% per period."
   },
   {
-    "objectID": "02_intro_futures.html#cost-of-carry-and-convenience-yield",
-    "href": "02_intro_futures.html#cost-of-carry-and-convenience-yield",
+    "objectID": "03_binomial_trees.html#two-period-call-k-105",
+    "href": "03_binomial_trees.html#two-period-call-k-105",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Cost of Carry and Convenience Yield",
-    "text": "Cost of Carry and Convenience Yield\n\n\nCost of Carry (\\(c\\))\n\nForegone interest on capital\nStorage costs (commodities)\nNo costs for holding futures\n\nFor financial assets: \\(c = r\\)\n\nConvenience Yield (\\(y\\))\n\nDividends/cash flows\nBenefits of physical possession\nNever negative\n\nFor financial assets: \\(y\\) = dividend yield"
+    "section": "Two-Period Call (K = $105)",
+    "text": "Two-Period Call (K = $105)\nA call with strike $105 expires at the end of the 2nd period. Terminal payoffs:\n\nWe need to work backwards to fill in the values at earlier nodes."
   },
   {
-    "objectID": "02_intro_futures.html#arbitrage-buy-spot-sell-futures",
-    "href": "02_intro_futures.html#arbitrage-buy-spot-sell-futures",
+    "objectID": "03_binomial_trees.html#backward-induction-delta-hedging",
+    "href": "03_binomial_trees.html#backward-induction-delta-hedging",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Arbitrage: Buy Spot, Sell Futures",
-    "text": "Arbitrage: Buy Spot, Sell Futures\nIf \\(F &gt; \\mathrm{e}^{rT}S\\) (assuming \\(c=r\\), \\(y=0\\)):\n\n\nBorrow \\(S\\), buy spot asset\nSell futures at \\(F\\)\nAt expiration: deliver asset, receive \\(F\\), repay \\(\\mathrm{e}^{rT}S\\)\n\nProfit: \\(F - \\mathrm{e}^{rT}S\\) (risk-free!)"
+    "section": "Backward Induction: Delta Hedging",
+    "text": "Backward Induction: Delta Hedging\nAt each intermediate node, repeat the one-period analysis:\n\nAt the up node (\\(S = 105\\)): use payoffs \\(C_{uu} = 5.25\\) and \\(C_{ud} = 0\\) to find \\(C_u\\)\nAt the down node (\\(S = 95.24\\)): use payoffs \\(C_{ud} = 0\\) and \\(C_{dd} = 0\\) to find \\(C_d\\)\nAt the initial node (\\(S = 100\\)): use \\(C_u\\) and \\(C_d\\) to find \\(C_0\\)\nThis recursive procedure is backward induction."
   },
   {
-    "objectID": "02_intro_futures.html#arbitrage-sell-spot-buy-futures",
-    "href": "02_intro_futures.html#arbitrage-sell-spot-buy-futures",
+    "objectID": "03_binomial_trees.html#risk-neutral-probability",
+    "href": "03_binomial_trees.html#risk-neutral-probability",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Arbitrage: Sell Spot, Buy Futures",
-    "text": "Arbitrage: Sell Spot, Buy Futures\nIf \\(F &lt; \\mathrm{e}^{rT}S\\) (assuming \\(c=r\\), \\(y=0\\)):\n\n\nShort sell spot asset for \\(S\\), invest proceeds\nBuy futures at \\(F\\)\nAt expiration: pay \\(F\\), accept delivery, return to lender\n\nProfit: \\(\\mathrm{e}^{rT}S - F\\) (risk-free!)"
+    "section": "Risk-Neutral Probability",
+    "text": "Risk-Neutral Probability\nThe risk-neutral probability of “up” each period is:\n\\[p = \\frac{r_f - r_d}{r_u - r_d} = \\frac{0.03 - (-0.0476)}{0.05 - (-0.0476)} = 0.795\\]\n\nDiscounting the expected call values at the risk-free rate yields:"
   },
   {
-    "objectID": "02_intro_futures.html#why-parity-holds",
-    "href": "02_intro_futures.html#why-parity-holds",
+    "objectID": "03_binomial_trees.html#another-example-call-with-k-95",
+    "href": "03_binomial_trees.html#another-example-call-with-k-95",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Why Parity Holds",
-    "text": "Why Parity Holds\n\nInstitutional arbitrageurs exploit violations quickly\nExtensions:\n\nStorage costs → add to \\(c\\)\nDividends → subtract from \\(c\\) (or add to \\(y\\))\nGeneral formula: \\(F = \\mathrm{e}^{(c-y)T}S\\)"
+    "section": "Another Example: Call with K = $95",
+    "text": "Another Example: Call with K = $95\n\n\nStock tree:\n\n\n\n\n\n\nCall with strike $95:\n\n\n\n\n\n\n\nApply the same backward induction to fill in the intermediate and initial values."
   },
   {
-    "objectID": "02_intro_futures.html#forward-curves",
-    "href": "02_intro_futures.html#forward-curves",
+    "objectID": "03_binomial_trees.html#two-period-example-in-code",
+    "href": "03_binomial_trees.html#two-period-example-in-code",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Forward Curves",
-    "text": "Forward Curves\nForward curve: Relationship between futures price and contract maturity\nFrom spot-futures parity:\n\\[F = \\mathrm{e}^{(c-y)T}S\\]\n\nShape depends on \\(c - y\\):\n\nIf \\(c &gt; y\\): Upward sloping (contango)\nIf \\(c &lt; y\\): Downward sloping (backwardation)\nIf \\(c = y\\): Flat"
+    "section": "Two-Period Example in Code",
+    "text": "Two-Period Example in Code\n\nS = 100\nK = 95\nu = 0.05            # up return per period\nr = 0.03            # interest rate per period\nn = 2               # number of periods\nd = 1/(1+u) - 1     # down return per period\np = (r-d) / (u-d)   # risk-neutral prob\n\n# Terminal stock prices and call payoffs\nx = [S*(1+u)**(n-2*i) for i in range(n+1)]\nv = np.maximum(0, np.array(x)-K)\n\n# Backward induction\nwhile len(v) &gt; 1:\n    v = (p*v[:-1] + (1-p)*v[1:]) / (1+r)\n\nprint(f\"Risk-neutral prob p = {p:.4f}\")\nprint(f\"Call value (K={K}): ${v[0]:.2f}\")\n\nRisk-neutral prob p = 0.7951\nCall value (K=95): $10.62"
   },
   {
-    "objectID": "02_intro_futures.html#gold-forward-curve",
-    "href": "02_intro_futures.html#gold-forward-curve",
+    "objectID": "03_binomial_trees.html#american-options-early-exercise",
+    "href": "03_binomial_trees.html#american-options-early-exercise",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Gold Forward Curve",
-    "text": "Gold Forward Curve\nGold: negligible storage, no dividends, no convenience yield → \\(c - y = r\\)\n\n\n\n\n                                                \n\n\nFigure 1"
+    "section": "American Options: Early Exercise",
+    "text": "American Options: Early Exercise\nAt each intermediate node, compare continuation vs. immediate exercise:\n\\[V = \\max\\!\\big(\\text{continuation value},\\; \\text{exercise value}\\big)\\]\n\n\nContinuation: \\(\\mathrm{e}^{-r\\Delta t}[p \\cdot V_u + (1-p) \\cdot V_d]\\)\nExercise (call): \\(\\max(0, S - K)\\)\nExercise (put): \\(\\max(0, K - S)\\)\n\nBackward induction automatically finds the optimal exercise strategy."
   },
   {
-    "objectID": "02_intro_futures.html#currency-forward-curves",
-    "href": "02_intro_futures.html#currency-forward-curves",
+    "objectID": "03_binomial_trees.html#n-period-extension",
+    "href": "03_binomial_trees.html#n-period-extension",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Currency Forward Curves",
-    "text": "Currency Forward Curves\nFor currencies: \\(c - y = r - r_f\\) (domestic vs. foreign interest rates)\n\n\n\n\n                                                \n\n\nFigure 2"
+    "section": "N-Period Extension",
+    "text": "N-Period Extension\nWith \\(N\\) periods, after \\(n\\) steps there are \\(n+1\\) nodes:\n\\[S_j = u^j d^{n-j} S = u^{2j-n}S, \\quad j = 0, 1, \\ldots, n\\]\n\n\nTree recombines because \\(ud = 1\\)\nTotal nodes = \\(\\frac{(N+1)(N+2)}{2}\\) (much less than \\(2^N\\) paths)\nBackward induction is efficient: work one time step at a time"
   },
   {
-    "objectID": "02_intro_futures.html#sp-500-forward-curve",
-    "href": "02_intro_futures.html#sp-500-forward-curve",
+    "objectID": "03_binomial_trees.html#interactive-n-period-trees",
+    "href": "03_binomial_trees.html#interactive-n-period-trees",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "S&P 500 Forward Curve",
-    "text": "S&P 500 Forward Curve\nFor stock indices: \\(c - y = r - \\text{dividend yield}\\)\n\n\n\n\n                                                \n\n\nFigure 3"
+    "section": "Interactive N-Period Trees",
+    "text": "Interactive N-Period Trees\n\n\n\n\n\n\n\nFigure 1: Experiment with N-period binomial trees: adjust interest rates, up/down factors, number of periods, and compare European vs. American option pricing."
   },
   {
-    "objectID": "02_intro_futures.html#commodity-forward-curves",
-    "href": "02_intro_futures.html#commodity-forward-curves",
+    "objectID": "03_binomial_trees.html#vectorized-implementation",
+    "href": "03_binomial_trees.html#vectorized-implementation",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Commodity Forward Curves",
-    "text": "Commodity Forward Curves\nMore complex due to storage costs and convenience yields:\n\n\nHigh storage costs (electricity, natural gas)\nConvenience yield varies with supply/demand\nUpward or downward sloping\nSeasonal patterns (natural gas, corn)\n\nBound: \\(F \\leq \\mathrm{e}^{cT}S\\) (may have little predictive power)"
+    "section": "Vectorized Implementation",
+    "text": "Vectorized Implementation\n\nimport numpy as np\n\ndef binomial_american(S0, K, r, sigma, T, N, option_type='put'):\n    dt = T / N\n    u = np.exp(sigma * np.sqrt(dt))\n    d = 1 / u\n    p = (np.exp(r * dt) - d) / (u - d)\n    disc = np.exp(-r * dt)\n\n    # Terminal payoffs\n    j = np.arange(N + 1)\n    S = S0 * u**j * d**(N - j)\n    V = np.maximum(K - S, 0) if option_type == 'put' else np.maximum(S - K, 0)\n\n    # Backward induction\n    for i in range(N - 1, -1, -1):\n        j = np.arange(i + 1)\n        S = S0 * u**j * d**(i - j)\n        V = disc * (p * V[1:i+2] + (1-p) * V[0:i+1])\n        exercise = np.maximum(K - S, 0) if option_type == 'put' else np.maximum(S - K, 0)\n        V = np.maximum(V, exercise)\n\n    return V[0]\n\nprint(f\"American put:  {binomial_american(100, 105, 0.05, 0.2, 1, 100, 'put'):.4f}\")\nprint(f\"American call: {binomial_american(100, 105, 0.05, 0.2, 1, 100, 'call'):.4f}\")\n\nAmerican put:  8.7476\nAmerican call: 8.0262"
   },
   {
-    "objectID": "02_intro_futures.html#crude-oil-extreme-scenarios",
-    "href": "02_intro_futures.html#crude-oil-extreme-scenarios",
+    "objectID": "03_binomial_trees.html#how-the-algorithm-works",
+    "href": "03_binomial_trees.html#how-the-algorithm-works",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Crude Oil: Extreme Scenarios",
-    "text": "Crude Oil: Extreme Scenarios\n\n\n\n\n                                                \n\n\nFigure 4"
+    "section": "How the Algorithm Works",
+    "text": "How the Algorithm Works\n\n\nVectorization: NumPy arrays compute all nodes at each time step simultaneously\nMemory efficiency: Only store option values for the current time step\nBackward induction logic:\n\nStart with payoffs at maturity\nAt each prior step: discounted expected value of next period\nCompare to immediate exercise (American feature)\nTake the maximum"
   },
   {
-    "objectID": "02_intro_futures.html#crude-oil-insights",
-    "href": "02_intro_futures.html#crude-oil-insights",
+    "objectID": "03_binomial_trees.html#parameter-calibration-crr",
+    "href": "03_binomial_trees.html#parameter-calibration-crr",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Crude Oil Insights",
-    "text": "Crude Oil Insights\n\n\nApril 2020:\n\nCoronavirus demand collapse\nStorage at Cushing full\nExtremely high storage costs\nZero convenience yield\nResult: Steep upward slope\nFront month went negative!\n\n\nMarch 2022:\n\nRussian invasion of Ukraine\nFuture supplies uncertain\nHigh convenience yield\nResult: Steep downward slope\nPremium for oil now vs. later"
+    "section": "Parameter Calibration: CRR",
+    "text": "Parameter Calibration: CRR\nCox-Ross-Rubinstein parameters match the continuous-time limit:\n\\[u = \\mathrm{e}^{\\sigma\\sqrt{\\Delta t}}, \\quad d = \\frac{1}{u}, \\quad p = \\frac{\\mathrm{e}^{(r-q)\\Delta t} - d}{u - d}\\]\n\n\n\\(\\sigma\\) = volatility of the underlying\n\\(q\\) = dividend yield\nTree recombines: \\(ud = 1\\)\nConverges to geometric Brownian motion as \\(\\Delta t \\to 0\\)"
   },
   {
-    "objectID": "02_intro_futures.html#cyclical-commodities",
-    "href": "02_intro_futures.html#cyclical-commodities",
+    "objectID": "03_binomial_trees.html#convergence-to-black-scholes",
+    "href": "03_binomial_trees.html#convergence-to-black-scholes",
     "title": "Pricing and Hedging Derivative Securities",
-    "section": "Cyclical Commodities",
-    "text": "Cyclical Commodities\nNatural gas and corn show seasonal patterns:\n\n\n\n\n                                                \n\n\nFigure 5"
+    "section": "Convergence to Black-Scholes",
+    "text": "Convergence to Black-Scholes\n\n\n\n\n\n\n\nFigure 2: Binomial model (blue dots) converges to the Black-Scholes limit (red line) as the number of time steps increases. Deviations are the same for calls and puts, reflecting put-call parity."
   },
   {
-    "objectID": "02_intro_futures.html#natural-gas-seasonality",
-    "href": "02_intro_futures.html#natural-gas-seasonality",
-    "title": "Pricing and Hedging Derivative Securities",
-    "section": "Natural Gas Seasonality",
-    "text": "Natural Gas Seasonality\n\nSummer to Winter (upward): High storage costs\nWinter to Summer (downward): High convenience yield (demand peak)\nOverall slope: Depends on supply/demand conditions"
-  },
-  {
-    "objectID": "02_intro_futures.html#corn-seasonality",
-    "href": "02_intro_futures.html#corn-seasonality",
-    "title": "Pricing and Hedging Derivative Securities",
-    "section": "Corn Seasonality",
-    "text": "Corn Seasonality\n\nPre-harvest (summer): High convenience yield (scarcity)\nPost-harvest (fall): High storage costs (silos full)\nOverall slope: Varies with spot market conditions"
-  },
-  {
-    "objectID": "02_intro_futures.html#options-on-futures",
-    "href": "02_intro_futures.html#options-on-futures",
-    "title": "Pricing and Hedging Derivative Securities",
-    "section": "Options on Futures",
-    "text": "Options on Futures\nA derivative on a derivative!\n\nCall: Right to buy futures at strike\nPut: Right to sell futures at strike\nBenefits: Leverage, liquidity, avoids delivery/storage"
-  },
-  {
-    "objectID": "02_intro_futures.html#exercise-of-futures-options",
-    "href": "02_intro_futures.html#exercise-of-futures-options",
-    "title": "Pricing and Hedging Derivative Securities",
-    "section": "Exercise of Futures Options",
-    "text": "Exercise of Futures Options\nWhen exercised, creates futures position + cash transfer:\n\n\nOption Holder:\n\nCall → Long futures position\nPut → Short futures position\nMarked to market at current futures price\nReceives cash = (Futures price - Strike)\n\n\nOption Writer:\n\nCall → Short futures position\nPut → Long futures position\nMarked to market at current futures price\nPays cash = (Futures price - Strike)"
-  },
-  {
-    "objectID": "02_intro_futures.html#futures-options-example",
-    "href": "02_intro_futures.html#futures-options-example",
-    "title": "Pricing and Hedging Derivative Securities",
-    "section": "Futures Options Example",
-    "text": "Futures Options Example\nBuy call on corn futures, strike = $5.00, exercise at $5.50:\n\nYou (exerciser):\n\nLong futures at $5.50 + receive $0.50 cash\n\nOption writer:\n\nShort futures at $5.50 + pay $0.50 cash\n\nResult: Both can immediately close futures positions"
-  },
-  {
-    "objectID": "02_intro_futures.html#summary-key-takeaways",
-    "href": "02_intro_futures.html#summary-key-takeaways",
+    "objectID": "03_binomial_trees.html#summary-key-takeaways",
+    "href": "03_binomial_trees.html#summary-key-takeaways",
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Summary: Key Takeaways",
-    "text": "Summary: Key Takeaways\n\n\nFutures = Obligations for both parties (vs. options)\nDaily marking to market virtually eliminates counterparty risk\nLeverage through margin enables high returns/losses\nSpot-futures parity is an arbitrage relationship: \\(F = \\mathrm{e}^{(c-y)T}S\\)\nForward curves reveal cost of carry minus convenience yield\nCommodity curves complex due to storage and seasonality\nFutures options combine benefits of both derivatives"
-  },
-  {
-    "objectID": "02_intro_futures.html#next-steps",
-    "href": "02_intro_futures.html#next-steps",
-    "title": "Pricing and Hedging Derivative Securities",
-    "section": "Next Steps",
-    "text": "Next Steps\nBuilding on this foundation:\n\n\nHedging with futures: Optimal hedge ratios, basis risk\nFutures pricing models: Storage models, asset pricing theory\nSpread trading: Calendar spreads, inter-commodity spreads\nArbitrage strategies: Cash-and-carry, reverse cash-and-carry\nReal-world considerations: Transaction costs, margin management, delivery options"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Lecture Slides",
-    "section": "",
-    "text": "Kerry Back Hong Liu Mark Loewenstein\n\n\n\n\n\n\nIntroduction to Options\nIntroduction to Futures\nBinomial Trees (Coming soon)\n\n\n\n\n\nBrownian Motion (Coming soon)\nIto’s Lemma (Coming soon)\nGeometric Brownian Motion (Coming soon)\n\n\n\n\n\n\nBlack-Scholes Model (Coming soon)\nThe Greeks (Coming soon)\nExotic Options (Coming soon)\n\n\n\n\n\nMonte Carlo Methods (Coming soon)\nBinomial Model (Coming soon)"
-  },
-  {
-    "objectID": "index.html#pricing-and-hedging-derivative-securities",
-    "href": "index.html#pricing-and-hedging-derivative-securities",
-    "title": "Lecture Slides",
-    "section": "",
-    "text": "Kerry Back Hong Liu Mark Loewenstein\n\n\n\n\n\n\nIntroduction to Options\nIntroduction to Futures\nBinomial Trees (Coming soon)\n\n\n\n\n\nBrownian Motion (Coming soon)\nIto’s Lemma (Coming soon)\nGeometric Brownian Motion (Coming soon)\n\n\n\n\n\n\nBlack-Scholes Model (Coming soon)\nThe Greeks (Coming soon)\nExotic Options (Coming soon)\n\n\n\n\n\nMonte Carlo Methods (Coming soon)\nBinomial Model (Coming soon)"
+    "text": "Summary: Key Takeaways\n\n\nReplication: Option payoffs can be replicated with stock + borrowing\nNo-arbitrage pricing: Option value = cost of replicating portfolio\nRisk-neutral probabilities: Value = discounted expected payoff under artificial probabilities\nBackward induction: Work from maturity to today, comparing continuation vs. exercise at each node\nCRR calibration: \\(u = \\mathrm{e}^{\\sigma\\sqrt{\\Delta t}}\\), \\(d = 1/u\\) ensures convergence to Black-Scholes\nAmerican options: Backward induction automatically finds optimal exercise strategy"
   },
   {
     "objectID": "01_intro_options.html#what-are-derivatives",
@@ -642,5 +586,264 @@
     "title": "Pricing and Hedging Derivative Securities",
     "section": "Summary: Key Takeaways",
     "text": "Summary: Key Takeaways\n\n\nOptions are versatile - building blocks for complex strategies\nPayoff diagrams - visualize by summing individual positions\nMarket patterns - OTM options popular, OI follows predictable life cycle\nPut-call parity - fundamental no-arbitrage relationship\nEarly exercise - rarely optimal for calls, sometimes optimal for puts\nPortfolio construction - combine options for specific risk/reward profiles"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Lecture Slides",
+    "section": "",
+    "text": "Kerry Back Hong Liu Mark Loewenstein\n\n\nIntroduction to Options\nIntroduction to Futures\nBinomial Trees"
+  },
+  {
+    "objectID": "index.html#pricing-and-hedging-derivative-securities",
+    "href": "index.html#pricing-and-hedging-derivative-securities",
+    "title": "Lecture Slides",
+    "section": "",
+    "text": "Kerry Back Hong Liu Mark Loewenstein\n\n\nIntroduction to Options\nIntroduction to Futures\nBinomial Trees"
+  },
+  {
+    "objectID": "02_intro_futures.html#what-are-futures-contracts",
+    "href": "02_intro_futures.html#what-are-futures-contracts",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "What Are Futures Contracts?",
+    "text": "What Are Futures Contracts?\nFutures contracts are standardized agreements to deliver an asset at a future date in exchange for payment at that date.\n\n\nFutures price: Price at which a contract trades. The price is paid at delivery.\nDelivery: Asset exchanged at expiration\nPayment: Made at delivery, not when contract is traded\nBoth buyer and seller have obligations (unlike options!)"
+  },
+  {
+    "objectID": "02_intro_futures.html#futures-vs.-options",
+    "href": "02_intro_futures.html#futures-vs.-options",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Futures vs. Options",
+    "text": "Futures vs. Options\n\n\nFutures Contracts\n\nBoth parties have obligations\nBoth must post margin\nNo upfront payment\nSymmetrical payoff\nDaily settlement\n\n\nOptions Contracts\n\nOnly seller has obligation\nOnly seller posts margin\nBuyer pays premium upfront\nAsymmetric payoff\nSettlement at expiration"
+  },
+  {
+    "objectID": "02_intro_futures.html#historical-context",
+    "href": "02_intro_futures.html#historical-context",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Historical Context",
+    "text": "Historical Context\nFutures have a long history in commodity markets:\n\n\n1851: Modern futures trading begins in the United States\n1981: Cash-settled contracts introduced\nToday: Futures on commodities, financial assets, indices, currencies, and more\n\nCash-settled contracts: No physical delivery - settled based on underlying value at expiration"
+  },
+  {
+    "objectID": "02_intro_futures.html#long-and-short-positions",
+    "href": "02_intro_futures.html#long-and-short-positions",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Long and Short Positions",
+    "text": "Long and Short Positions\n\nLong (Buyer): Obligation to accept delivery, profits when price rises\nShort (Seller): Obligation to deliver, profits when price falls"
+  },
+  {
+    "objectID": "02_intro_futures.html#example-trading-corn-futures",
+    "href": "02_intro_futures.html#example-trading-corn-futures",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Example: Trading Corn Futures",
+    "text": "Example: Trading Corn Futures\nFarmer sells futures at $5.00/bushel, spot later drops to $4.00:\n\nPhysical Delivery: Deliver corn, receive $5.00/bushel\nOffset Position:\n\nBuy futures at $4.00 → Profit = $1.00/bushel\nSell corn in spot market at $4.00\nTotal: $5.00/bushel (same result!)\n\nKey insight: Spot-futures convergence at expiration"
+  },
+  {
+    "objectID": "02_intro_futures.html#contract-specifications",
+    "href": "02_intro_futures.html#contract-specifications",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Contract Specifications",
+    "text": "Contract Specifications\nExchanges standardize all contract terms:\n\n\nDelivery location and date\nQuantity and quality (with price adjustments)\n\nExample: CME Corn Futures - 5,000 bushels per contract, Illinois delivery locations"
+  },
+  {
+    "objectID": "02_intro_futures.html#cash-settled-futures",
+    "href": "02_intro_futures.html#cash-settled-futures",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Cash-Settled Futures",
+    "text": "Cash-Settled Futures\nNo physical delivery - settled based on index value:\n\nE-mini S&P 500: $50 multiplier per index point\n\nBuy at 6000, index expires at 6500\nProfit = $50 × 500 = $25,000\n\nBenefits: Eliminates delivery logistics, enables index futures"
+  },
+  {
+    "objectID": "02_intro_futures.html#trading-vs.-gambling",
+    "href": "02_intro_futures.html#trading-vs.-gambling",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Trading vs. Gambling",
+    "text": "Trading vs. Gambling\nKey distinction: Futures must serve legitimate risk-management needs\n\nExamples:\n\nFund manager hedging equity portfolio\nAirline hedging fuel costs\nUtility hedging temperature risk"
+  },
+  {
+    "objectID": "02_intro_futures.html#market-structure",
+    "href": "02_intro_futures.html#market-structure",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Market Structure",
+    "text": "Market Structure\nLike options, futures have:\n\n\nExchange-traded: Standardized, transparent\nClearinghouse: Central counterparty\nOpen interest: Long = short positions\nMost positions closed early via offsetting trades"
+  },
+  {
+    "objectID": "02_intro_futures.html#margin-and-marking-to-market",
+    "href": "02_intro_futures.html#margin-and-marking-to-market",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Margin and Marking to Market",
+    "text": "Margin and Marking to Market\nDaily Settlement Process:\n\n\nExchange sets settlement price each day\nAll positions marked to this price\nProfits/losses immediately transferred\nVirtually eliminates counterparty risk"
+  },
+  {
+    "objectID": "02_intro_futures.html#daily-settlement-example",
+    "href": "02_intro_futures.html#daily-settlement-example",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Daily Settlement Example",
+    "text": "Daily Settlement Example\nBuy 1 e-mini S&P 500 contract at 6000:\n\n\n\nDay\nSettlement Price\nDaily P/L\nCumulative P/L\n\n\n\n\n0 (Entry)\n6000\n-\n-\n\n\n1\n6010\n+$500\n+$500\n\n\n2\n5990\n-$1,000\n-$500\n\n\n3\n6020\n+$1,500\n+$1,000\n\n\n\nDay 3: Close position, walk away with $1,000 gain\nCalculation: (6020 - 6000) × $50 = $1,000"
+  },
+  {
+    "objectID": "02_intro_futures.html#margin-requirements",
+    "href": "02_intro_futures.html#margin-requirements",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Margin Requirements",
+    "text": "Margin Requirements\nTwo types of margin:\n\n\nInitial Margin\n\nRequired to open position\nTypically 3-12% of contract value\nSet by exchange\n\n\nMaintenance Margin\n\nMinimum to keep position open\nLower than initial margin\nIf breached → margin call\n\n\n\nMargin Call: Demand for additional margin to restore account to initial margin level. Failure to meet = forced liquidation."
+  },
+  {
+    "objectID": "02_intro_futures.html#leverage-in-futures",
+    "href": "02_intro_futures.html#leverage-in-futures",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Leverage in Futures",
+    "text": "Leverage in Futures\n10% margin = 10:1 leverage\n\n\n1% price move = 10% gain/loss on margin\n10% price move = 100% gain/loss on margin\n\nSafety mechanisms: Daily marking to market + margin calls + clearinghouse"
+  },
+  {
+    "objectID": "02_intro_futures.html#the-expectations-hypothesis",
+    "href": "02_intro_futures.html#the-expectations-hypothesis",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "The Expectations Hypothesis",
+    "text": "The Expectations Hypothesis\nFutures prices = Expected future spot prices\n\nLogic: If \\(F \\neq E[S_T]\\), trading for expected profit drives \\(F \\to E[S_T]\\)\nProblem: Assumes risk-neutral investors!"
+  },
+  {
+    "objectID": "02_intro_futures.html#reality-risk-premia",
+    "href": "02_intro_futures.html#reality-risk-premia",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Reality: Risk Premia",
+    "text": "Reality: Risk Premia\n\nRisk-averse investors won’t trade unlimited amounts\nResult: Futures prices can deviate from expected spot prices\n\nDeviation depends on covariance with market risk\nFrom CAPM: covariance with market return\n\nDespite this: Expectations still prime determinant of prices"
+  },
+  {
+    "objectID": "02_intro_futures.html#spot-futures-parity",
+    "href": "02_intro_futures.html#spot-futures-parity",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Spot-Futures Parity",
+    "text": "Spot-Futures Parity\nUnlike expectations hypothesis, parity is an arbitrage relationship:\n\\[F = \\mathrm{e}^{(c-y)T}S\\]\nwhere:\n\n\\(F\\) = futures price\n\\(S\\) = current spot price\n\\(c\\) = cost of carry (continuously compounded)\n\\(y\\) = convenience yield (continuously compounded)\n\\(T\\) = time to expiration"
+  },
+  {
+    "objectID": "02_intro_futures.html#cost-of-carry-and-convenience-yield",
+    "href": "02_intro_futures.html#cost-of-carry-and-convenience-yield",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Cost of Carry and Convenience Yield",
+    "text": "Cost of Carry and Convenience Yield\n\n\nCost of Carry (\\(c\\))\n\nForegone interest on capital\nStorage costs (commodities)\nNo costs for holding futures\n\nFor financial assets: \\(c = r\\)\n\nConvenience Yield (\\(y\\))\n\nDividends/cash flows\nBenefits of physical possession\nNever negative\n\nFor financial assets: \\(y\\) = dividend yield"
+  },
+  {
+    "objectID": "02_intro_futures.html#arbitrage-buy-spot-sell-futures",
+    "href": "02_intro_futures.html#arbitrage-buy-spot-sell-futures",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Arbitrage: Buy Spot, Sell Futures",
+    "text": "Arbitrage: Buy Spot, Sell Futures\nIf \\(F &gt; \\mathrm{e}^{rT}S\\) (assuming \\(c=r\\), \\(y=0\\)):\n\n\nBorrow \\(S\\), buy spot asset\nSell futures at \\(F\\)\nAt expiration: deliver asset, receive \\(F\\), repay \\(\\mathrm{e}^{rT}S\\)\n\nProfit: \\(F - \\mathrm{e}^{rT}S\\) (risk-free!)"
+  },
+  {
+    "objectID": "02_intro_futures.html#arbitrage-sell-spot-buy-futures",
+    "href": "02_intro_futures.html#arbitrage-sell-spot-buy-futures",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Arbitrage: Sell Spot, Buy Futures",
+    "text": "Arbitrage: Sell Spot, Buy Futures\nIf \\(F &lt; \\mathrm{e}^{rT}S\\) (assuming \\(c=r\\), \\(y=0\\)):\n\n\nShort sell spot asset for \\(S\\), invest proceeds\nBuy futures at \\(F\\)\nAt expiration: pay \\(F\\), accept delivery, return to lender\n\nProfit: \\(\\mathrm{e}^{rT}S - F\\) (risk-free!)"
+  },
+  {
+    "objectID": "02_intro_futures.html#why-parity-holds",
+    "href": "02_intro_futures.html#why-parity-holds",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Why Parity Holds",
+    "text": "Why Parity Holds\n\nInstitutional arbitrageurs exploit violations quickly\nExtensions:\n\nStorage costs → add to \\(c\\)\nDividends → subtract from \\(c\\) (or add to \\(y\\))\nGeneral formula: \\(F = \\mathrm{e}^{(c-y)T}S\\)"
+  },
+  {
+    "objectID": "02_intro_futures.html#forward-curves",
+    "href": "02_intro_futures.html#forward-curves",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Forward Curves",
+    "text": "Forward Curves\nForward curve: Relationship between futures price and contract maturity\nFrom spot-futures parity:\n\\[F = \\mathrm{e}^{(c-y)T}S\\]\n\nShape depends on \\(c - y\\):\n\nIf \\(c &gt; y\\): Upward sloping (contango)\nIf \\(c &lt; y\\): Downward sloping (backwardation)\nIf \\(c = y\\): Flat"
+  },
+  {
+    "objectID": "02_intro_futures.html#gold-forward-curve",
+    "href": "02_intro_futures.html#gold-forward-curve",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Gold Forward Curve",
+    "text": "Gold Forward Curve\nGold: negligible storage, no dividends, no convenience yield → \\(c - y = r\\)\n\n\n\n\n                                                \n\n\nFigure 1"
+  },
+  {
+    "objectID": "02_intro_futures.html#currency-forward-curves",
+    "href": "02_intro_futures.html#currency-forward-curves",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Currency Forward Curves",
+    "text": "Currency Forward Curves\nFor currencies: \\(c - y = r - r_f\\) (domestic vs. foreign interest rates)\n\n\n\n\n                                                \n\n\nFigure 2"
+  },
+  {
+    "objectID": "02_intro_futures.html#sp-500-forward-curve",
+    "href": "02_intro_futures.html#sp-500-forward-curve",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "S&P 500 Forward Curve",
+    "text": "S&P 500 Forward Curve\nFor stock indices: \\(c - y = r - \\text{dividend yield}\\)\n\n\n\n\n                                                \n\n\nFigure 3"
+  },
+  {
+    "objectID": "02_intro_futures.html#commodity-forward-curves",
+    "href": "02_intro_futures.html#commodity-forward-curves",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Commodity Forward Curves",
+    "text": "Commodity Forward Curves\nMore complex due to storage costs and convenience yields:\n\n\nHigh storage costs (electricity, natural gas)\nConvenience yield varies with supply/demand\nUpward or downward sloping\nSeasonal patterns (natural gas, corn)\n\nBound: \\(F \\leq \\mathrm{e}^{cT}S\\) (may have little predictive power)"
+  },
+  {
+    "objectID": "02_intro_futures.html#crude-oil-extreme-scenarios",
+    "href": "02_intro_futures.html#crude-oil-extreme-scenarios",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Crude Oil: Extreme Scenarios",
+    "text": "Crude Oil: Extreme Scenarios\n\n\n\n\n                                                \n\n\nFigure 4"
+  },
+  {
+    "objectID": "02_intro_futures.html#crude-oil-insights",
+    "href": "02_intro_futures.html#crude-oil-insights",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Crude Oil Insights",
+    "text": "Crude Oil Insights\n\n\nApril 2020:\n\nCoronavirus demand collapse\nStorage at Cushing full\nExtremely high storage costs\nZero convenience yield\nResult: Steep upward slope\nFront month went negative!\n\n\nMarch 2022:\n\nRussian invasion of Ukraine\nFuture supplies uncertain\nHigh convenience yield\nResult: Steep downward slope\nPremium for oil now vs. later"
+  },
+  {
+    "objectID": "02_intro_futures.html#cyclical-commodities",
+    "href": "02_intro_futures.html#cyclical-commodities",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Cyclical Commodities",
+    "text": "Cyclical Commodities\nNatural gas and corn show seasonal patterns:\n\n\n\n\n                                                \n\n\nFigure 5"
+  },
+  {
+    "objectID": "02_intro_futures.html#natural-gas-seasonality",
+    "href": "02_intro_futures.html#natural-gas-seasonality",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Natural Gas Seasonality",
+    "text": "Natural Gas Seasonality\n\nSummer to Winter (upward): High storage costs\nWinter to Summer (downward): High convenience yield (demand peak)\nOverall slope: Depends on supply/demand conditions"
+  },
+  {
+    "objectID": "02_intro_futures.html#corn-seasonality",
+    "href": "02_intro_futures.html#corn-seasonality",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Corn Seasonality",
+    "text": "Corn Seasonality\n\nPre-harvest (summer): High convenience yield (scarcity)\nPost-harvest (fall): High storage costs (silos full)\nOverall slope: Varies with spot market conditions"
+  },
+  {
+    "objectID": "02_intro_futures.html#options-on-futures",
+    "href": "02_intro_futures.html#options-on-futures",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Options on Futures",
+    "text": "Options on Futures\nA derivative on a derivative!\n\nCall: Right to buy futures at strike\nPut: Right to sell futures at strike\nBenefits: Leverage, liquidity, avoids delivery/storage"
+  },
+  {
+    "objectID": "02_intro_futures.html#exercise-of-futures-options",
+    "href": "02_intro_futures.html#exercise-of-futures-options",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Exercise of Futures Options",
+    "text": "Exercise of Futures Options\nWhen exercised, creates futures position + cash transfer:\n\n\nOption Holder:\n\nCall → Long futures position\nPut → Short futures position\nMarked to market at current futures price\nReceives cash = (Futures price - Strike)\n\n\nOption Writer:\n\nCall → Short futures position\nPut → Long futures position\nMarked to market at current futures price\nPays cash = (Futures price - Strike)"
+  },
+  {
+    "objectID": "02_intro_futures.html#futures-options-example",
+    "href": "02_intro_futures.html#futures-options-example",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Futures Options Example",
+    "text": "Futures Options Example\nBuy call on corn futures, strike = $5.00, exercise at $5.50:\n\nYou (exerciser):\n\nLong futures at $5.50 + receive $0.50 cash\n\nOption writer:\n\nShort futures at $5.50 + pay $0.50 cash\n\nResult: Both can immediately close futures positions"
+  },
+  {
+    "objectID": "02_intro_futures.html#summary-key-takeaways",
+    "href": "02_intro_futures.html#summary-key-takeaways",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Summary: Key Takeaways",
+    "text": "Summary: Key Takeaways\n\n\nFutures = Obligations for both parties (vs. options)\nDaily marking to market virtually eliminates counterparty risk\nLeverage through margin enables high returns/losses\nSpot-futures parity is an arbitrage relationship: \\(F = \\mathrm{e}^{(c-y)T}S\\)\nForward curves reveal cost of carry minus convenience yield\nCommodity curves complex due to storage and seasonality\nFutures options combine benefits of both derivatives"
+  },
+  {
+    "objectID": "02_intro_futures.html#next-steps",
+    "href": "02_intro_futures.html#next-steps",
+    "title": "Pricing and Hedging Derivative Securities",
+    "section": "Next Steps",
+    "text": "Next Steps\nBuilding on this foundation:\n\n\nHedging with futures: Optimal hedge ratios, basis risk\nFutures pricing models: Storage models, asset pricing theory\nSpread trading: Calendar spreads, inter-commodity spreads\nArbitrage strategies: Cash-and-carry, reverse cash-and-carry\nReal-world considerations: Transaction costs, margin management, delivery options"
   }
 ]
